@@ -1238,12 +1238,38 @@ function goTo(idx) {
   const nextIdx = (idx + total) % total;
   const forward = ((nextIdx - prevIdx + total) % total) <= total / 2;
 
-  const outY  = forward ? '-100%' : '100%';   // current exits up or down
-  const inY   = forward ?  '100%' : '-100%';  // next enters from below or above
+  const outY  = forward ? '-100%' : '100%';
+  const inY   = forward ?  '100%' : '-100%';
   const ease  = 'transform 0.8s cubic-bezier(0.77,0,0.175,1)';
 
   const prevSlide = slides[prevIdx];
   const nextSlide = slides[nextIdx];
+
+  // Lazy load: load next slide media if not yet loaded
+  if (nextSlide.dataset.lazy === 'true') {
+    const videosRaw = nextSlide.dataset.videos;
+    if (videosRaw) {
+      const list = JSON.parse(videosRaw);
+      const picked = list[Math.floor(Math.random() * list.length)];
+      loadSlideMedia(nextSlide, picked);
+    }
+    delete nextSlide.dataset.lazy;
+  }
+
+  // Also preload the slide after next
+  const afterNextIdx = (nextIdx + 1) % total;
+  const afterNext = slides[afterNextIdx];
+  if (afterNext && afterNext.dataset.lazy === 'true') {
+    setTimeout(() => {
+      const videosRaw = afterNext.dataset.videos;
+      if (videosRaw) {
+        const list = JSON.parse(videosRaw);
+        const picked = list[Math.floor(Math.random() * list.length)];
+        loadSlideMedia(afterNext, picked);
+      }
+      delete afterNext.dataset.lazy;
+    }, 800);
+  }
 
   // Snap next slide into start position (no animation)
   nextSlide.style.transition = 'none';
@@ -1331,7 +1357,14 @@ document.addEventListener('touchstart', e => { touchStartX = e.touches[0].client
 document.addEventListener('touchend', e => {
   if (drawerOpen || panelOpen) return;
   const dx = e.changedTouches[0].clientX - touchStartX;
-  if (dx < -50) next(); if (dx > 50) prev();
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dy) > Math.abs(dx)) {
+    if (dy > 50) next();
+    if (dy < -50) prev();
+  } else {
+    if (dx < -50) next();
+    if (dx > 50) prev();
+  }
 });
 
 function openPanel() {
@@ -1503,14 +1536,31 @@ slides.forEach((s, i) => {
 
 async function init() {
   await loadProjects();
-  // ── Init media
-  slides.forEach(slide => {
+
+  // ── Lazy loading: only load slide 0 and preload slide 1
+  function pickVideo(slide) {
     const videosRaw = slide.dataset.videos;
-    if (!videosRaw) return;
+    if (!videosRaw) return null;
     const list = JSON.parse(videosRaw);
-    const picked = list[Math.floor(Math.random() * list.length)];
-    loadSlideMedia(slide, picked);
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  // Load only first slide immediately
+  const firstPick = pickVideo(slides[0]);
+  if (firstPick) loadSlideMedia(slides[0], firstPick);
+
+  // Preload next slide after 1.5s
+  setTimeout(() => {
+    const nextPick = pickVideo(slides[1]);
+    if (nextPick) loadSlideMedia(slides[1], nextPick);
+  }, 1500);
+
+  // Store picked videos for lazy loading on navigate
+  slides.forEach((slide, i) => {
+    if (i < 2) return; // already handled
+    slide.dataset.lazy = 'true';
   });
+
   updateSoundBtn();
   counter.textContent = pad(0) + ' / ' + pad(total - 1);
 }
