@@ -1352,8 +1352,31 @@ document.addEventListener('wheel', e => {
   }
 }, { passive: true });
 
-let touchStartX = 0;
-document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+// ── Touch — swipe robusto
+let touchStartX = 0, touchStartY = 0, touchStartTime = 0, touchFired = false;
+
+document.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+  touchStartTime = Date.now();
+  touchFired = false;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+  if (drawerOpen || panelOpen || touchFired) return;
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  const dt = Date.now() - touchStartTime;
+  const threshold = dt < 300 ? 25 : 50;
+  touchFired = true;
+  if (Math.abs(dy) >= Math.abs(dx)) {
+    if (dy < -threshold) next();
+    else if (dy > threshold) prev();
+  } else {
+    if (dx < -threshold) next();
+    else if (dx > threshold) prev();
+  }
+}, { passive: true });
 document.addEventListener('touchend', e => {
   if (drawerOpen || panelOpen) return;
   const dx = e.changedTouches[0].clientX - touchStartX;
