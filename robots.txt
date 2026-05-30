@@ -1,0 +1,12 @@
+# robots.txt — valentinocastiglione.com
+# https://www.robotstxt.org
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Block access to media folder (optional — remove if you want videos indexed)
+Disallow: /CONTENUTI SITO/
+
+# Sitemap location
+Sitemap: https://www.valentinocastiglione.com/sitemap.xml

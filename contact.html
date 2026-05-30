@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNjYzAwMDAiLz48L3N2Zz4=">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Project — Valentino Castiglione</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #000;
+    --fg: #f2f2f2;
+    --fg-dim: rgba(242,242,242,0.35);
+    --panel-bg: #dcdcdc;
+    --chip-bg: rgba(0,0,0,0.92);
+    --chip-border: rgba(255,255,255,0.15);
+    --ease: cubic-bezier(0.15, 0.85, 0.25, 0.95);
+    --accent: #cc0000;
+  }
+
+  html, body {
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── HEADER ── */
+  #header {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 24px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .chip {
+    display: inline-flex; align-items: center;
+    height: 38px; padding: 0 16px;
+    border: 1px solid var(--chip-border);
+    border-radius: 100px;
+    background: var(--chip-bg);
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .chip:hover { opacity: 0.75; }
+  .chip-back {
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 120px 24px 48px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+  .hero p {
+    margin: 20px auto 0;
+    font-size: 14px;
+    color: var(--fg-dim);
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  /* ── FORM CONTAINER ── */
+  .form-wrap {
+    background: var(--panel-bg);
+    color: #111;
+    border-radius: 24px 24px 0 0;
+    padding: 48px 32px 80px;
+    min-height: 60vh;
+  }
+
+  .form-section {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(17,17,17,0.4);
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .field-group {
+    margin-bottom: 32px;
+  }
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) {
+    .field-row { grid-template-columns: 1fr; }
+  }
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #111;
+    margin-bottom: 6px;
+  }
+  label span {
+    color: var(--accent);
+    margin-left: 2px;
+  }
+  label em {
+    font-style: normal;
+    font-weight: 400;
+    color: rgba(17,17,17,0.4);
+    font-size: 10px;
+    margin-left: 6px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    background: rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #111;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  input:focus, textarea:focus {
+    border-color: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.07);
+  }
+  input::placeholder, textarea::placeholder {
+    color: rgba(17,17,17,0.3);
+  }
+  textarea { resize: vertical; min-height: 120px; }
+
+  /* ── TOGGLE BUTTONS ── */
+  .toggle-group {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 4px;
+  }
+  .toggle-btn {
+    height: 38px; padding: 0 18px;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 100px;
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px; font-weight: 400;
+    color: rgba(17,17,17,0.7);
+    cursor: pointer;
+    transition: all 0.18s;
+    white-space: nowrap;
+  }
+  .toggle-btn:hover {
+    background: rgba(0,0,0,0.07);
+    color: #111;
+  }
+  .toggle-btn.selected {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+    margin: 40px 0;
+  }
+
+  /* ── CHECKBOX ── */
+  .check-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 14px;
+  }
+  .check-row input[type="checkbox"] {
+    width: 18px; height: 18px;
+    margin-top: 2px;
+    accent-color: #111;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .check-row label {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(17,17,17,0.75);
+    cursor: pointer;
+  }
+  .check-row label a {
+    color: #111;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ── SUBMIT ── */
+  .submit-btn {
+    display: block;
+    width: 100%;
+    height: 52px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-top: 32px;
+    text-transform: uppercase;
+  }
+  .submit-btn:hover { opacity: 0.75; }
+  .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ── SUCCESS MESSAGE ── */
+  #success-msg {
+    display: none;
+    text-align: center;
+    padding: 48px 24px;
+  }
+  #success-msg h2 {
+    font-size: 28px; font-weight: 700;
+    margin-bottom: 12px; color: #111;
+  }
+  #success-msg p {
+    font-size: 14px; color: rgba(17,17,17,0.6);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  #site-footer {
+    padding: 16px 24px;
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    color: rgba(242,242,242,0.3);
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px;
+  }
+  #site-footer a { color: inherit; text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .form-wrap { padding: 32px 20px 60px; }
+    .hero { padding: 100px 20px 36px; }
+    #header { padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <a class="chip chip-back" href="index.html">← Valentino Castiglione</a>
+</header>
+
+<div class="hero">
+  <h1>Book<br>a Project</h1>
+  <p>Tell me about your project. I'll get back to you within 48 hours to discuss the details.</p>
+</div>
+
+<div class="form-wrap">
+  <div class="form-section">
+
+    <!-- SUCCESS -->
+    <div id="success-msg">
+      <h2>Message sent.</h2>
+      <p>Thank you for reaching out.<br>I'll get back to you within 48 hours.</p>
+    </div>
+
+    <form id="booking-form" action="https://formspree.io/f/mvzyvpdq" method="POST">
+
+      <!-- GENERAL INFO -->
+      <p class="section-label">General information <span style="color:rgba(17,17,17,0.4);font-size:10px;float:right;">* Required</span></p>
+
+      <div class="field-group">
+        <div class="field-row">
+          <div>
+            <label for="fname">Name <span>*</span></label>
+            <input type="text" id="fname" name="name" placeholder="Enter your name" required>
+          </div>
+          <div>
+            <label for="lname">Last Name <span>*</span></label>
+            <input type="text" id="lname" name="lastname" placeholder="Enter your last name" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div>
+            <label for="email">E-mail <span>*</span></label>
+            <input type="email" id="email" name="email" placeholder="Enter your e-mail" required>
+          </div>
+          <div>
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+          </div>
+        </div>
+        <div>
+          <label for="location">Where are you located? <span>*</span></label>
+          <input type="text" id="location" name="location" placeholder="City and country" required>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- PROJECT INFO -->
+      <p class="section-label">Project information</p>
+
+      <div class="field-group">
+        <label>Type of project <span>*</span></label>
+        <div class="toggle-group" id="project-type-group">
+          <button type="button" class="toggle-btn" data-value="Film Directing">Film Directing</button>
+          <button type="button" class="toggle-btn" data-value="Music Video">Music Video</button>
+          <button type="button" class="toggle-btn" data-value="Documentary">Documentary</button>
+          <button type="button" class="toggle-btn" data-value="Commercial">Commercial</button>
+          <button type="button" class="toggle-btn" data-value="Social Campaign">Social Campaign</button>
+          <button type="button" class="toggle-btn" data-value="Drone Cinematography">Drone Cinematography</button>
+          <button type="button" class="toggle-btn" data-value="Other">Other</button>
+        </div>
+        <input type="hidden" id="project-type-input" name="project_type">
+      </div>
+
+      <div class="field-group">
+        <label for="budget">Estimated budget <em>(optional)</em></label>
+        <div class="toggle-group" id="budget-group">
+          <button type="button" class="toggle-btn" data-value="< €1.000">&lt; €1.000</button>
+          <button type="button" class="toggle-btn" data-value="€1.000 – €3.000">€1.000 – €3.000</button>
+          <button type="button" class="toggle-btn" data-value="€3.000 – €8.000">€3.000 – €8.000</button>
+          <button type="button" class="toggle-btn" data-value="> €8.000">&gt; €8.000</button>
+          <button type="button" class="toggle-btn" data-value="To discuss">To discuss</button>
+        </div>
+        <input type="hidden" id="budget-input" name="budget">
+      </div>
+
+      <div class="field-group">
+        <label for="timeline">Desired timeline <em>(optional)</em></label>
+        <input type="text" id="timeline" name="timeline" placeholder="e.g. June 2026, ASAP, flexible…">
+      </div>
+
+      <div class="field-group">
+        <label for="description">Describe your project <span>*</span> <em>max 1500 characters</em></label>
+        <textarea id="description" name="description" maxlength="1500" rows="6"
+          placeholder="Tell me about your vision, the concept, references, location, mood…" required></textarea>
+        <div style="text-align:right;font-size:10px;color:rgba(17,17,17,0.35);margin-top:4px;">
+          <span id="char-count">0</span> / 1500
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="references">Have we worked together before? <span>*</span></label>
+        <div class="toggle-group" id="returning-group">
+          <button type="button" class="toggle-btn" data-value="New client">New client</button>
+          <button type="button" class="toggle-btn" data-value="Returning client">Returning client</button>
+        </div>
+        <input type="hidden" id="returning-input" name="returning">
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- CONSENT -->
+      <div class="check-row">
+        <input type="checkbox" id="privacy" name="privacy" required>
+        <label for="privacy">By submitting this form, I agree to the processing of my personal data under the terms of the <a href="index.html#privacy">Privacy Policy</a>.<span style="color:var(--accent)"> *</span></label>
+      </div>
+      <div class="check-row">
+        <input type="checkbox" id="complete" name="complete" required>
+        <label for="complete">I confirm that the information provided is accurate and the form is complete.<span style="color:var(--accent)"> *</span></label>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">SEND REQUEST</button>
+
+    </form>
+  </div>
+</div>
+
+<footer id="site-footer">
+  <span>© 2026 Valentino Castiglione — P.IVA 01904320932</span>
+  <span>Via Mantellin, 3 — 33085 Maniago (PN)</span>
+</footer>
+
+<script>
+// Toggle button groups (single select)
+function initToggleGroup(groupId, inputId) {
+  const group = document.getElementById(groupId);
+  const input = document.getElementById(inputId);
+  if (!group) return;
+  group.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      group.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      input.value = btn.dataset.value;
+    });
+  });
+}
+
+initToggleGroup('project-type-group', 'project-type-input');
+initToggleGroup('budget-group', 'budget-input');
+initToggleGroup('returning-group', 'returning-input');
+
+// Character counter
+const desc = document.getElementById('description');
+const charCount = document.getElementById('char-count');
+desc.addEventListener('input', () => {
+  charCount.textContent = desc.value.length;
+});
+
+// Form submission via Formspree
+const form = document.getElementById('booking-form');
+const successMsg = document.getElementById('success-msg');
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'SENDING…';
+
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      successMsg.style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'SEND REQUEST';
+      alert('Something went wrong. Please try again or contact me directly at info@valentinocastiglione.com');
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'SEND REQUEST';
+    alert('Connection error. Please try again.');
+  }
+});
+</script>
+</body>
+</html>
