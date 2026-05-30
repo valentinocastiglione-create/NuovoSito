@@ -1230,8 +1230,14 @@ function goTo(idx) {
   if (isTransitioning) return;
   isTransitioning = true;
 
-  const prevVideo = slides[current].querySelector('video');
-  if (prevVideo) prevVideo.pause();
+  // Stop ALL videos and reset audio completely
+  slides.forEach(s => {
+    const v = s.querySelector('video');
+    if (v) { v.pause(); v.muted = true; }
+  });
+  const avalantAudio = document.getElementById('avalant-audio');
+  if (avalantAudio) { avalantAudio.pause(); avalantAudio.currentTime = 0; }
+
   if (drawerOpen) closeDrawer();
 
   const prevIdx = current;
