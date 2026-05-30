@@ -326,6 +326,10 @@
   .slide-bg { position: absolute; inset: 0; z-index: 0; background: var(--bg); }
 
   /* ── MOBILE ── */
+  @media (hover: none) and (pointer: coarse) {
+    #cursor { display: none !important; }
+  }
+
   @media (max-width: 768px) {
 
     /* Header chips smaller */
@@ -529,8 +533,9 @@
     #site-footer { display: none; }
   }
 
-  @media (max-width: 768px) {
-    #book-btn { font-size: 9px !important; top: 62px !important; height: 28px !important; padding: 0 12px !important; }
+  @media (hover: none) and (pointer: coarse) {
+    #cursor { display: none !important; }
+  }
   }
 
     @media (max-width: 768px) {
