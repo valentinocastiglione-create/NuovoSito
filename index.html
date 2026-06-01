@@ -10,7 +10,7 @@
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: blob: https://www.google-analytics.com https://img.youtube.com; media-src 'self' blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://cloudflareinsights.com;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Valentino Castiglione — Filmmaker &amp; Video Production | Pordenone, Friuli Venezia Giulia</title>
+<title>Valentino Castiglione — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
@@ -318,8 +318,6 @@
   .slide-bg { position: absolute; inset: 0; z-index: 0; background: var(--bg); }
 
   /* ── MOBILE ── */
-  @media (hover: none) and (pointer: coarse) { #cursor { display: none !important; } }
-
   @media (max-width: 768px) {
 
     /* Header chips smaller */
@@ -327,6 +325,7 @@
     .chip { height: 28px; font-size: 10px; }
     #panel-toggle { font-size: 13px !important; }
 
+    #book-btn { top: 62px !important; height: 28px !important; font-size: 9px !important; padding: 0 12px !important; }
     /* Sound button */
     #sound-btn { top: 12px; right: 12px; }
 
@@ -522,17 +521,7 @@
   @media (max-width: 768px) {
     #site-footer { display: none; }
   }
-
-  /* ── YOUTUBE BUTTON ── */
-  .yt-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    margin-top: 20px; height: 38px; padding: 0 20px;
-    background: #111; color: #fff; border: none;
-    border-radius: 100px; font-family: 'Poppins', sans-serif;
-    font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
-    cursor: pointer; text-decoration: none; transition: opacity 0.2s;
-  }
-  .yt-btn:hover { opacity: 0.7; }
+  @media (hover: none) and (pointer: coarse) { #cursor { display: none !important; } }
 </style>
 <!-- Google Analytics 4 (attivato solo dopo consenso cookie) -->
 <script>
@@ -564,6 +553,7 @@
 </header>
 
 <div id="slide-counter">01 / 10</div>
+<a href="contact.html" class="chip" id="book-btn" style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200;background:rgba(255,255,255,0.92);color:#000;border-color:rgba(255,255,255,0.92);font-weight:500;letter-spacing:0.08em;text-decoration:none;transition:opacity 0.3s ease;height:48px;padding:0 24px;font-size:14px;">BOOK A PROJECT</a>
 
 <!-- SOUND BUTTON -->
 <button id="sound-btn" class="chip" style="position:fixed;top:20px;right:20px;z-index:200;opacity:0.45;font-size:11px;letter-spacing:0.05em;background:rgba(0,0,0,0.92);color:#fff;border-color:rgba(0,0,0,0.92);">SOUND</button>
@@ -796,8 +786,7 @@ async function loadProjects() {
       client: p.cliente,
       type: p.tipo,
       body: p.descrizione,
-      gallery: p.galleria,
-      youtube: p.youtube || null
+      gallery: p.galleria
     }));
 
     // Load profile
@@ -859,15 +848,14 @@ async function loadProjects() {
   } catch(e) {
     console.warn('contenuti.json non raggiungibile, uso dati inline:', e);
     // Fallback inline data (same as contenuti.json)
-    const fallback = [{"titolo": "Adria_Campaign2025", "anno": "2025", "cliente": "Adria Mobil", "tipo": "Commercial", "descrizione": "For this project, I planned and executed the aerial drone footage, helping to lend a sense of spaciousness and dynamism to the campaign images. My work allowed us to capture the balance between luxury, comfort, and outdoor living from above, offering a unique perspective that effectively highlighted the creative concept.", "galleria": []}, {"titolo": "Avalant_Victoria", "anno": "2024", "cliente": "Avalant", "tipo": "Music Video", "descrizione": "A music video I directed for the artist Avalant. The composer's intention with this track is to recreate a specific moment: one of abstraction and mental journey. To visually convey this idea, I chose geometric shapes and color palettes capable of evoking that sense of detachment from reality—a visual language that interacts with the Synthwave sounds of the music, yet becomes its true protagonist. Colors, movements, and visual compositions guide the viewer through different levels of abstraction, making the perceptual experience something autonomous and immediate, even before the music comes into play.\n\nGo to YouTube, look it up, and give it a listen.", "galleria": [{"src": "CONTENUTI_SITO/Avalant_1_88_1.webp", "alt": "Avalant 1"}, {"src": "CONTENUTI_SITO/Avalant_3_5_1.webp", "alt": "Avalant 2"}, {"src": "CONTENUTI_SITO/Avalant_5_1_1.webp", "alt": "Avalant 3"}, {"src": "CONTENUTI_SITO/Avalant_5_3_1.webp", "alt": "Avalant 4"}, {"src": "CONTENUTI_SITO/Avalant_5_15_1.webp", "alt": "Avalant 5"}, {"src": "CONTENUTI_SITO/Avalant_5_21_1.webp", "alt": "Avalant 6"}, {"src": "CONTENUTI_SITO/Avalant_1_2_1.webp", "alt": "Avalant 7"}, {"src": "CONTENUTI_SITO/Avalant_1_24_1.webp", "alt": "Avalant 8"}, {"src": "CONTENUTI_SITO/Avalant_1_38_1.webp", "alt": "Avalant 9"}, {"src": "CONTENUTI_SITO/Avalant_1_44_1.webp", "alt": "Avalant 10"}, {"src": "CONTENUTI_SITO/Avalant_1_48_1.webp", "alt": "Avalant 11"}, {"src": "CONTENUTI_SITO/Avalant_1_51_1.webp", "alt": "Avalant 12"}, {"src": "CONTENUTI_SITO/Avalant_1_56_1.webp", "alt": "Avalant 13"}]}, {"titolo": "OBL_LaNotteIn30Libri", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Social Campaign", "descrizione": "A social media campaign I directed for Associazione Obliquo live event. “La notte in 30 libri” explored a new form of storytelling built around a curated collection of over thirty volumes. Visitors wore headphones delivering ASMR soundscapes while photographic projections surrounded them, weaving together visual and auditory layers into a single, cohesive experience. The result was an immersive journey through nocturnal and dreamlike atmospheres, shaped by the interplay of photobooks, illustrated works, essays, and sound — each element reinforcing the others to blur the line between reading, seeing, and dreaming.\n\nFor this event, I also served as live video director, overseeing the real-time visual direction of the performance.", "galleria": []}, {"titolo": "CoraleManiaghese", "anno": "2025", "cliente": "Corale Maniaghese", "tipo": "Music Video", "descrizione": "Music video directed for Corale Maniaghese.\nA single, long take that offers an authentic glimpse into the simple yet profound rural and family life of the last century.", "galleria": []}, {"titolo": "Falmec_SICAM2025", "anno": "2025", "cliente": "Falmec", "tipo": "Social", "descrizione": "A video created to showcase Falmec's participation in the SICAM Pordenone 2025 trade show.\nWe captured their first appearance at SICAM 2025 through a video that goes beyond simply depicting a space: it captures a vision of the contemporary kitchen.\nA debut shaped by a clear vision: to design spaces where surfaces, volumes, and materials interact to create a cohesive, functional, and truly modern living environment.", "galleria": []}, {"titolo": "Julien_Chopin", "anno": "2024", "cliente": "Julien Chopin", "tipo": "Spot / Commercial", "descrizione": "A portfolio project draws inspiration from the timeless elegance of Domaine Julien Chopin, exploring the power of sharing: moments frozen in time, experiences that sparkle.", "galleria": []}, {"titolo": "Donne_di_Seta", "anno": "2024", "cliente": "Comune di Maniago", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by the Comune di Maniago. The documentary \"Donne di seta - Un intreccio di storie al femminile\" explores the connection between the silk industry and the work carried out by young women within this sector.\nThrough firsthand accounts and archival footage, the film reveals the crucial and often overlooked role of silk workers in the production of one of the world's finest fabrics.", "galleria": [{"src": "CONTENUTI_SITO/Donne_di_seta.webp", "alt": "Donne di Seta 1"}, {"src": "CONTENUTI_SITO/Donne_di_seta_2.webp", "alt": "Donne di Seta 2"}, {"src": "CONTENUTI_SITO/Donne_di_seta_3.webp", "alt": "Donne di Seta 3"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_2_36_1.webp", "alt": "Donne di Seta 4"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_3_7_1.webp", "alt": "Donne di Seta 5"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_18_1.webp", "alt": "Donne di Seta 6"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_49_1.webp", "alt": "Donne di Seta 7"}]}, {"titolo": "P.P.P.", "anno": "2021", "cliente": "Antonio Pauletta", "tipo": "Fiction", "descrizione": "A project created for Antonio Pauletta to help him apply for an artist residency in Portugal.", "galleria": [{"src": "CONTENUTI_SITO/Pasolini_1_2_1.webp", "alt": "P.P.P. 1"}, {"src": "CONTENUTI_SITO/Pasolini_1_3_1.webp", "alt": "P.P.P. 2"}, {"src": "CONTENUTI_SITO/Pasolini_1_5_1.webp", "alt": "P.P.P. 3"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_1.webp", "alt": "P.P.P. 4"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_2.webp", "alt": "P.P.P. 5"}]}, {"titolo": "LaFormaDelleEmozioni_OBL", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by Associazione Obliquo. The documentary offers an intimate look into the extraordinary life and career of the renowned Italian designer Armando Milani. Through interviews, archival footage, and personal reflections, the film explores the roots and evolution of his creativity, from his youth to his rise as a leading figure in the world of graphic design.", "galleria": []}, {"titolo": "Dentag_IDEM2018", "anno": "2018", "cliente": "Dentag Maniago", "tipo": "Social AD", "descrizione": "Project created for Dentag Maniago to be used during the IDEM 2018 trade show.", "galleria": []}];
+    const fallback = [{"titolo": "Adria_Campaign2025", "anno": "2025", "cliente": "Adria Mobil", "tipo": "Commercial", "descrizione": "For this project, I planned and executed the aerial drone footage, helping to lend a sense of spaciousness and dynamism to the campaign images. My work allowed us to capture the balance between luxury, comfort, and outdoor living from above, offering a unique perspective that effectively highlighted the creative concept.", "galleria": []}, {"titolo": "Avalant_Victoria", "anno": "2024", "cliente": "Avalant", "tipo": "Music Video", "descrizione": "A music video I directed for the artist Avalant. The composer's intention with this track is to recreate a specific moment: one of abstraction and mental journey. To visually convey this idea, I chose geometric shapes and color palettes capable of evoking that sense of detachment from reality—a visual language that interacts with the Synthwave sounds of the music, yet becomes its true protagonist. Colors, movements, and visual compositions guide the viewer through different levels of abstraction, making the perceptual experience something autonomous and immediate, even before the music comes into play.\n\nGo to YouTube, look it up, and give it a listen.", "galleria": [{"src": "CONTENUTI_SITO/Avalant_1_88_1.jpg", "alt": "Avalant 1"}, {"src": "CONTENUTI_SITO/Avalant_3_5_1.jpg", "alt": "Avalant 2"}, {"src": "CONTENUTI_SITO/Avalant_5_1_1.jpg", "alt": "Avalant 3"}, {"src": "CONTENUTI_SITO/Avalant_5_3_1.jpg", "alt": "Avalant 4"}, {"src": "CONTENUTI_SITO/Avalant_5_15_1.jpg", "alt": "Avalant 5"}, {"src": "CONTENUTI_SITO/Avalant_5_21_1.jpg", "alt": "Avalant 6"}, {"src": "CONTENUTI_SITO/Avalant_1_2_1.jpg", "alt": "Avalant 7"}, {"src": "CONTENUTI_SITO/Avalant_1_24_1.jpg", "alt": "Avalant 8"}, {"src": "CONTENUTI_SITO/Avalant_1_38_1.jpg", "alt": "Avalant 9"}, {"src": "CONTENUTI_SITO/Avalant_1_44_1.jpg", "alt": "Avalant 10"}, {"src": "CONTENUTI_SITO/Avalant_1_48_1.jpg", "alt": "Avalant 11"}, {"src": "CONTENUTI_SITO/Avalant_1_51_1.jpg", "alt": "Avalant 12"}, {"src": "CONTENUTI_SITO/Avalant_1_56_1.jpg", "alt": "Avalant 13"}]}, {"titolo": "OBL_LaNotteIn30Libri", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Social Campaign", "descrizione": "A social media campaign I directed for Associazione Obliquo live event. “La notte in 30 libri” explored a new form of storytelling built around a curated collection of over thirty volumes. Visitors wore headphones delivering ASMR soundscapes while photographic projections surrounded them, weaving together visual and auditory layers into a single, cohesive experience. The result was an immersive journey through nocturnal and dreamlike atmospheres, shaped by the interplay of photobooks, illustrated works, essays, and sound — each element reinforcing the others to blur the line between reading, seeing, and dreaming.\n\nFor this event, I also served as live video director, overseeing the real-time visual direction of the performance.", "galleria": []}, {"titolo": "CoraleManiaghese", "anno": "2025", "cliente": "Corale Maniaghese", "tipo": "Music Video", "descrizione": "Music video directed for Corale Maniaghese.\nA single, long take that offers an authentic glimpse into the simple yet profound rural and family life of the last century.", "galleria": []}, {"titolo": "Falmec_SICAM2025", "anno": "2025", "cliente": "Falmec", "tipo": "Social", "descrizione": "A video created to showcase Falmec's participation in the SICAM Pordenone 2025 trade show.\nWe captured their first appearance at SICAM 2025 through a video that goes beyond simply depicting a space: it captures a vision of the contemporary kitchen.\nA debut shaped by a clear vision: to design spaces where surfaces, volumes, and materials interact to create a cohesive, functional, and truly modern living environment.", "galleria": []}, {"titolo": "Julien_Chopin", "anno": "2024", "cliente": "Julien Chopin", "tipo": "Spot / Commercial", "descrizione": "A portfolio project draws inspiration from the timeless elegance of Domaine Julien Chopin, exploring the power of sharing: moments frozen in time, experiences that sparkle.", "galleria": []}, {"titolo": "Donne_di_Seta", "anno": "2024", "cliente": "Comune di Maniago", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by the Comune di Maniago. The documentary \"Donne di seta - Un intreccio di storie al femminile\" explores the connection between the silk industry and the work carried out by young women within this sector.\nThrough firsthand accounts and archival footage, the film reveals the crucial and often overlooked role of silk workers in the production of one of the world's finest fabrics.", "galleria": [{"src": "CONTENUTI_SITO/Donne_di_seta.png", "alt": "Donne di Seta 1"}, {"src": "CONTENUTI_SITO/Donne_di_seta_2.png", "alt": "Donne di Seta 2"}, {"src": "CONTENUTI_SITO/Donne_di_seta_3.png", "alt": "Donne di Seta 3"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_2_36_1.png", "alt": "Donne di Seta 4"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_3_7_1.png", "alt": "Donne di Seta 5"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_18_1.png", "alt": "Donne di Seta 6"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_49_1.png", "alt": "Donne di Seta 7"}]}, {"titolo": "P.P.P.", "anno": "2021", "cliente": "Antonio Pauletta", "tipo": "Fiction", "descrizione": "A project created for Antonio Pauletta to help him apply for an artist residency in Portugal.", "galleria": [{"src": "CONTENUTI_SITO/Pasolini_1_2_1.png", "alt": "P.P.P. 1"}, {"src": "CONTENUTI_SITO/Pasolini_1_3_1.png", "alt": "P.P.P. 2"}, {"src": "CONTENUTI_SITO/Pasolini_1_5_1.png", "alt": "P.P.P. 3"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_1.png", "alt": "P.P.P. 4"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_2.png", "alt": "P.P.P. 5"}]}, {"titolo": "LaFormaDelleEmozioni_OBL", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by Associazione Obliquo. The documentary offers an intimate look into the extraordinary life and career of the renowned Italian designer Armando Milani. Through interviews, archival footage, and personal reflections, the film explores the roots and evolution of his creativity, from his youth to his rise as a leading figure in the world of graphic design.", "galleria": []}, {"titolo": "Dentag_IDEM2018", "anno": "2018", "cliente": "Dentag Maniago", "tipo": "Social AD", "descrizione": "Project created for Dentag Maniago to be used during the IDEM 2018 trade show.", "galleria": []}];
     PROJECTS = fallback.map(p => ({
       title: p.titolo,
       year: p.anno,
       client: p.cliente,
       type: p.tipo,
       body: p.descrizione,
-      gallery: p.galleria,
-      youtube: p.youtube || null
+      gallery: p.galleria
     }));
   }
 }
@@ -900,8 +888,9 @@ function goTo(idx) {
   if (isTransitioning) return;
   isTransitioning = true;
 
-  const prevVideo = slides[current].querySelector('video');
-  if (prevVideo) prevVideo.pause();
+  // Stop tutto
+  slides.forEach(s=>{ const v=s.querySelector('video'); if(v){v.pause();v.muted=true;} });
+  const _aa=document.getElementById('avalant-audio'); if(_aa){_aa.pause();_aa.currentTime=0;}
   if (drawerOpen) closeDrawer();
 
   const prevIdx = current;
@@ -914,6 +903,16 @@ function goTo(idx) {
 
   const prevSlide = slides[prevIdx];
   const nextSlide = slides[nextIdx];
+
+  // Lazy load o riavvio
+  if (nextSlide.dataset.lazy==='true') {
+    const vr=nextSlide.dataset.videos;
+    if(vr){const l=JSON.parse(vr);loadSlideMedia(nextSlide,l[Math.floor(Math.random()*l.length)]);}
+    delete nextSlide.dataset.lazy;
+  } else {
+    const v=nextSlide.querySelector('video');
+    if(v&&v.src){v.currentTime=0;v.muted=true;v.play().then(()=>{v.muted=!soundOn;}).catch(()=>{});}
+  }
 
   // Snap next slide into start position (no animation)
   nextSlide.style.transition = 'none';
@@ -965,55 +964,35 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeDrawer(); closePanel(); }
 });
 
-
-
-let touchStartX = 0, touchStartY = 0, touchStartTime = 0, touchFired = false;
-document.addEventListener('touchstart', e => {
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-  touchStartTime = Date.now();
-  touchFired = false;
-}, { passive: true });
-document.addEventListener('touchend', e => {
-  if (drawerOpen || panelOpen || touchFired) return;
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  const dy = e.changedTouches[0].clientY - touchStartY;
-  const dt = Date.now() - touchStartTime;
-  const threshold = dt < 300 ? 25 : 50;
-  touchFired = true;
-  if (Math.abs(dy) >= Math.abs(dx)) {
-    if (dy < -threshold) next();
-    else if (dy > threshold) prev();
-  } else {
-    if (dx < -threshold) next();
-    else if (dx > threshold) prev();
-  }
-}, { passive: true });
-
-// ── Trackpad & mouse wheel
-let lastWheelTime = 0, wheelAccum = 0;
+let _wt=0,_wa=0;
 document.addEventListener('wheel', e => {
-  if (drawerOpen || panelOpen) return;
-  const now = Date.now();
-  if (now - lastWheelTime > 500) wheelAccum = 0;
-  lastWheelTime = now;
-  const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
-  wheelAccum += delta;
-  if (Math.abs(wheelAccum) > 80) {
-    if (wheelAccum > 0) next(); else prev();
-    wheelAccum = 0;
-  }
-}, { passive: true });
+  if(drawerOpen||panelOpen) return;
+  const now=Date.now(); if(now-_wt>500)_wa=0; _wt=now;
+  _wa+=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+  if(Math.abs(_wa)>80){_wa>0?next():prev();_wa=0;}
+},{passive:true});
+
+let _tx=0,_ty=0,_tt=0,_tf=false;
+document.addEventListener('touchstart',e=>{_tx=e.touches[0].clientX;_ty=e.touches[0].clientY;_tt=Date.now();_tf=false;},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(drawerOpen||panelOpen||_tf)return;
+  const dx=e.changedTouches[0].clientX-_tx, dy=e.changedTouches[0].clientY-_ty;
+  const thr=Date.now()-_tt<300?25:50; _tf=true;
+  if(Math.abs(dy)>=Math.abs(dx)){if(dy<-thr)next();else if(dy>thr)prev();}
+  else{if(dx<-thr)next();else if(dx>thr)prev();}
+},{passive:true});
 
 function openPanel() {
   panelOpen = true;
   panelEl.classList.add('open');
   panelToggleText.textContent = '—';
+  const bb=document.getElementById('book-btn');if(bb){bb.style.opacity='0';bb.style.pointerEvents='none';}
 }
 function closePanel() {
   panelOpen = false;
   panelEl.classList.remove('open');
   panelToggleText.textContent = '+';
+  const bb=document.getElementById('book-btn');if(bb){bb.style.opacity='1';bb.style.pointerEvents='all';}
 }
 panelToggle.addEventListener('click', () => { if (panelOpen) closePanel(); else openPanel(); });
 panelToggleIcon.addEventListener('click', () => { if (panelOpen) closePanel(); else openPanel(); });
@@ -1031,20 +1010,6 @@ function openDrawer(idx) {
   drawerMeta.innerHTML = [p.year, p.client, p.type].filter(Boolean)
     .map(t => `<span class="project-meta-plain">${t}</span>`).join('');
   drawerBody.textContent = p.body;
-
-  // YouTube button
-  const existingYt = document.getElementById('yt-btn-link');
-  if (existingYt) existingYt.remove();
-  if (p.youtube) {
-    const ytBtn = document.createElement('a');
-    ytBtn.id = 'yt-btn-link';
-    ytBtn.href = p.youtube;
-    ytBtn.target = '_blank';
-    ytBtn.rel = 'noreferrer noopener';
-    ytBtn.className = 'yt-btn';
-    ytBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.6 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.3.6 9.3.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.2 3.5-6.2 3.5z"/></svg>Guarda il video';
-    drawerBody.after(ytBtn);
-  }
 
   const hasGallery = p.gallery && p.gallery.length > 0;
   galleryToggle.style.display = hasGallery ? 'inline-block' : 'none';
@@ -1119,19 +1084,10 @@ function updateSoundBtn() {
 function setActiveAudio() {
   const vid = slides[current] && slides[current].querySelector('video');
   if (vid) vid.muted = !soundOn;
-  const aa = document.getElementById('avalant-audio');
-  if (aa) {
-    const src = vid ? vid.src : '';
-    if (src.includes('Avalant')) {
-      if (soundOn) {
-        aa.muted = false;
-        if (aa.paused) { aa.currentTime = 0; aa.play().catch(() => {}); }
-      } else {
-        aa.muted = true;
-      }
-    } else {
-      aa.pause(); aa.currentTime = 0;
-    }
+  // Sync avalant audio mute state
+  const avalantAudio = document.getElementById('avalant-audio');
+  if (avalantAudio && !avalantAudio.paused) {
+    avalantAudio.muted = !soundOn;
   }
 }
 soundBtn.addEventListener('click', e => {
@@ -1154,16 +1110,11 @@ slides.forEach((s, i) => {
 
 async function init() {
   await loadProjects();
-
-  // Lazy: only load first slide immediately
-  const firstVideos = slides[0].dataset.videos;
-  if (firstVideos) {
-    const list = JSON.parse(firstVideos);
-    loadSlideMedia(slides[0], list[Math.floor(Math.random() * list.length)]);
-  }
-  // Mark rest as lazy
-  slides.forEach((s, i) => { if (i > 0) s.dataset.lazy = 'true'; });
-
+  // ── Init media
+  // Lazy: carica solo prima slide
+  const v0 = slides[0].dataset.videos;
+  if (v0) { const l = JSON.parse(v0); loadSlideMedia(slides[0], l[Math.floor(Math.random()*l.length)]); }
+  slides.forEach((s,i) => { if(i>0) s.dataset.lazy='true'; });
   updateSoundBtn();
   counter.textContent = pad(0) + ' / ' + pad(total - 1);
 }
@@ -1236,7 +1187,7 @@ init();
 <!-- FOOTER -->
 <footer id="site-footer">
   <div class="footer-left">
-    <span>© 2025 Valentino Castiglione</span>
+    <span>© 2026 Valentino Castiglione</span>
     <span>Via Mantellin, 3 — 33085 Maniago (PN)</span>
     <span>Tel. 346 7119244</span>
     <span>P.IVA 01904320932</span>
@@ -1246,51 +1197,22 @@ init();
     <a href="#" id="footer-gdpr-link">Privacy Policy</a>
   </div>
 </footer>
-
 <script>
-// ── Cookie & GDPR
 document.addEventListener('DOMContentLoaded', function() {
   const banner = document.getElementById('cookie-banner');
-  const modal  = document.getElementById('gdpr-modal');
-
-  function getConsent() { try { return localStorage.getItem('cookie-consent'); } catch(e) { return null; } }
-  function setConsent(val) {
-    try {
-      localStorage.setItem('cookie-consent', val);
-      localStorage.setItem('cookie-consent-date', Date.now().toString());
-    } catch(e) {}
-  }
-  function isExpired() {
-    try {
-      const d = localStorage.getItem('cookie-consent-date');
-      return !d || (Date.now() - parseInt(d)) > 365*24*60*60*1000;
-    } catch(e) { return true; }
-  }
-
-  if (!getConsent() || isExpired()) {
-    banner.classList.remove('hidden');
-    try { localStorage.removeItem('cookie-consent'); localStorage.removeItem('cookie-consent-date'); } catch(e) {}
-  } else {
-    banner.classList.add('hidden');
-  }
-
-  document.getElementById('cookie-accept').addEventListener('click', () => {
-    setConsent('accepted'); banner.classList.add('hidden');
-    if (typeof gtag !== 'undefined') { gtag('consent','update',{analytics_storage:'granted'}); gtag('event','page_view'); }
-  });
-  document.getElementById('cookie-decline').addEventListener('click', () => {
-    setConsent('declined'); banner.classList.add('hidden');
-    if (typeof gtag !== 'undefined') gtag('consent','update',{analytics_storage:'denied'});
-  });
-  if (getConsent() === 'accepted' && typeof gtag !== 'undefined') {
-    gtag('consent','update',{analytics_storage:'granted'}); gtag('event','page_view');
-  }
-
-  document.getElementById('gdpr-link').addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); modal.classList.add('open'); });
-  document.getElementById('gdpr-close-btn').addEventListener('click', () => modal.classList.remove('open'));
-  modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
-  const fg = document.getElementById('footer-gdpr-link');
-  if (fg) fg.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); modal.classList.add('open'); });
+  const modal = document.getElementById('gdpr-modal');
+  function gc(){try{return localStorage.getItem('cookie-consent');}catch(e){return null;}}
+  function sc(v){try{localStorage.setItem('cookie-consent',v);localStorage.setItem('cookie-consent-date',Date.now()+'');}catch(e){}}
+  function exp(){try{const d=localStorage.getItem('cookie-consent-date');return !d||(Date.now()-parseInt(d))>365*24*60*60*1000;}catch(e){return true;}}
+  if(!gc()||exp()){banner.classList.remove('hidden');try{localStorage.removeItem('cookie-consent');localStorage.removeItem('cookie-consent-date');}catch(e){}}
+  else banner.classList.add('hidden');
+  document.getElementById('cookie-accept').addEventListener('click',()=>{sc('accepted');banner.classList.add('hidden');if(typeof gtag!=='undefined'){gtag('consent','update',{analytics_storage:'granted'});gtag('event','page_view');}});
+  document.getElementById('cookie-decline').addEventListener('click',()=>{sc('declined');banner.classList.add('hidden');if(typeof gtag!=='undefined')gtag('consent','update',{analytics_storage:'denied'});});
+  if(gc()==='accepted'&&typeof gtag!=='undefined'){gtag('consent','update',{analytics_storage:'granted'});gtag('event','page_view');}
+  const gl=document.getElementById('gdpr-link'); if(gl)gl.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();modal.classList.add('open');});
+  document.getElementById('gdpr-close-btn').addEventListener('click',()=>modal.classList.remove('open'));
+  modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
+  const fg=document.getElementById('footer-gdpr-link'); if(fg)fg.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();modal.classList.add('open');});
 });
 </script>
 </body>
