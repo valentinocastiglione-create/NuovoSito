@@ -5,15 +5,17 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNjYzAwMDAiLz48L3N2Zz4=">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: blob: https://www.google-analytics.com https://img.youtube.com; media-src 'self' blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://cloudflareinsights.com;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Valentino Castiglione — Portfolio</title>
+<meta name="description" content="Valentino Castiglione — Director, Cinematographer and Drone Cinematographer based in Venice. Film directing, documentaries, music videos, commercial and drone cinematography.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<!-- Font non-blocking: caricato in modo asincrono, fallback immediato con system-font -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet"></noscript>
 <style>
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,7 +24,7 @@
     --bg: #000;
     --fg: #f2f2f2;
     --fg-muted: rgba(242,242,242,0.5);
-    --fg-dim: rgba(242,242,242,0.28);
+    --fg-dim: rgba(242,242,242,0.55);
     --chip-bg: rgba(0,0,0,0.85);
     --chip-bg-hover: rgba(0,0,0,0.95);
     --chip-border: rgba(255,255,255,0.12);
@@ -514,21 +516,16 @@
   }
   @media (hover: none) and (pointer: coarse) { #cursor { display: none !important; } }
 </style>
-<!-- Google Analytics 4 (attivato solo dopo consenso cookie) -->
+<!-- GA4: solo il consent default in <head> (inline, <200byte, non blocking) -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', {
-    analytics_storage: 'denied',
-    ad_storage: 'denied',
-    wait_for_update: 500
-  });
+  gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', wait_for_update: 500 });
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7F9WTKV3Z0"></script>
-<script>
-  gtag('js', new Date());
-  gtag('config', 'G-7F9WTKV3Z0', { anonymize_ip: true });
-</script>
+<!-- NOTA SERVER: impostare Cache-Control: public, max-age=31536000, immutable
+     per tutti i file in /CONTENUTI_SITO/ (video mp4, webp, woff2).
+     Su Cloudflare: Page Rule o Cache Rules con Edge TTL = 1 year per /*.mp4
+     Questo risolverà il warning "Utilizza durate della memorizzazione nella cache efficienti" -->
 </head>
 <body>
 
@@ -546,7 +543,7 @@
 <a href="contact.html" class="chip" id="book-btn" style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200;background:rgba(255,255,255,0.92);color:#000;border-color:rgba(255,255,255,0.92);font-weight:500;letter-spacing:0.08em;text-decoration:none;transition:opacity 0.3s ease;height:48px;padding:0 24px;font-size:14px;">BOOK A PROJECT</a>
 
 <!-- SOUND BUTTON -->
-<button id="sound-btn" class="chip" style="position:fixed;top:20px;right:20px;z-index:200;opacity:0.45;font-size:11px;letter-spacing:0.05em;background:rgba(0,0,0,0.92);color:#fff;border-color:rgba(0,0,0,0.92);">SOUND</button>
+<button id="sound-btn" class="chip" style="position:fixed;top:20px;right:20px;z-index:200;opacity:0.7;font-size:11px;letter-spacing:0.05em;background:rgba(0,0,0,0.92);color:#fff;border-color:rgba(0,0,0,0.92);">SOUND</button>
 
 <!-- SIDE PANEL -->
 <aside id="side-panel">
@@ -1188,6 +1185,19 @@ init();
     <a href="#" id="footer-gdpr-link">Privacy Policy</a>
   </div>
 </footer>
+<!-- GA4 loader: caricato dopo il DOMContentLoaded, non blocca il rendering -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Carica gtag.js in modo lazy — non è sul percorso critico
+  (function() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7F9WTKV3Z0';
+    document.head.appendChild(s);
+  })();
+  gtag('js', new Date());
+  gtag('config', 'G-7F9WTKV3Z0', { anonymize_ip: true });
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const banner = document.getElementById('cookie-banner');
