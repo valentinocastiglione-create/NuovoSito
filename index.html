@@ -13,7 +13,6 @@
 <meta name="description" content="Valentino Castiglione — Director, Cinematographer and Drone Cinematographer based in Venice. Film directing, documentaries, music videos, commercial and drone cinematography.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Font non-blocking: caricato in modo asincrono, fallback immediato con system-font -->
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet"></noscript>
 <style>
@@ -516,16 +515,12 @@
   }
   @media (hover: none) and (pointer: coarse) { #cursor { display: none !important; } }
 </style>
-<!-- GA4: solo il consent default in <head> (inline, <200byte, non blocking) -->
+<!-- GA4: solo consent default in <head>, non blocking -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', wait_for_update: 500 });
 </script>
-<!-- NOTA SERVER: impostare Cache-Control: public, max-age=31536000, immutable
-     per tutti i file in /CONTENUTI_SITO/ (video mp4, webp, woff2).
-     Su Cloudflare: Page Rule o Cache Rules con Edge TTL = 1 year per /*.mp4
-     Questo risolverà il warning "Utilizza durate della memorizzazione nella cache efficienti" -->
 </head>
 <body>
 
@@ -594,7 +589,7 @@
 <!-- PROJECT RAIL -->
 <main id="rail">
   <!-- FIX: tutti i riferimenti .mov aggiornati a .mp4 -->
-  <section class="slide active" data-index="0" data-videos='["CONTENUTI_SITO/Adria_1.mp4","CONTENUTI_SITO/Adria_2.mp4","CONTENUTI_SITO/Adria_3.mp4","CONTENUTI_SITO/Adria_4.mp4"]'>
+  <section class="slide active" data-index="0" data-posters='["CONTENUTI_SITO/poster_adria_1.webp","CONTENUTI_SITO/poster_adria_2.webp","CONTENUTI_SITO/poster_adria_3.webp","CONTENUTI_SITO/poster_adria_4.webp"]' data-videos='["CONTENUTI_SITO/Adria_1.mp4","CONTENUTI_SITO/Adria_2.mp4","CONTENUTI_SITO/Adria_3.mp4","CONTENUTI_SITO/Adria_4.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -603,7 +598,7 @@
     </div></div>
   </section>
 
-  <section class="slide" data-index="1" data-videos='["CONTENUTI_SITO/Avalant_Red_1.mp4","CONTENUTI_SITO/Avalant_Red_2.mp4","CONTENUTI_SITO/Avalant_Red_mix.mp4"]'>
+  <section class="slide" data-index="1" data-posters='["CONTENUTI_SITO/poster_avalant_1.webp","CONTENUTI_SITO/poster_avalant_2.webp","CONTENUTI_SITO/poster_avalant_mix.webp"]' data-videos='["CONTENUTI_SITO/Avalant_Red_1.mp4","CONTENUTI_SITO/Avalant_Red_2.mp4","CONTENUTI_SITO/Avalant_Red_mix.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -613,7 +608,7 @@
   </section>
 
   <!-- FIX: .mov → .mp4 (slide 3) -->
-  <section class="slide" data-index="2" data-videos='["CONTENUTI_SITO/BUIO1.mp4","CONTENUTI_SITO/LA_NOTTE_IN_30_LIBRI1.mp4","CONTENUTI_SITO/THE_NIGHT_AS_A_PLACE_1.mp4"]'>
+  <section class="slide" data-index="2" data-posters='["CONTENUTI_SITO/poster_obl_buio.webp","CONTENUTI_SITO/poster_obl_notte.webp","CONTENUTI_SITO/poster_obl_night.webp"]' data-videos='["CONTENUTI_SITO/BUIO1.mp4","CONTENUTI_SITO/LA_NOTTE_IN_30_LIBRI1.mp4","CONTENUTI_SITO/THE_NIGHT_AS_A_PLACE_1.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -622,7 +617,7 @@
     </div></div>
   </section>
 
-  <section class="slide" data-index="3" data-videos='["CONTENUTI_SITO/Medley_1.mp4"]'>
+  <section class="slide" data-index="3" data-posters='["CONTENUTI_SITO/poster_corale.webp"]' data-videos='["CONTENUTI_SITO/Medley_1.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -632,7 +627,7 @@
   </section>
 
   <!-- FIX: .mov → .mp4 (slide 5) -->
-  <section class="slide" data-index="4" data-videos='["CONTENUTI_SITO/Falmec_SICAM2025_916.mp4"]'>
+  <section class="slide" data-index="4" data-posters='["CONTENUTI_SITO/poster_falmec.webp"]' data-videos='["CONTENUTI_SITO/Falmec_SICAM2025_916.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -642,7 +637,7 @@
   </section>
 
   <!-- FIX: .mov → .mp4 (slide 6) -->
-  <section class="slide" data-index="5" data-videos='["CONTENUTI_SITO/Julien_Chopin_-_Spot_Portfolio_4K.mp4"]'>
+  <section class="slide" data-index="5" data-posters='["CONTENUTI_SITO/poster_julien.webp"]' data-videos='["CONTENUTI_SITO/Julien_Chopin_-_Spot_Portfolio_4K.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -651,7 +646,7 @@
     </div></div>
   </section>
 
-  <section class="slide" data-index="6" data-videos='["CONTENUTI_SITO/Donne_di_seta_DEF.mp4"]'>
+  <section class="slide" data-index="6" data-posters='["CONTENUTI_SITO/poster_donne.webp"]' data-videos='["CONTENUTI_SITO/Donne_di_seta_DEF.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -661,7 +656,7 @@
   </section>
 
   <!-- FIX: .mov → .mp4 (slide 8) -->
-  <section class="slide" data-index="7" data-videos='["CONTENUTI_SITO/Pasolini_1_Movement.mp4"]'>
+  <section class="slide" data-index="7" data-posters='["CONTENUTI_SITO/poster_ppp.webp"]' data-videos='["CONTENUTI_SITO/Pasolini_1_Movement.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -670,7 +665,7 @@
     </div></div>
   </section>
 
-  <section class="slide" data-index="8" data-videos='["CONTENUTI_SITO/ArmandoMilani_OBL2.mp4"]'>
+  <section class="slide" data-index="8" data-posters='["CONTENUTI_SITO/poster_milani.webp"]' data-videos='["CONTENUTI_SITO/ArmandoMilani_OBL2.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -679,7 +674,7 @@
     </div></div>
   </section>
 
-  <section class="slide" data-index="9" data-videos='["CONTENUTI_SITO/Dentag_1.mp4","CONTENUTI_SITO/Dentag_2.mp4","CONTENUTI_SITO/Dentag_3.mp4"]'>
+  <section class="slide" data-index="9" data-posters='["CONTENUTI_SITO/poster_dentag_1.webp","CONTENUTI_SITO/poster_dentag_2.webp","CONTENUTI_SITO/poster_dentag_3.webp"]' data-videos='["CONTENUTI_SITO/Dentag_1.mp4","CONTENUTI_SITO/Dentag_2.mp4","CONTENUTI_SITO/Dentag_3.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -710,8 +705,10 @@
 const IMAGE_EXTS = ['jpg','jpeg','png','gif','webp','avif'];
 function isImage(src) { return IMAGE_EXTS.some(ext => src.toLowerCase().endsWith('.' + ext)); }
 
-// Riproduce un video (o immagine) nella slide indicata.
-function loadSlideMedia(slide, src) {
+// Riproduce un video nella slide. srcObj = { src, poster } da randomSrc().
+function loadSlideMedia(slide, srcObj) {
+  const src    = (typeof srcObj === 'object') ? srcObj.src    : srcObj;
+  const poster = (typeof srcObj === 'object') ? srcObj.poster : null;
   const vid = slide.querySelector('video');
   const existingImg = slide.querySelector('img.slide-media');
   if (existingImg) existingImg.remove();
@@ -723,10 +720,10 @@ function loadSlideMedia(slide, src) {
   } else {
     if (vid) {
       vid.style.display = '';
+      if (poster) vid.poster = poster; // mostra subito il frame — zero schermo nero
       vid.src = src;
       vid.muted = true;
       if (src.includes('ArmandoMilani')) {
-        // seek a t=4 appena il metadata è disponibile
         const doSeek = () => {
           vid.currentTime = 4;
           vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
@@ -758,28 +755,29 @@ function loadSlideMedia(slide, src) {
   }
 }
 
-// Estrae un src casuale dalla lista data-videos della slide.
+// Estrae src e poster casuali con indice coerente.
 function randomSrc(slide) {
   const vr = slide.dataset.videos;
   if (!vr) return null;
-  const list = JSON.parse(vr);
-  return list[Math.floor(Math.random() * list.length)] || null;
+  const videos  = JSON.parse(vr);
+  const posters = slide.dataset.posters ? JSON.parse(slide.dataset.posters) : [];
+  const idx = Math.floor(Math.random() * videos.length);
+  return { src: videos[idx], poster: posters[idx] || null };
 }
 
-// Precarica la slide adiacente con <link rel=preload> — non tocca il <video>,
-// zero interferenze con loadSlideMedia. Il src casuale viene salvato in
-// data-preloadSrc e usato da goTo() al momento della navigazione.
+// Precarica la slide adiacente via <link rel=preload> — non tocca il <video>.
 function preloadAdjacentSlide(idx) {
   const s = slides[idx];
   if (!s || !s.dataset.lazy) return;
-  if (s.dataset.preloadSrc) return; // già precaricata
-  const src = randomSrc(s);
-  if (!src || isImage(src)) return;
-  s.dataset.preloadSrc = src;
+  if (s.dataset.preloadSrc) return;
+  const obj = randomSrc(s);
+  if (!obj || isImage(obj.src)) return;
+  s.dataset.preloadSrc = JSON.stringify(obj);
   const link = document.createElement('link');
-  link.rel = 'preload'; link.as = 'video'; link.href = src;
+  link.rel = 'preload'; link.as = 'video'; link.href = obj.src;
   document.head.appendChild(link);
 }
+
 
 // Projects loaded from contenuti.json
 let PROJECTS = [];
@@ -892,12 +890,13 @@ function goTo(idx) {
   const prevSlide = slides[prevIdx];
   const nextSlide = slides[nextIdx];
 
-  // Sceglie il src: usa il preloadSrc se disponibile (già bufferizzato),
-  // altrimenti estrae un nuovo casuale. In ogni caso passa da loadSlideMedia.
-  const src = nextSlide.dataset.preloadSrc || randomSrc(nextSlide);
+  // Sceglie src+poster: usa il preload se disponibile, altrimenti casuale fresco.
+  const srcObj = nextSlide.dataset.preloadSrc
+    ? JSON.parse(nextSlide.dataset.preloadSrc)
+    : randomSrc(nextSlide);
   delete nextSlide.dataset.preloadSrc;
   delete nextSlide.dataset.lazy;
-  if (src) loadSlideMedia(nextSlide, src);
+  if (srcObj) loadSlideMedia(nextSlide, srcObj);
 
   // Snap next slide in posizione di partenza (niente animazione)
   nextSlide.style.transition = 'none';
@@ -1089,21 +1088,16 @@ slides.forEach((s, i) => {
 });
 
 async function init() {
-  // Carica subito la slide 0 con video casuale — senza aspettare il JSON
+  // Carica slide 0 subito con video+poster casuali — senza aspettare il JSON
   const src0 = randomSrc(slides[0]);
   if (src0) loadSlideMedia(slides[0], src0);
-
-  // Marca tutte le altre come lazy
   slides.forEach((s, i) => { if (i > 0) s.dataset.lazy = 'true'; });
-
   updateSoundBtn();
   counter.textContent = pad(0) + ' / ' + pad(total - 1);
-
-  // Precarica le slide adiacenti alla prima (link preload, no interferenze)
+  // Precarica subito le slide adiacenti alla prima
   preloadAdjacentSlide(1);
   preloadAdjacentSlide(total - 1);
-
-  // Carica i dati JSON in parallelo — non blocca il rendering
+  // Carica JSON in parallelo — non blocca il rendering
   loadProjects();
 }
 init();
@@ -1185,10 +1179,9 @@ init();
     <a href="#" id="footer-gdpr-link">Privacy Policy</a>
   </div>
 </footer>
-<!-- GA4 loader: caricato dopo il DOMContentLoaded, non blocca il rendering -->
+<!-- GA4 loader lazy — non blocca il rendering -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Carica gtag.js in modo lazy — non è sul percorso critico
   (function() {
     var s = document.createElement('script');
     s.async = true;
@@ -1197,6 +1190,7 @@ document.addEventListener('DOMContentLoaded', function() {
   })();
   gtag('js', new Date());
   gtag('config', 'G-7F9WTKV3Z0', { anonymize_ip: true });
+});
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
