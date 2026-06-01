@@ -1600,6 +1600,90 @@ async function init() {
   counter.textContent = pad(0) + ' / ' + pad(total - 1);
 }
 init();
+
+// ── Cookie & GDPR
+(function() {
+  const banner = document.getElementById('cookie-banner');
+  const modal  = document.getElementById('gdpr-modal');
+
+  // Auto-update privacy date
+  const privacyDate = document.getElementById('privacy-date');
+  if (privacyDate) {
+    const months = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+                    'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+    const d = new Date();
+    privacyDate.textContent = months[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
+  function getConsent() {
+    try { return localStorage.getItem('cookie-consent'); } catch(e) { return null; }
+  }
+  function setConsent(val) {
+    try {
+      localStorage.setItem('cookie-consent', val);
+      localStorage.setItem('cookie-consent-date', Date.now().toString());
+    } catch(e) {}
+  }
+  function isConsentExpired() {
+    try {
+      const date = localStorage.getItem('cookie-consent-date');
+      if (!date) return true;
+      return (Date.now() - parseInt(date)) > (365 * 24 * 60 * 60 * 1000);
+    } catch(e) { return true; }
+  }
+
+  // Show banner if no consent or expired (12 months)
+  if (!getConsent() || isConsentExpired()) {
+    banner.classList.remove('hidden');
+    try {
+      localStorage.removeItem('cookie-consent');
+      localStorage.removeItem('cookie-consent-date');
+    } catch(e) {}
+  } else {
+    banner.classList.add('hidden');
+  }
+
+  document.getElementById('cookie-accept').addEventListener('click', () => {
+    setConsent('accepted');
+    banner.classList.add('hidden');
+    if (typeof gtag !== 'undefined') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      gtag('event', 'page_view');
+    }
+  });
+
+  document.getElementById('cookie-decline').addEventListener('click', () => {
+    setConsent('declined');
+    banner.classList.add('hidden');
+    if (typeof gtag !== 'undefined') {
+      gtag('consent', 'update', { analytics_storage: 'denied' });
+    }
+  });
+
+  if (getConsent() === 'accepted' && typeof gtag !== 'undefined') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    gtag('event', 'page_view');
+  }
+
+  // GDPR modal
+  document.getElementById('gdpr-link').addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    modal.classList.add('open');
+  });
+  document.getElementById('gdpr-close-btn').addEventListener('click', () => {
+    modal.classList.remove('open');
+  });
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.classList.remove('open');
+  });
+
+  // Footer GDPR link
+  const footerGdpr = document.getElementById('footer-gdpr-link');
+  if (footerGdpr) footerGdpr.addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    modal.classList.add('open');
+  });
+})();
 </script>
 
 
@@ -1659,7 +1743,7 @@ init();
     <p>Ai sensi degli artt. 15–22 GDPR, gli utenti hanno diritto di accesso, rettifica, cancellazione, limitazione e portabilità dei dati. Per esercitare tali diritti, contattare il titolare.</p>
 
     <h3>Aggiornamenti</h3>
-    <p>La presente informativa può essere aggiornata. Ultima modifica: Maggio 2025.</p>
+    <p>La presente informativa può essere aggiornata. Ultima modifica: <span id="privacy-date"></span>. Il consenso cookie viene rinnovato ogni 12 mesi.</p>
 
     <button class="gdpr-close" id="gdpr-close-btn">Chiudi</button>
   </div>
