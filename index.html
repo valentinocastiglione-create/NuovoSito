@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNjYzAwMDAiLz48L3N2Zz4=">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: blob: https://www.google-analytics.com; media-src 'self' blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self';">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Valentino Castiglione — Filmmaker &amp; Video Production | Pordenone, Friuli Venezia Giulia</title>
+<title>Valentino Castiglione — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
@@ -141,7 +140,7 @@
   .panel-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 60px 24px 28px 24px;
+    padding: 40px 24px 28px 24px;
     gap: 0;
   }
   .panel-cell { padding: 16px 20px 20px 0; }
@@ -215,7 +214,9 @@
 
   /* ── NAV ARROWS ── */
   .nav-arrow {
-    display: none;
+    position: fixed; z-index: 5;
+    top: 15%; height: 70%; width: 30%;
+    cursor: pointer;
   }
   #nav-prev { left: 0; }
   #nav-next { right: 0; }
@@ -247,9 +248,7 @@
   }
   #drawer.has-gallery-open { max-height: 85vh; }
 
-  #drawer-header {
-    display: none;
-  }
+  #drawer-header { display: none; }
 
   #drawer-scroll {
     overflow-y: auto; overflow-x: hidden;
@@ -300,18 +299,10 @@
   .project-gallery figure {
     aspect-ratio: 4/3; overflow: hidden;
     border-radius: 4px; background: #d0d0d0; display: block;
-    position: relative;
   }
   .project-gallery img {
     width: 100%; height: 100%; object-fit: cover;
     display: block; transition: transform 0.5s ease;
-  }
-  .project-gallery img[alt]::after {
-    content: attr(alt);
-    display: none;
-  }
-  .project-gallery img:not([src]), .project-gallery img[src=""] {
-    visibility: hidden;
   }
   .project-gallery figure:hover img { transform: scale(1.03); }
 
@@ -326,17 +317,12 @@
   .slide-bg { position: absolute; inset: 0; z-index: 0; background: var(--bg); }
 
   /* ── MOBILE ── */
-  @media (hover: none) and (pointer: coarse) {
-    #cursor { display: none !important; }
-  }
-
   @media (max-width: 768px) {
 
     /* Header chips smaller */
     #header { top: 12px; left: 12px; gap: 4px; }
     .chip { height: 28px; font-size: 10px; }
     #panel-toggle { font-size: 13px !important; }
-    #book-btn { top: 62px !important; }
 
     /* Sound button */
     #sound-btn { top: 12px; right: 12px; }
@@ -351,7 +337,7 @@
     }
     .panel-grid {
       grid-template-columns: 1fr;
-      padding: 36px 20px 24px;
+      padding: 16px 20px 24px;
     }
     .panel-cell:nth-child(even) {
       padding-left: 0;
@@ -516,55 +502,23 @@
     font-family: 'Poppins', sans-serif;
     font-size: 9px;
     letter-spacing: 0.04em;
-    color: rgba(242,242,242,0.8);
+    color: rgba(242,242,242,0.35);
     pointer-events: none;
     gap: 12px;
   }
   #site-footer a {
-    color: rgba(242,242,242,0.8);
+    color: rgba(242,242,242,0.35);
     text-decoration: none;
     pointer-events: all;
     transition: color 0.2s;
   }
-  #site-footer a:hover { color: #fff; }
+  #site-footer a:hover { color: rgba(242,242,242,0.7); }
   .footer-left { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
   .footer-right { pointer-events: all; }
 
   @media (max-width: 768px) {
     #site-footer { display: none; }
   }
-
-  @media (hover: none) and (pointer: coarse) {
-    #cursor { display: none !important; }
-  }
-  }
-
-    @media (max-width: 768px) {
-    #rail.drawer-open #mobile-drawer-close { display: flex; }
-  }
-
-  /* ── YOUTUBE BUTTON ── */
-  .yt-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 20px;
-    height: 38px;
-    padding: 0 20px;
-    background: #111;
-    color: #fff;
-    border: none;
-    border-radius: 100px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .yt-btn:hover { opacity: 0.7; }
-  .yt-btn svg { flex-shrink: 0; }
 </style>
 <!-- Google Analytics 4 (attivato solo dopo consenso cookie) -->
 <script>
@@ -577,311 +531,21 @@
     wait_for_update: 500
   });
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7F9WTKV3Z0
-
-"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   gtag('js', new Date());
-  gtag('config', 'G-7F9WTKV3Z0
-
-', { anonymize_ip: true });
+  gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
 </script>
-
-<!-- Schema Markup -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://www.valentinocastiglione.com/#person",
-      "name": "Valentino Castiglione",
-      "jobTitle": ["Filmmaker", "Director", "Drone Operator", "Aerial Cinematographer"],
-      "description": "Valentino Castiglione, filmmaker di Pordenone, Friuli Venezia Giulia. Produzione video professionale per aziende, spot pubblicitari, documentari e videoclip musicali. Servizio completo dalla creatività alla post-produzione. Drone operator certificato ENAC. Specializzato in Corporate B2B, Commercials, Documentary, Music Video e Social Ads.",
-      "url": "https://www.valentinocastiglione.com",
-      "email": "info@valentinocastiglione.com",
-      "telephone": "+39 346 7119244",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Via Mantellin, 3",
-        "addressLocality": "Maniago",
-        "addressRegion": "Friuli Venezia Giulia",
-        "postalCode": "33085",
-        "addressCountry": "IT"
-      },
-      "areaServed": [
-        "Friuli Venezia Giulia", "Italia", "Europe"
-      ],
-      "knowsAbout": [
-        "Film Directing", "Drone Cinematography", "Aerial Photography",
-        "Documentary Filmmaking", "Commercial Video Production",
-        "Video Post-Production", "Storytelling", "Music Video Direction"
-      ],
-      "sameAs": [
-        "https://www.linkedin.com/in/valentino-castiglione-84ab321b3",
-        "https://www.instagram.com/valentinocastiglione/"
-      ]
-    },
-    {
-      "@type": "VideoObject",
-      "name": "Avalant Victoria — Music Video",
-      "description": "Music video diretto da Valentino Castiglione per l'artista Avalant. Linguaggio visivo astratto con geometrie e palette cromatiche che evocano i suoni Synthwave.",
-      "thumbnailUrl": "https://img.youtube.com/vi/bjdXG_o_uzw/maxresdefault.jpg",
-      "uploadDate": "2024-01-01",
-      "director": {"@id": "https://www.valentinocastiglione.com/#person"},
-      "url": "https://www.youtube.com/watch?v=bjdXG_o_uzw"
-    },
-    {
-      "@type": "VideoObject",
-      "name": "Adria Campaign 2025 — Commercial",
-      "description": "Riprese aeree con drone per la campagna pubblicitaria Adria Mobil 2025. Filmmaker e drone operator: Valentino Castiglione.",
-      "thumbnailUrl": "https://img.youtube.com/vi/Ei_UJrNIuQk/maxresdefault.jpg",
-      "uploadDate": "2025-01-01",
-      "director": {"@id": "https://www.valentinocastiglione.com/#person"},
-      "url": "https://www.youtube.com/watch?v=Ei_UJrNIuQk"
-    },
-    {
-      "@type": "VideoObject",
-      "name": "Donne di Seta — Documentario",
-      "description": "Documentario prodotto dal Comune di Maniago sulla filiera della seta e il lavoro femminile. Regia Valentino Castiglione.",
-      "thumbnailUrl": "https://img.youtube.com/vi/UxYCdC0NLc8/maxresdefault.jpg",
-      "uploadDate": "2024-01-01",
-      "director": {"@id": "https://www.valentinocastiglione.com/#person"},
-      "url": "https://www.youtube.com/watch?v=UxYCdC0NLc8"
-    },
-    {
-      "@type": "VideoObject",
-      "name": "La Forma delle Emozioni — Documentario Armando Milani",
-      "description": "Documentario prodotto da Associazione Obliquo sulla vita e carriera del designer italiano Armando Milani. Regia Valentino Castiglione.",
-      "thumbnailUrl": "https://img.youtube.com/vi/ftisFfY8br0/maxresdefault.jpg",
-      "uploadDate": "2023-01-01",
-      "director": {"@id": "https://www.valentinocastiglione.com/#person"},
-      "url": "https://www.youtube.com/watch?v=ftisFfY8br0"
-    },
-    {
-      "@type": "VideoObject",
-      "name": "Corale Maniaghese — Music Video",
-      "description": "Music video in piano sequenza per il Corale Maniaghese. Regia Valentino Castiglione.",
-      "thumbnailUrl": "https://img.youtube.com/vi/IxJbFSY1M0Q/maxresdefault.jpg",
-      "uploadDate": "2025-01-01",
-      "director": {"@id": "https://www.valentinocastiglione.com/#person"},
-      "url": "https://www.youtube.com/watch?v=IxJbFSY1M0Q"
-    },
-    {
-      "@type": "VideoObject",
-      "name": "Julien Chopin — Spot Commerciale",
-      "description": "Spot pubblicitario per Domaine Julien Chopin. Regia e riprese: Valentino Castiglione.",
-      "thumbnailUrl": "https://img.youtube.com/vi/P4OJ4Yx6IkQ/maxresdefault.jpg",
-      "uploadDate": "2024-01-01",
-      "director": {"@id": "https://www.valentinocastiglione.com/#person"},
-      "url": "https://www.youtube.com/watch?v=P4OJ4Yx6IkQ"
-    }
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "CreativeWork",
-      "name": "OBL La Notte in 30 Libri",
-      "description": "Campagna social media e live video direction per l'evento culturale La Notte in 30 Libri di Associazione Obliquo. Esperienza immersiva con soundscape ASMR e proiezioni fotografiche. Regia e live direction: Valentino Castiglione, 2023.",
-      "creator": {"@type": "Person", "name": "Valentino Castiglione"},
-      "dateCreated": "2023",
-      "genre": "Social Campaign / Live Video Direction",
-      "locationCreated": {"@type": "Place", "name": "Friuli Venezia Giulia, Italia"}
-    },
-    {
-      "@type": "CreativeWork",
-      "name": "Corale Maniaghese Music Video",
-      "description": "Music video in piano sequenza per il Corale Maniaghese. Un unico lungo piano sequenza che racconta la vita rurale e familiare del secolo scorso. Regia: Valentino Castiglione, 2025.",
-      "creator": {"@type": "Person", "name": "Valentino Castiglione"},
-      "dateCreated": "2025",
-      "genre": "Music Video",
-      "locationCreated": {"@type": "Place", "name": "Maniago, Pordenone, Friuli Venezia Giulia"}
-    },
-    {
-      "@type": "CreativeWork",
-      "name": "Falmec SICAM 2025",
-      "description": "Video istituzionale per la partecipazione di Falmec alla fiera SICAM Pordenone 2025. Video corporate che cattura la visione contemporanea della cucina di design. Filmmaker: Valentino Castiglione.",
-      "creator": {"@type": "Person", "name": "Valentino Castiglione"},
-      "dateCreated": "2025",
-      "genre": "Corporate Video / Social",
-      "locationCreated": {"@type": "Place", "name": "Pordenone, Friuli Venezia Giulia"}
-    },
-    {
-      "@type": "CreativeWork",
-      "name": "P.P.P. — Fiction Cortometraggio",
-      "description": "Cortometraggio fiction realizzato per Antonio Pauletta come portfolio per una residenza artistica in Portogallo. Regia: Valentino Castiglione, 2021.",
-      "creator": {"@type": "Person", "name": "Valentino Castiglione"},
-      "dateCreated": "2021",
-      "genre": "Fiction / Short Film"
-    },
-    {
-      "@type": "CreativeWork",
-      "name": "Dentag IDEM 2018",
-      "description": "Video pubblicitario e promozionale per Dentag Maniago, realizzato per la fiera internazionale IDEM 2018. Video corporate per azienda manifatturiera. Filmmaker: Valentino Castiglione.",
-      "creator": {"@type": "Person", "name": "Valentino Castiglione"},
-      "dateCreated": "2018",
-      "genre": "Corporate Video / Social AD",
-      "locationCreated": {"@type": "Place", "name": "Maniago, Pordenone"}
-    },
-    {
-      "@type": "ProfessionalService",
-      "name": "Valentino Castiglione — Filmmaker & Drone Operator",
-      "description": "Servizi professionali di filmmaking, riprese aeree con drone, regia documentari, spot pubblicitari e video istituzionali per aziende, pubbliche amministrazioni e associazioni culturali in Friuli Venezia Giulia e in tutta Italia.",
-      "provider": {"@type": "Person", "name": "Valentino Castiglione"},
-      "areaServed": ["Friuli Venezia Giulia", "Veneto", "Italia", "Europa"],
-      "serviceType": [
-        "Film Directing",
-        "Drone Cinematography",
-        "Aerial Photography",
-        "Documentary Production",
-        "Commercial Video Production",
-        "Music Video Direction",
-        "Corporate Video",
-        "Social Media Video",
-        "Live Video Direction",
-        "Video Post-Production"
-      ],
-      "url": "https://www.valentinocastiglione.com"
-    }
-  ]
+<script>
+function revealEmail(e) {
+  if (e) e.preventDefault();
+  const user = 'info';
+  const domain = 'valentinocastiglione.com';
+  window.location.href = 'mailto:' + user + '@' + domain;
 }
 </script>
 </head>
 <body>
-
-
-<!-- SEO Text -->
-<div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
-  <h1>Valentino Castiglione — Filmmaker e Drone Operator | Pordenone, Friuli Venezia Giulia</h1>
-  <h2>Produzione Video Professionale a Pordenone | Filmmaker in Friuli Venezia Giulia e Italia</h2>
-
-  <p>
-    Valentino Castiglione è un filmmaker professionista con base a Maniago, Pordenone, in Friuli Venezia Giulia.
-    Offre servizi professionali di riprese e montaggio video, accompagnando ogni cliente in tutte le fasi del progetto:
-    dall'ideazione del concept, alla produzione, fino alla post-produzione video.
-    Lavora a stretto contatto con un team di esperti del settore audiovisivo e della comunicazione,
-    garantendo risultati eccellenti per ogni tipo di progetto.
-  </p>
-
-  <h2>Trasforma la tua visione in realtà</h2>
-  <p>
-    Specializzato nella produzione video in Friuli Venezia Giulia e in tutta Italia,
-    Valentino Castiglione è il partner ideale per dare vita a qualsiasi visione attraverso
-    video che catturano e ispirano. Ogni progetto è un'opportunità per innovare e creare qualcosa di unico.
-  </p>
-
-  <h3>Corporate B2B</h3>
-  <p>
-    Dallo spot pubblicitario al video corporate e alla copertura di eventi,
-    Valentino Castiglione porta la comunicazione B2B a un livello superiore.
-    Un video ben realizzato non solo cattura l'attenzione, ma trasmette il messaggio del brand
-    in modo chiaro e coinvolgente. Videomaker per aziende Friuli Venezia Giulia.
-    Video corporate Pordenone. Video aziendale Friuli.
-  </p>
-
-  <h3>Commercials e Spot Pubblicitari</h3>
-  <p>
-    Spot pubblicitari che esaltano i prodotti con originalità e precisione.
-    Dalla concezione alla produzione, ogni aspetto è curato per presentare il prodotto
-    in modo coinvolgente e memorabile. Spot pubblicitari Friuli Venezia Giulia.
-    Commercial video production Italy. Spot video aziende Pordenone.
-  </p>
-
-  <h3>Documentari</h3>
-  <p>
-    Raccontare storie autentiche e coinvolgenti attraverso il linguaggio visivo del documentario.
-    Vite straordinarie, eventi significativi, tematiche sociali e culturali.
-    Documentary filmmaker Friuli Venezia Giulia. Produzione documentari Italia.
-    Documentario istituzionale Comune di Maniago.
-  </p>
-
-  <h3>Music Video</h3>
-  <p>
-    Videoclip creativi che danno vita alla musica. Dallo sviluppo del concept alla produzione finale,
-    ogni dettaglio garantisce che il video rifletta la visione artistica dell'artista.
-    Music video director Italy. Videoclip musicali Friuli. Regia videoclip Italia.
-  </p>
-
-  <h3>Social Ads e Campagne Social</h3>
-  <p>
-    Contenuti video accattivanti per i social media che catturano l'attenzione del pubblico.
-    Social ads video Friuli Venezia Giulia. Video per Instagram e Facebook aziende.
-    Social media video production Italy.
-  </p>
-
-  <h3>Riprese Aeree con Drone</h3>
-  <p>
-    Drone operator certificato e aerial cinematographer. Riprese aeree professionali con drone
-    per spot pubblicitari, documentari, eventi e campagne social.
-    Drone operator Friuli Venezia Giulia. Riprese drone Pordenone.
-    Aerial cinematography Italy. Drone cinematographer Friuli.
-    Pilota drone certificato ENAC Italia.
-  </p>
-
-  <h3>Clienti e Collaborazioni</h3>
-  <p>
-    Adria Mobil, Falmec, Comune di Maniago, Associazione Obliquo, Corale Maniaghese,
-    Wildside TV Series, Dentag Maniago, Julien Chopin.
-    Filmmaker per pubbliche amministrazioni Italia. Video per associazioni culturali Friuli.
-    Video production per enti pubblici Italia.
-  </p>
-
-  <p>
-    Filmmaker freelance Friuli Venezia Giulia. Videomaker Pordenone. Regista documentari Friuli.
-    Video production Pordenone. Aerial cinematography Italy. Filmmaker per aziende Friuli.
-    Riprese aeree drone Friuli Venezia Giulia. Documentary filmmaker Italy.
-    Commercial video production Italy. Filmmaker freelance Italia.
-    Regista spot pubblicitari Friuli. Video istituzionali aziende Italia.
-    Drone cinematographer Italy. Filmmaker for companies Italy.
-    Corporate video Friuli Venezia Giulia. Video production for cultural associations Italy.
-    Elevate your brand. Produzione video professionale. Post-produzione video Italia.
-  </p>
-
-
-  <h2>Visual Thinking Since 1994</h2>
-  <p>
-    Appassionato per il grande schermo fin da fanciullo, Valentino Castiglione scopre con il tempo
-    l'emozione della regia. Creatività, dinamicità ed intuito sono doti che trasformano idee in forme visive.
-    La sua opera consiste in regia e montaggio video, condividendo gli spazi di lavoro con un fidato team
-    di professionisti dell'audiovisivo e della comunicazione.
-  </p>
-
-  <h3>Portfolio completo — Progetti realizzati</h3>
-  <p>
-    Adria Mobil 2025/26 — campagna video drone per Adria Mobil.
-    Corale Maniaghese Music Video — regia videoclip musicale piano sequenza.
-    Domaine Julien Chopin Champagne — spot commerciale.
-    Donne di Seta Documentario — produzione Comune di Maniago.
-    Armando Milani La Forma delle Emozioni — documentario design italiano.
-    Victoria Avalant — music video regia.
-    Mellow Mood — video production Friuli.
-    Nelle Terre Magre — produzione video Friuli Venezia Giulia.
-    DenTag Maniago — spot video aziendale.
-    Coquus DueCigni — video corporate food.
-    O-Key BlackFox — video produzione.
-    Make Your Move Marco Mascarin — video musicale.
-    Falmec SICAM 2025 — video fiera aziendale Pordenone.
-    OBL La Notte in 30 Libri — live video direction evento culturale.
-    P.P.P. — cortometraggio fiction.
-  </p>
-
-  <p>
-    Visual thinking filmmaker Italia. Regia e montaggio video Friuli Venezia Giulia.
-    Video production team Pordenone. Filmmaker appassionato cinema Friuli.
-    Produzione video professionale Maniago. Videomaker Maniago Pordenone.
-    Video per eventi culturali Friuli. Video per fiere aziendali Italia.
-    Filmmaker per enti pubblici Friuli Venezia Giulia.
-  </p>
-  <p>
-    Contatto: info@valentinocastiglione.com — Tel. 346 7119244
-    Via Mantellin 3, Maniago (PN) — P.IVA 01904320932
-  </p>
-</div>
 
 <div id="cursor"><div id="cursor-dot"></div><span id="cursor-label">SCROLL</span></div>
 
@@ -894,7 +558,6 @@
 </header>
 
 <div id="slide-counter">01 / 10</div>
-<a href="contact.html" class="chip" id="book-btn" style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200;background:rgba(255,255,255,0.92);color:#000;border-color:rgba(255,255,255,0.92);font-weight:500;letter-spacing:0.08em;text-decoration:none;transition:opacity 0.3s ease;height:48px;padding:0 24px;font-size:14px;">BOOK A PROJECT</a>
 
 <!-- SOUND BUTTON -->
 <button id="sound-btn" class="chip" style="position:fixed;top:20px;right:20px;z-index:200;opacity:0.45;font-size:11px;letter-spacing:0.05em;background:rgba(0,0,0,0.92);color:#fff;border-color:rgba(0,0,0,0.92);">SOUND</button>
@@ -941,12 +604,6 @@
     </div>
     <div class="panel-cell"></div>
   </div>
-  <div style="padding:16px 24px 24px;border-top:1px solid rgba(0,0,0,0.08);font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:0.04em;color:rgba(17,17,17,0.4);display:flex;flex-wrap:wrap;gap:8px 16px;">
-    <span>© 2026 Valentino Castiglione</span>
-    <span>Via Mantellin, 3 — 33085 Maniago (PN)</span>
-    <span>Tel. 346 7119244</span>
-    <span>P.IVA 01904320932</span>
-  </div>
 </aside>
 
 <div id="backdrop"></div>
@@ -957,7 +614,7 @@
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
-      <span class="chip slide-title-chip" aria-label="Adria Campaign 2025 — Riprese aeree con drone per campagna pubblicitaria Adria Mobil. Filmmaker e drone operator: Valentino Castiglione, Friuli Venezia Giulia.">Adria_Campaign2025</span>
+      <span class="chip slide-title-chip">Adria_Campaign2025</span>
       <button class="chip icon-chip" data-open-drawer="0">+</button>
     </div></div>
   </section>
@@ -966,16 +623,16 @@
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
-      <span class="chip slide-title-chip" aria-label="Avalant Victoria — Music video diretto da Valentino Castiglione per l'artista Avalant. Linguaggio visivo astratto, Synthwave, pittura su acqua.">Avalant_Victoria</span>
+      <span class="chip slide-title-chip">Avalant_Victoria</span>
       <button class="chip icon-chip" data-open-drawer="1">+</button>
     </div></div>
   </section>
 
-  <section class="slide" data-index="2" data-videos='["CONTENUTI_SITO/BUIO1.mp4","CONTENUTI_SITO/LA_NOTTE_IN_30_LIBRI1.mp4","CONTENUTI_SITO/THE_NIGHT_AS_A_PLACE_1.mp4"]'>
+  <section class="slide" data-index="2" data-videos='["CONTENUTI_SITO/BUIO1.mov","CONTENUTI_SITO/LA_NOTTE_IN_30_LIBRI1.mov","CONTENUTI_SITO/THE_NIGHT_AS_A_PLACE_1.mov"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
-      <span class="chip slide-title-chip" aria-label="OBL La Notte in 30 Libri — Campagna social e live video direction per Associazione Obliquo. Evento culturale con soundscape ASMR e proiezioni fotografiche. Regia Valentino Castiglione.">OBL_LaNotteIn30Libri</span>
+      <span class="chip slide-title-chip">OBL_LaNotteIn30Libri</span>
       <button class="chip icon-chip" data-open-drawer="2">+</button>
     </div></div>
   </section>
@@ -984,25 +641,25 @@
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
-      <span class="chip slide-title-chip" aria-label="Corale Maniaghese — Music video in piano sequenza per il Corale Maniaghese. Regia Valentino Castiglione, Maniago, Friuli Venezia Giulia.">CoraleManiaghese</span>
+      <span class="chip slide-title-chip">CoraleManiaghese</span>
       <button class="chip icon-chip" data-open-drawer="3">+</button>
     </div></div>
   </section>
 
-  <section class="slide" data-index="4" data-videos='["CONTENUTI_SITO/Falmec_SICAM2025_916.mp4"]'>
+  <section class="slide" data-index="4" data-videos='["CONTENUTI_SITO/Falmec_SICAM2025_916.mov"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
-      <span class="chip slide-title-chip" aria-label="Falmec SICAM 2025 — Video istituzionale per la partecipazione di Falmec alla fiera SICAM Pordenone 2025. Filmmaker: Valentino Castiglione.">Falmec_SICAM2025</span>
+      <span class="chip slide-title-chip">Falmec_SICAM2025</span>
       <button class="chip icon-chip" data-open-drawer="4">+</button>
     </div></div>
   </section>
 
-  <section class="slide" data-index="5" data-videos='["CONTENUTI_SITO/Julien_Chopin_-_Spot_Portfolio_4K.mp4"]'>
+  <section class="slide" data-index="5" data-videos='["CONTENUTI_SITO/Julien_Chopin_-_Spot_Portfolio_4K.mov"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
-      <span class="chip slide-title-chip" aria-label="Julien Chopin — Spot commerciale per Domaine Julien Chopin. Video production e regia: Valentino Castiglione.">Julien_Chopin</span>
+      <span class="chip slide-title-chip">Julien_Chopin</span>
       <button class="chip icon-chip" data-open-drawer="5">+</button>
     </div></div>
   </section>
@@ -1011,16 +668,16 @@
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
-      <span class="chip slide-title-chip" aria-label="Donne di Seta — Documentario prodotto dal Comune di Maniago sulla filiera della seta nel Friuli Venezia Giulia. Regia Valentino Castiglione.">Donne_di_Seta</span>
+      <span class="chip slide-title-chip">Donne_di_Seta</span>
       <button class="chip icon-chip" data-open-drawer="6">+</button>
     </div></div>
   </section>
 
-  <section class="slide" data-index="7" data-videos='["CONTENUTI_SITO/Pasolini_1_Movement.mp4"]'>
+  <section class="slide" data-index="7" data-videos='["CONTENUTI_SITO/Pasolini_1_Movement.mov"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
-      <span class="chip slide-title-chip" aria-label="P.P.P. — Fiction cortometraggio diretto da Valentino Castiglione per la candidatura artistica di Antonio Pauletta in Portogallo.">P.P.P.</span>
+      <span class="chip slide-title-chip">P.P.P.</span>
       <button class="chip icon-chip" data-open-drawer="7">+</button>
     </div></div>
   </section>
@@ -1029,7 +686,7 @@
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
-      <span class="chip slide-title-chip" aria-label="La Forma delle Emozioni — Documentario sulla vita e carriera del designer italiano Armando Milani. Produzione Associazione Obliquo. Regia Valentino Castiglione.">LaFormaDelleEmozioni_OBL</span>
+      <span class="chip slide-title-chip">LaFormaDelleEmozioni_OBL</span>
       <button class="chip icon-chip" data-open-drawer="8">+</button>
     </div></div>
   </section>
@@ -1038,7 +695,7 @@
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
-      <span class="chip slide-title-chip" aria-label="Dentag IDEM 2018 — Video pubblicitario per Dentag Maniago per la fiera internazionale IDEM 2018. Filmmaker: Valentino Castiglione.">Dentag_IDEM2018</span>
+      <span class="chip slide-title-chip">Dentag_IDEM2018</span>
       <button class="chip icon-chip" data-open-drawer="9">+</button>
     </div></div>
   </section>
@@ -1051,12 +708,9 @@
 <div id="drawer">
   <div id="drawer-header">
     <span id="drawer-title-text" class="chip" style="border:none;background:none;padding:0;font-size:12px;"></span>
-    <button class="chip icon-chip" id="drawer-close">—</button>
+    <button class="chip icon-chip" id="drawer-close" style="display:none;">×</button>
   </div>
   <div id="drawer-scroll">
-    <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
-      <button id="drawer-close-inner" class="chip icon-chip" style="background:rgba(0,0,0,0.08);border-color:rgba(0,0,0,0.15);color:#111;font-size:18px;">—</button>
-    </div>
     <div class="project-meta-row" id="drawer-meta"></div>
     <div class="project-body" id="drawer-body"></div>
     <button class="gallery-toggle" id="gallery-toggle"><span>Gallery</span><span class="g-arrow">+</span></button>
@@ -1136,8 +790,7 @@ async function loadProjects() {
       client: p.cliente,
       type: p.tipo,
       body: p.descrizione,
-      gallery: p.galleria,
-      youtube: p.youtube || null
+      gallery: p.galleria
     }));
 
     // Load profile
@@ -1199,15 +852,14 @@ async function loadProjects() {
   } catch(e) {
     console.warn('contenuti.json non raggiungibile, uso dati inline:', e);
     // Fallback inline data (same as contenuti.json)
-    const fallback = [{"titolo": "Adria_Campaign2025", "youtube": "https://www.youtube.com/watch?v=Ei_UJrNIuQk", "youtube": "https://www.youtube.com/watch?v=Ei_UJrNIuQk", "anno": "2025", "cliente": "Adria Mobil", "tipo": "Commercial", "descrizione": "For this project, I planned and executed the aerial drone footage, helping to lend a sense of spaciousness and dynamism to the campaign images. My work allowed us to capture the balance between luxury, comfort, and outdoor living from above, offering a unique perspective that effectively highlighted the creative concept.", "galleria": []}, {"titolo": "Avalant_Victoria", "youtube": "https://www.youtube.com/watch?v=bjdXG_o_uzw", "youtube": "https://www.youtube.com/watch?v=bjdXG_o_uzw", "anno": "2024", "cliente": "Avalant", "tipo": "Music Video", "descrizione": "A music video I directed for the artist Avalant. The composer's intention with this track is to recreate a specific moment: one of abstraction and mental journey. To visually convey this idea, I chose geometric shapes and color palettes capable of evoking that sense of detachment from reality—a visual language that interacts with the Synthwave sounds of the music, yet becomes its true protagonist. Colors, movements, and visual compositions guide the viewer through different levels of abstraction, making the perceptual experience something autonomous and immediate, even before the music comes into play.\n\nGo to YouTube, look it up, and give it a listen.", "galleria": [{"src": "CONTENUTI_SITO/Avalant_1_88_1.webp", "alt": "Frame dal music video Avalant Victoria diretto da Valentino Castiglione — pittura su acqua astratta"}, {"src": "CONTENUTI_SITO/Avalant_3_5_1.webp", "alt": "Still dal music video Avalant Victoria — palette cromatica astratta"}, {"src": "CONTENUTI_SITO/Avalant_5_1_1.webp", "alt": "Immagine dal video musicale Avalant Victoria — forme geometriche rosse"}, {"src": "CONTENUTI_SITO/Avalant_5_3_1.webp", "alt": "Frame Avalant Victoria music video — colori sintetici astratti"}, {"src": "CONTENUTI_SITO/Avalant_5_15_1.webp", "alt": "Still Avalant Victoria — blu e viola liquidi in movimento"}, {"src": "CONTENUTI_SITO/Avalant_5_21_1.webp", "alt": "Frame dal music video Avalant — rosso e arancione in flusso"}, {"src": "CONTENUTI_SITO/Avalant_1_2_1.webp", "alt": "Immagine Avalant Victoria — protagonista sul tappeto persiano"}, {"src": "CONTENUTI_SITO/Avalant_1_24_1.webp", "alt": "Still Avalant Victoria — pittura su acqua blu e giallo"}, {"src": "CONTENUTI_SITO/Avalant_1.38.1.webp", "alt": "Frame Avalant — blu e giallo in movimento su acqua"}, {"src": "CONTENUTI_SITO/Avalant_1_44_1.webp", "alt": "Immagine Avalant Victoria — rosso e blu su acqua"}, {"src": "CONTENUTI_SITO/Avalant_1_48_1.webp", "alt": "Still Avalant — rosso e bianco su acqua in movimento"}, {"src": "CONTENUTI_SITO/Avalant_1_51_1.webp", "alt": "Frame dal music video Avalant Victoria — rosso su acqua"}, {"src": "CONTENUTI_SITO/Avalant_1_56_1.webp", "alt": "Immagine Avalant Victoria — rosso scuro e nero astratto"}]}, {"titolo": "OBL_LaNotteIn30Libri", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Social Campaign", "descrizione": "A social media campaign I directed for Associazione Obliquo live event. “La notte in 30 libri” explored a new form of storytelling built around a curated collection of over thirty volumes. Visitors wore headphones delivering ASMR soundscapes while photographic projections surrounded them, weaving together visual and auditory layers into a single, cohesive experience. The result was an immersive journey through nocturnal and dreamlike atmospheres, shaped by the interplay of photobooks, illustrated works, essays, and sound — each element reinforcing the others to blur the line between reading, seeing, and dreaming.\n\nFor this event, I also served as live video director, overseeing the real-time visual direction of the performance.", "galleria": []}, {"titolo": "CoraleManiaghese", "youtube": "https://www.youtube.com/watch?v=IxJbFSY1M0Q", "youtube": "https://www.youtube.com/watch?v=IxJbFSY1M0Q", "anno": "2025", "cliente": "Corale Maniaghese", "tipo": "Music Video", "descrizione": "Music video directed for Corale Maniaghese.\nA single, long take that offers an authentic glimpse into the simple yet profound rural and family life of the last century.", "galleria": []}, {"titolo": "Falmec_SICAM2025", "anno": "2025", "cliente": "Falmec", "tipo": "Social", "descrizione": "A video created to showcase Falmec's participation in the SICAM Pordenone 2025 trade show.\nWe captured their first appearance at SICAM 2025 through a video that goes beyond simply depicting a space: it captures a vision of the contemporary kitchen.\nA debut shaped by a clear vision: to design spaces where surfaces, volumes, and materials interact to create a cohesive, functional, and truly modern living environment.", "galleria": []}, {"titolo": "Julien_Chopin", "youtube": "https://www.youtube.com/watch?v=P4OJ4Yx6IkQ", "youtube": "https://www.youtube.com/watch?v=P4OJ4Yx6IkQ", "anno": "2024", "cliente": "Julien Chopin", "tipo": "Spot / Commercial", "descrizione": "A portfolio project draws inspiration from the timeless elegance of Domaine Julien Chopin, exploring the power of sharing: moments frozen in time, experiences that sparkle.", "galleria": []}, {"titolo": "Donne_di_Seta", "youtube": "https://www.youtube.com/watch?v=UxYCdC0NLc8", "youtube": "https://www.youtube.com/watch?v=UxYCdC0NLc8", "anno": "2024", "cliente": "Comune di Maniago", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by the Comune di Maniago. The documentary \"Donne di seta - Un intreccio di storie al femminile\" explores the connection between the silk industry and the work carried out by young women within this sector.\nThrough firsthand accounts and archival footage, the film reveals the crucial and often overlooked role of silk workers in the production of one of the world's finest fabrics.", "galleria": [{"src": "CONTENUTI_SITO/Donne_di_seta.webp", "alt": "Frame dal documentario Donne di Seta — ritratto in bianco e nero"}, {"src": "CONTENUTI_SITO/Donne_di_seta_2.webp", "alt": "Still documentario Donne di Seta — donne davanti alla filanda di Maniago"}, {"src": "CONTENUTI_SITO/Donne_di_seta_3.webp", "alt": "Immagine documentario Donne di Seta — ritratto attrice in bianco e nero"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_2_36_1.webp", "alt": "Frame Donne di Seta — filanda storica di Maniago in bianco e nero"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_3_7_1.webp", "alt": "Still documentario Donne di Seta — attrice in campo aperto"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_18_1.webp", "alt": "Intervista documentario Donne di Seta — testimone anziana seduta"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_49_1.webp", "alt": "Intervista documentario Donne di Seta — testimone anziana nel laboratorio di tessitura"}]}, {"titolo": "P.P.P.", "anno": "2021", "cliente": "Antonio Pauletta", "tipo": "Fiction", "descrizione": "A project created for Antonio Pauletta to help him apply for an artist residency in Portugal.", "galleria": [{"src": "CONTENUTI_SITO/Pasolini_1_2_1.webp", "alt": "Frame dalla fiction P.P.P. di Valentino Castiglione — riflesso in specchio rotondo"}, {"src": "CONTENUTI_SITO/Pasolini_1_3_1.webp", "alt": "Still fiction P.P.P. — protagonista in uniforme in una stanza abbandonata"}, {"src": "CONTENUTI_SITO/Pasolini_1_5_1.webp", "alt": "Immagine fiction P.P.P. — riflesso capovolto in specchio sul pavimento"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_1.webp", "alt": "Frame fiction P.P.P. — protagonista di spalle davanti a dipinti"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_2.webp", "alt": "Still fiction P.P.P. — specchio in stanza abbandonata"}]}, {"titolo": "LaFormaDelleEmozioni_OBL", "youtube": "https://www.youtube.com/watch?v=ftisFfY8br0", "youtube": "https://www.youtube.com/watch?v=ftisFfY8br0", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by Associazione Obliquo. The documentary offers an intimate look into the extraordinary life and career of the renowned Italian designer Armando Milani. Through interviews, archival footage, and personal reflections, the film explores the roots and evolution of his creativity, from his youth to his rise as a leading figure in the world of graphic design.", "galleria": []}, {"titolo": "Dentag_IDEM2018", "anno": "2018", "cliente": "Dentag Maniago", "tipo": "Social AD", "descrizione": "Project created for Dentag Maniago to be used during the IDEM 2018 trade show.", "galleria": []}];
+    const fallback = [{"titolo": "Adria_Campaign2025", "anno": "2025", "cliente": "Adria Mobil", "tipo": "Commercial", "descrizione": "For this project, I planned and executed the aerial drone footage, helping to lend a sense of spaciousness and dynamism to the campaign images. My work allowed us to capture the balance between luxury, comfort, and outdoor living from above, offering a unique perspective that effectively highlighted the creative concept.", "galleria": []}, {"titolo": "Avalant_Victoria", "anno": "2024", "cliente": "Avalant", "tipo": "Music Video", "descrizione": "A music video I directed for the artist Avalant. The composer's intention with this track is to recreate a specific moment: one of abstraction and mental journey. To visually convey this idea, I chose geometric shapes and color palettes capable of evoking that sense of detachment from reality—a visual language that interacts with the Synthwave sounds of the music, yet becomes its true protagonist. Colors, movements, and visual compositions guide the viewer through different levels of abstraction, making the perceptual experience something autonomous and immediate, even before the music comes into play.\n\nGo to YouTube, look it up, and give it a listen.", "galleria": [{"src": "CONTENUTI_SITO/Avalant_1_88_1.jpg", "alt": "Avalant 1"}, {"src": "CONTENUTI_SITO/Avalant_3_5_1.jpg", "alt": "Avalant 2"}, {"src": "CONTENUTI_SITO/Avalant_5_1_1.jpg", "alt": "Avalant 3"}, {"src": "CONTENUTI_SITO/Avalant_5_3_1.jpg", "alt": "Avalant 4"}, {"src": "CONTENUTI_SITO/Avalant_5_15_1.jpg", "alt": "Avalant 5"}, {"src": "CONTENUTI_SITO/Avalant_5_21_1.jpg", "alt": "Avalant 6"}, {"src": "CONTENUTI_SITO/Avalant_1_2_1.jpg", "alt": "Avalant 7"}, {"src": "CONTENUTI_SITO/Avalant_1_24_1.jpg", "alt": "Avalant 8"}, {"src": "CONTENUTI_SITO/Avalant_1_38_1.jpg", "alt": "Avalant 9"}, {"src": "CONTENUTI_SITO/Avalant_1_44_1.jpg", "alt": "Avalant 10"}, {"src": "CONTENUTI_SITO/Avalant_1_48_1.jpg", "alt": "Avalant 11"}, {"src": "CONTENUTI_SITO/Avalant_1_51_1.jpg", "alt": "Avalant 12"}, {"src": "CONTENUTI_SITO/Avalant_1_56_1.jpg", "alt": "Avalant 13"}]}, {"titolo": "OBL_LaNotteIn30Libri", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Social Campaign", "descrizione": "A social media campaign I directed for Associazione Obliquo live event. “La notte in 30 libri” explored a new form of storytelling built around a curated collection of over thirty volumes. Visitors wore headphones delivering ASMR soundscapes while photographic projections surrounded them, weaving together visual and auditory layers into a single, cohesive experience. The result was an immersive journey through nocturnal and dreamlike atmospheres, shaped by the interplay of photobooks, illustrated works, essays, and sound — each element reinforcing the others to blur the line between reading, seeing, and dreaming.\n\nFor this event, I also served as live video director, overseeing the real-time visual direction of the performance.", "galleria": []}, {"titolo": "CoraleManiaghese", "anno": "2025", "cliente": "Corale Maniaghese", "tipo": "Music Video", "descrizione": "Music video directed for Corale Maniaghese.\nA single, long take that offers an authentic glimpse into the simple yet profound rural and family life of the last century.", "galleria": []}, {"titolo": "Falmec_SICAM2025", "anno": "2025", "cliente": "Falmec", "tipo": "Social", "descrizione": "A video created to showcase Falmec's participation in the SICAM Pordenone 2025 trade show.\nWe captured their first appearance at SICAM 2025 through a video that goes beyond simply depicting a space: it captures a vision of the contemporary kitchen.\nA debut shaped by a clear vision: to design spaces where surfaces, volumes, and materials interact to create a cohesive, functional, and truly modern living environment.", "galleria": []}, {"titolo": "Julien_Chopin", "anno": "2024", "cliente": "Julien Chopin", "tipo": "Spot / Commercial", "descrizione": "A portfolio project draws inspiration from the timeless elegance of Domaine Julien Chopin, exploring the power of sharing: moments frozen in time, experiences that sparkle.", "galleria": []}, {"titolo": "Donne_di_Seta", "anno": "2024", "cliente": "Comune di Maniago", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by the Comune di Maniago. The documentary \"Donne di seta - Un intreccio di storie al femminile\" explores the connection between the silk industry and the work carried out by young women within this sector.\nThrough firsthand accounts and archival footage, the film reveals the crucial and often overlooked role of silk workers in the production of one of the world's finest fabrics.", "galleria": [{"src": "CONTENUTI_SITO/Donne_di_seta.png", "alt": "Donne di Seta 1"}, {"src": "CONTENUTI_SITO/Donne_di_seta_2.png", "alt": "Donne di Seta 2"}, {"src": "CONTENUTI_SITO/Donne_di_seta_3.png", "alt": "Donne di Seta 3"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_2_36_1.png", "alt": "Donne di Seta 4"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_3_7_1.png", "alt": "Donne di Seta 5"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_18_1.png", "alt": "Donne di Seta 6"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_49_1.png", "alt": "Donne di Seta 7"}]}, {"titolo": "P.P.P.", "anno": "2021", "cliente": "Antonio Pauletta", "tipo": "Fiction", "descrizione": "A project created for Antonio Pauletta to help him apply for an artist residency in Portugal.", "galleria": [{"src": "CONTENUTI_SITO/Pasolini_1_2_1.png", "alt": "P.P.P. 1"}, {"src": "CONTENUTI_SITO/Pasolini_1_3_1.png", "alt": "P.P.P. 2"}, {"src": "CONTENUTI_SITO/Pasolini_1_5_1.png", "alt": "P.P.P. 3"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_1.png", "alt": "P.P.P. 4"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_2.png", "alt": "P.P.P. 5"}]}, {"titolo": "LaFormaDelleEmozioni_OBL", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by Associazione Obliquo. The documentary offers an intimate look into the extraordinary life and career of the renowned Italian designer Armando Milani. Through interviews, archival footage, and personal reflections, the film explores the roots and evolution of his creativity, from his youth to his rise as a leading figure in the world of graphic design.", "galleria": []}, {"titolo": "Dentag_IDEM2018", "anno": "2018", "cliente": "Dentag Maniago", "tipo": "Social AD", "descrizione": "Project created for Dentag Maniago to be used during the IDEM 2018 trade show.", "galleria": []}];
     PROJECTS = fallback.map(p => ({
       title: p.titolo,
       year: p.anno,
       client: p.cliente,
       type: p.tipo,
       body: p.descrizione,
-      gallery: p.galleria,
-      youtube: p.youtube || null
+      gallery: p.galleria
     }));
   }
 }
@@ -1240,65 +892,26 @@ function goTo(idx) {
   if (isTransitioning) return;
   isTransitioning = true;
 
-  // Stop ALL videos and reset audio completely
-  slides.forEach(s => {
-    const v = s.querySelector('video');
-    if (v) { v.pause(); v.muted = true; }
-  });
-  const avalantAudio = document.getElementById('avalant-audio');
-  if (avalantAudio) { avalantAudio.pause(); avalantAudio.currentTime = 0; }
-
+  const prevVideo = slides[current].querySelector('video');
+  if (prevVideo) prevVideo.pause();
   if (drawerOpen) closeDrawer();
 
   const prevIdx = current;
   const nextIdx = (idx + total) % total;
   const forward = ((nextIdx - prevIdx + total) % total) <= total / 2;
 
-  const outY  = forward ? '-100%' : '100%';
-  const inY   = forward ?  '100%' : '-100%';
+  const outY  = forward ? '-100%' : '100%';   // current exits up or down
+  const inY   = forward ?  '100%' : '-100%';  // next enters from below or above
   const ease  = 'transform 0.8s cubic-bezier(0.77,0,0.175,1)';
 
   const prevSlide = slides[prevIdx];
   const nextSlide = slides[nextIdx];
-
-  // Lazy load: load next slide media if not yet loaded
-  if (nextSlide.dataset.lazy === 'true') {
-    const videosRaw = nextSlide.dataset.videos;
-    if (videosRaw) {
-      const list = JSON.parse(videosRaw);
-      const picked = list[Math.floor(Math.random() * list.length)];
-      loadSlideMedia(nextSlide, picked);
-    }
-    delete nextSlide.dataset.lazy;
-  }
-
-  // Also preload the slide after next
-  const afterNextIdx = (nextIdx + 1) % total;
-  const afterNext = slides[afterNextIdx];
-  if (afterNext && afterNext.dataset.lazy === 'true') {
-    setTimeout(() => {
-      const videosRaw = afterNext.dataset.videos;
-      if (videosRaw) {
-        const list = JSON.parse(videosRaw);
-        const picked = list[Math.floor(Math.random() * list.length)];
-        loadSlideMedia(afterNext, picked);
-      }
-      delete afterNext.dataset.lazy;
-    }, 800);
-  }
 
   // Snap next slide into start position (no animation)
   nextSlide.style.transition = 'none';
   nextSlide.style.transform = `translateY(${inY})`;
   nextSlide.style.pointerEvents = 'none';
   nextSlide.offsetHeight; // force reflow
-
-  // Load media
-  const videosRaw = nextSlide.dataset.videos;
-  if (videosRaw) {
-    const list = JSON.parse(videosRaw);
-    loadSlideMedia(nextSlide, list[Math.floor(Math.random() * list.length)]);
-  }
 
   // Animate both
   nextSlide.style.transition = ease;
@@ -1327,9 +940,8 @@ function goTo(idx) {
 function next() { goTo(current + 1); }
 function prev() { goTo(current - 1); }
 
-// Nav arrows click disabled — use scroll/swipe only
-// navNext.addEventListener('click', next);
-// navPrev.addEventListener('click', prev);
+navNext.addEventListener('click', next);
+navPrev.addEventListener('click', prev);
 
 document.addEventListener('keydown', e => {
   if (drawerOpen || panelOpen) return;
@@ -1338,87 +950,33 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeDrawer(); closePanel(); }
 });
 
-// Trackpad & mouse wheel navigation
-let lastWheelTime = 0;
-let wheelAccumY = 0;
-let wheelAccumX = 0;
-
+let wheelTimeout;
 document.addEventListener('wheel', e => {
   if (drawerOpen || panelOpen) return;
-
-  const now = Date.now();
-  // Reset accumulator if too much time passed
-  if (now - lastWheelTime > 400) {
-    wheelAccumY = 0;
-    wheelAccumX = 0;
-  }
-  lastWheelTime = now;
-
-  wheelAccumY += e.deltaY;
-  wheelAccumX += e.deltaX;
-
-  const threshold = 80;
-  if (Math.abs(wheelAccumY) > threshold || Math.abs(wheelAccumX) > threshold) {
-    const dominantY = Math.abs(wheelAccumY) >= Math.abs(wheelAccumX);
-    const delta = dominantY ? wheelAccumY : wheelAccumX;
-    if (delta > 0) next();
-    else prev();
-    wheelAccumY = 0;
-    wheelAccumX = 0;
-  }
+  clearTimeout(wheelTimeout);
+  wheelTimeout = setTimeout(() => {
+    if (e.deltaX > 30 || e.deltaY > 30) next();
+    if (e.deltaX < -30 || e.deltaY < -30) prev();
+  }, 50);
 }, { passive: true });
 
-// ── Touch — swipe robusto
-let touchStartX = 0, touchStartY = 0, touchStartTime = 0, touchFired = false;
-
-document.addEventListener('touchstart', e => {
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-  touchStartTime = Date.now();
-  touchFired = false;
-}, { passive: true });
-
-document.addEventListener('touchend', e => {
-  if (drawerOpen || panelOpen || touchFired) return;
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  const dy = e.changedTouches[0].clientY - touchStartY;
-  const dt = Date.now() - touchStartTime;
-  const threshold = dt < 300 ? 25 : 50;
-  touchFired = true;
-  if (Math.abs(dy) >= Math.abs(dx)) {
-    if (dy < -threshold) next();
-    else if (dy > threshold) prev();
-  } else {
-    if (dx < -threshold) next();
-    else if (dx > threshold) prev();
-  }
-}, { passive: true });
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
 document.addEventListener('touchend', e => {
   if (drawerOpen || panelOpen) return;
   const dx = e.changedTouches[0].clientX - touchStartX;
-  const dy = e.changedTouches[0].clientY - touchStartY;
-  if (Math.abs(dy) > Math.abs(dx)) {
-    if (dy > 50) next();
-    if (dy < -50) prev();
-  } else {
-    if (dx < -50) next();
-    if (dx > 50) prev();
-  }
+  if (dx < -50) next(); if (dx > 50) prev();
 });
 
 function openPanel() {
   panelOpen = true;
   panelEl.classList.add('open');
   panelToggleText.textContent = '—';
-  document.getElementById('book-btn').style.opacity = '0';
-  document.getElementById('book-btn').style.pointerEvents = 'none';
 }
 function closePanel() {
   panelOpen = false;
   panelEl.classList.remove('open');
   panelToggleText.textContent = '+';
-  document.getElementById('book-btn').style.opacity = '1';
-  document.getElementById('book-btn').style.pointerEvents = 'all';
 }
 panelToggle.addEventListener('click', () => { if (panelOpen) closePanel(); else openPanel(); });
 panelToggleIcon.addEventListener('click', () => { if (panelOpen) closePanel(); else openPanel(); });
@@ -1430,28 +988,12 @@ function updateDrawerHeight() {
 
 function openDrawer(idx) {
   document.querySelectorAll('[data-open-drawer]').forEach(b => b.textContent = '+');
-  // Hide slide-ui chips while drawer is open
-  document.querySelectorAll('.slide-ui').forEach(ui => ui.style.opacity = '0');
   const p = PROJECTS[idx];
   drawerOpen = true;
   drawerTitle.textContent = p.title;
   drawerMeta.innerHTML = [p.year, p.client, p.type].filter(Boolean)
     .map(t => `<span class="project-meta-plain">${t}</span>`).join('');
   drawerBody.textContent = p.body;
-
-  // YouTube button
-  const existingYt = document.getElementById('yt-btn-link');
-  if (existingYt) existingYt.remove();
-  if (p.youtube) {
-    const ytBtn = document.createElement('a');
-    ytBtn.id = 'yt-btn-link';
-    ytBtn.href = p.youtube;
-    ytBtn.target = '_blank';
-    ytBtn.rel = 'noreferrer noopener';
-    ytBtn.className = 'yt-btn';
-    ytBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.6 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.3.6 9.3.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.2 3.5-6.2 3.5z"/></svg>Guarda il video';
-    drawerBody.after(ytBtn);
-  }
 
   const hasGallery = p.gallery && p.gallery.length > 0;
   galleryToggle.style.display = hasGallery ? 'inline-block' : 'none';
@@ -1470,22 +1012,17 @@ function openDrawer(idx) {
 
   drawer.classList.add('open');
   rail.classList.add('drawer-open');
-  const dc = document.getElementById('drawer-close');
-  if (dc) { dc.textContent = '—'; }
   requestAnimationFrame(() => updateDrawerHeight());
 }
 function closeDrawer() {
   drawerOpen = false;
   drawer.classList.remove('open');
   drawer.classList.remove('has-gallery-open');
-  const dc2 = document.getElementById('drawer-close');
-  if (dc2) { dc2.textContent = '—'; }
   galleryToggle.style.display = 'inline-block';
   document.querySelectorAll('[data-open-drawer]').forEach(b => b.textContent = '+');
   rail.classList.remove('drawer-open');
   backdrop.classList.remove('active');
   rail.classList.remove('blurred');
-  document.querySelectorAll('.slide-ui').forEach(ui => ui.style.opacity = '1');
 }
 
 document.querySelectorAll('[data-open-drawer]').forEach(btn => {
@@ -1497,8 +1034,6 @@ document.querySelectorAll('[data-open-drawer]').forEach(btn => {
   });
 });
 drawerClose.addEventListener('click', closeDrawer);
-document.getElementById('drawer-close-inner').addEventListener('click', closeDrawer);
-
 backdrop.addEventListener('click', () => { closeDrawer(); closePanel(); });
 galleryToggle.addEventListener('click', () => {
   gallery.classList.toggle('open');
@@ -1533,26 +1068,10 @@ function updateSoundBtn() {
 function setActiveAudio() {
   const vid = slides[current] && slides[current].querySelector('video');
   if (vid) vid.muted = !soundOn;
+  // Sync avalant audio mute state
   const avalantAudio = document.getElementById('avalant-audio');
-  if (avalantAudio) {
-    // If on Avalant slide and sound just turned on, start audio
-    const currentSrc = vid ? vid.src : '';
-    if (currentSrc.includes('Avalant') || currentSrc.includes('avalant')) {
-      if (soundOn) {
-        if (avalantAudio.paused) {
-          avalantAudio.currentTime = 0;
-          avalantAudio.muted = false;
-          avalantAudio.play().catch(() => {});
-        } else {
-          avalantAudio.muted = false;
-        }
-      } else {
-        avalantAudio.muted = true;
-      }
-    } else {
-      avalantAudio.pause();
-      avalantAudio.currentTime = 0;
-    }
+  if (avalantAudio && !avalantAudio.paused) {
+    avalantAudio.muted = !soundOn;
   }
 }
 soundBtn.addEventListener('click', e => {
@@ -1575,119 +1094,18 @@ slides.forEach((s, i) => {
 
 async function init() {
   await loadProjects();
-
-  // ── Lazy loading: only load slide 0 and preload slide 1
-  function pickVideo(slide) {
+  // ── Init media
+  slides.forEach(slide => {
     const videosRaw = slide.dataset.videos;
-    if (!videosRaw) return null;
+    if (!videosRaw) return;
     const list = JSON.parse(videosRaw);
-    return list[Math.floor(Math.random() * list.length)];
-  }
-
-  // Load only first slide immediately
-  const firstPick = pickVideo(slides[0]);
-  if (firstPick) loadSlideMedia(slides[0], firstPick);
-
-  // Preload next slide after 1.5s
-  setTimeout(() => {
-    const nextPick = pickVideo(slides[1]);
-    if (nextPick) loadSlideMedia(slides[1], nextPick);
-  }, 1500);
-
-  // Store picked videos for lazy loading on navigate
-  slides.forEach((slide, i) => {
-    if (i < 2) return; // already handled
-    slide.dataset.lazy = 'true';
+    const picked = list[Math.floor(Math.random() * list.length)];
+    loadSlideMedia(slide, picked);
   });
-
   updateSoundBtn();
   counter.textContent = pad(0) + ' / ' + pad(total - 1);
 }
 init();
-
-// ── Cookie & GDPR
-document.addEventListener('DOMContentLoaded', function() {
-  const banner = document.getElementById('cookie-banner');
-  const modal  = document.getElementById('gdpr-modal');
-
-  // Auto-update privacy date
-  const privacyDate = document.getElementById('privacy-date');
-  if (privacyDate) {
-    const months = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
-                    'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
-    const d = new Date();
-    privacyDate.textContent = months[d.getMonth()] + ' ' + d.getFullYear();
-  }
-
-  function getConsent() {
-    try { return localStorage.getItem('cookie-consent'); } catch(e) { return null; }
-  }
-  function setConsent(val) {
-    try {
-      localStorage.setItem('cookie-consent', val);
-      localStorage.setItem('cookie-consent-date', Date.now().toString());
-    } catch(e) {}
-  }
-  function isConsentExpired() {
-    try {
-      const date = localStorage.getItem('cookie-consent-date');
-      if (!date) return true;
-      return (Date.now() - parseInt(date)) > (365 * 24 * 60 * 60 * 1000);
-    } catch(e) { return true; }
-  }
-
-  // Show banner if no consent or expired (12 months)
-  if (!getConsent() || isConsentExpired()) {
-    banner.classList.remove('hidden');
-    try {
-      localStorage.removeItem('cookie-consent');
-      localStorage.removeItem('cookie-consent-date');
-    } catch(e) {}
-  } else {
-    banner.classList.add('hidden');
-  }
-
-  document.getElementById('cookie-accept').addEventListener('click', () => {
-    setConsent('accepted');
-    banner.classList.add('hidden');
-    if (typeof gtag !== 'undefined') {
-      gtag('consent', 'update', { analytics_storage: 'granted' });
-      gtag('event', 'page_view');
-    }
-  });
-
-  document.getElementById('cookie-decline').addEventListener('click', () => {
-    setConsent('declined');
-    banner.classList.add('hidden');
-    if (typeof gtag !== 'undefined') {
-      gtag('consent', 'update', { analytics_storage: 'denied' });
-    }
-  });
-
-  if (getConsent() === 'accepted' && typeof gtag !== 'undefined') {
-    gtag('consent', 'update', { analytics_storage: 'granted' });
-    gtag('event', 'page_view');
-  }
-
-  // GDPR modal
-  document.getElementById('gdpr-link').addEventListener('click', e => {
-    e.preventDefault(); e.stopPropagation();
-    modal.classList.add('open');
-  });
-  document.getElementById('gdpr-close-btn').addEventListener('click', () => {
-    modal.classList.remove('open');
-  });
-  modal.addEventListener('click', e => {
-    if (e.target === modal) modal.classList.remove('open');
-  });
-
-  // Footer GDPR link
-  const footerGdpr = document.getElementById('footer-gdpr-link');
-  if (footerGdpr) footerGdpr.addEventListener('click', e => {
-    e.preventDefault(); e.stopPropagation();
-    modal.classList.add('open');
-  });
-});
 </script>
 
 
@@ -1725,12 +1143,12 @@ document.addEventListener('DOMContentLoaded', function() {
     </p>
 
     <h3>Dati raccolti</h3>
-    <p>Questo sito <strong>non raccoglie, non archivia e non trasmette</strong> dati personali degli utenti. Non sono presenti:</p>
+    <p>Previo consenso, questo sito utilizza Google Analytics 4 in modalità anonimizzata. Non sono presenti:</p>
     <ul>
-      <li>Cookie di profilazione o tracciamento</li>
-      <li>Sistemi di analisi del traffico (es. Google Analytics)</li>
-      <li>Form di contatto con raccolta dati</li>
+      <li>Cookie di profilazione o tracciamento comportamentale</li>
+      <li>Form di contatto con raccolta dati sensibili</li>
       <li>Integrazioni con social network che tracciano il comportamento</li>
+      <li>Vendita o cessione di dati personali a terzi</li>
     </ul>
 
     <h3>Cookie tecnici</h3>
@@ -1747,7 +1165,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <p>Ai sensi degli artt. 15–22 GDPR, gli utenti hanno diritto di accesso, rettifica, cancellazione, limitazione e portabilità dei dati. Per esercitare tali diritti, contattare il titolare.</p>
 
     <h3>Aggiornamenti</h3>
-    <p>La presente informativa può essere aggiornata. Ultima modifica: <span id="privacy-date"></span>. Il consenso cookie viene rinnovato ogni 12 mesi.</p>
+    <p>La presente informativa può essere aggiornata. Ultima modifica: Maggio 2025.</p>
 
     <button class="gdpr-close" id="gdpr-close-btn">Chiudi</button>
   </div>
@@ -1756,7 +1174,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- FOOTER -->
 <footer id="site-footer">
   <div class="footer-left">
-    <span>© 2025 Valentino Castiglione</span>
+    <span>© 2026 Valentino Castiglione</span>
     <span>Via Mantellin, 3 — 33085 Maniago (PN)</span>
     <span>Tel. 346 7119244</span>
     <span>P.IVA 01904320932</span>
