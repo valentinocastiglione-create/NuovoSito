@@ -324,6 +324,7 @@
     .chip { height: 28px; font-size: 10px; }
     #panel-toggle { font-size: 13px !important; }
 
+    #book-btn { top: 62px !important; height: 28px !important; font-size: 9px !important; padding: 0 12px !important; }
     /* Sound button */
     #sound-btn { top: 12px; right: 12px; }
 
@@ -556,6 +557,7 @@ function revealEmail(e) {
 </header>
 
 <div id="slide-counter">01 / 10</div>
+<a href="contact.html" class="chip" id="book-btn" style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200;background:rgba(255,255,255,0.92);color:#000;border-color:rgba(255,255,255,0.92);font-weight:500;letter-spacing:0.08em;text-decoration:none;transition:opacity 0.3s ease;height:48px;padding:0 24px;font-size:14px;">BOOK A PROJECT</a>
 
 <!-- SOUND BUTTON -->
 <button id="sound-btn" class="chip" style="position:fixed;top:20px;right:20px;z-index:200;opacity:0.45;font-size:11px;letter-spacing:0.05em;background:rgba(0,0,0,0.92);color:#fff;border-color:rgba(0,0,0,0.92);">SOUND</button>
@@ -1003,11 +1005,13 @@ function openPanel() {
   panelOpen = true;
   panelEl.classList.add('open');
   panelToggleText.textContent = '—';
+  const bb = document.getElementById('book-btn'); if (bb) { bb.style.opacity='0'; bb.style.pointerEvents='none'; }
 }
 function closePanel() {
   panelOpen = false;
   panelEl.classList.remove('open');
   panelToggleText.textContent = '+';
+  const bb = document.getElementById('book-btn'); if (bb) { bb.style.opacity='1'; bb.style.pointerEvents='all'; }
 }
 panelToggle.addEventListener('click', () => { if (panelOpen) closePanel(); else openPanel(); });
 panelToggleIcon.addEventListener('click', () => { if (panelOpen) closePanel(); else openPanel(); });
