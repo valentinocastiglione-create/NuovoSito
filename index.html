@@ -1602,7 +1602,7 @@ async function init() {
 init();
 
 // ── Cookie & GDPR
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
   const banner = document.getElementById('cookie-banner');
   const modal  = document.getElementById('gdpr-modal');
 
@@ -1683,7 +1683,7 @@ init();
     e.preventDefault(); e.stopPropagation();
     modal.classList.add('open');
   });
-})();
+});
 </script>
 
 
