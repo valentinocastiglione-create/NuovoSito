@@ -10,7 +10,6 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self';">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Valentino Castiglione — Portfolio</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.1.4/swiper-bundle.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
@@ -179,8 +178,6 @@
     overflow: hidden;
     transition: filter 0.4s;
   }
-  .swiper-wrapper { width: 100%; height: 100%; }
-  .swiper-slide { width: 100%; height: 100%; }
   #rail.blurred { filter: brightness(0.45); transition: filter 0.5s ease; }
 
   /* ── SLIDE ── */
@@ -542,9 +539,7 @@
 <script>
 function revealEmail(e) {
   if (e) e.preventDefault();
-  const user = 'info';
-  const domain = 'valentinocastiglione.com';
-  window.location.href = 'mailto:' + user + '@' + domain;
+  window.location.href = 'mailto:' + 'info' + '@' + 'valentinocastiglione.com';
 }
 </script>
 </head>
@@ -612,8 +607,8 @@ function revealEmail(e) {
 <div id="backdrop"></div>
 
 <!-- PROJECT RAIL -->
-<main id="rail"><div class="swiper-wrapper">
-  <section class="slide active swiper-slide" data-index="0" data-videos='["CONTENUTI_SITO/Adria_1.mp4","CONTENUTI_SITO/Adria_2.mp4","CONTENUTI_SITO/Adria_3.mp4","CONTENUTI_SITO/Adria_4.mp4"]'>
+<main id="rail">
+  <section class="slide active" data-index="0" data-videos='["CONTENUTI_SITO/Adria_1.mp4","CONTENUTI_SITO/Adria_2.mp4","CONTENUTI_SITO/Adria_3.mp4","CONTENUTI_SITO/Adria_4.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -622,7 +617,7 @@ function revealEmail(e) {
     </div></div>
   </section>
 
-  <section class="slide swiper-slide" data-index="1" data-videos='["CONTENUTI_SITO/Avalant_Red_1.mp4","CONTENUTI_SITO/Avalant_Red_2.mp4","CONTENUTI_SITO/Avalant_Red_mix.mp4"]'>
+  <section class="slide" data-index="1" data-videos='["CONTENUTI_SITO/Avalant_Red_1.mp4","CONTENUTI_SITO/Avalant_Red_2.mp4","CONTENUTI_SITO/Avalant_Red_mix.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -631,7 +626,7 @@ function revealEmail(e) {
     </div></div>
   </section>
 
-  <section class="slide swiper-slide" data-index="2" data-videos='["CONTENUTI_SITO/BUIO1.mov","CONTENUTI_SITO/LA_NOTTE_IN_30_LIBRI1.mov","CONTENUTI_SITO/THE_NIGHT_AS_A_PLACE_1.mov"]'>
+  <section class="slide" data-index="2" data-videos='["CONTENUTI_SITO/BUIO1.mov","CONTENUTI_SITO/LA_NOTTE_IN_30_LIBRI1.mov","CONTENUTI_SITO/THE_NIGHT_AS_A_PLACE_1.mov"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -640,7 +635,7 @@ function revealEmail(e) {
     </div></div>
   </section>
 
-  <section class="slide swiper-slide" data-index="3" data-videos='["CONTENUTI_SITO/Medley_1.mp4"]'>
+  <section class="slide" data-index="3" data-videos='["CONTENUTI_SITO/Medley_1.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -649,7 +644,7 @@ function revealEmail(e) {
     </div></div>
   </section>
 
-  <section class="slide swiper-slide" data-index="4" data-videos='["CONTENUTI_SITO/Falmec_SICAM2025_916.mov"]'>
+  <section class="slide" data-index="4" data-videos='["CONTENUTI_SITO/Falmec_SICAM2025_916.mov"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -658,7 +653,7 @@ function revealEmail(e) {
     </div></div>
   </section>
 
-  <section class="slide swiper-slide" data-index="5" data-videos='["CONTENUTI_SITO/Julien_Chopin_-_Spot_Portfolio_4K.mov"]'>
+  <section class="slide" data-index="5" data-videos='["CONTENUTI_SITO/Julien_Chopin_-_Spot_Portfolio_4K.mov"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -667,7 +662,7 @@ function revealEmail(e) {
     </div></div>
   </section>
 
-  <section class="slide swiper-slide" data-index="6" data-videos='["CONTENUTI_SITO/Donne_di_seta_DEF.mp4"]'>
+  <section class="slide" data-index="6" data-videos='["CONTENUTI_SITO/Donne_di_seta_DEF.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -676,7 +671,7 @@ function revealEmail(e) {
     </div></div>
   </section>
 
-  <section class="slide swiper-slide" data-index="7" data-videos='["CONTENUTI_SITO/Pasolini_1_Movement.mov"]'>
+  <section class="slide" data-index="7" data-videos='["CONTENUTI_SITO/Pasolini_1_Movement.mov"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -685,7 +680,7 @@ function revealEmail(e) {
     </div></div>
   </section>
 
-  <section class="slide swiper-slide" data-index="8" data-videos='["CONTENUTI_SITO/ArmandoMilani_OBL2.mp4"]'>
+  <section class="slide" data-index="8" data-videos='["CONTENUTI_SITO/ArmandoMilani_OBL2.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -694,7 +689,7 @@ function revealEmail(e) {
     </div></div>
   </section>
 
-  <section class="slide swiper-slide" data-index="9" data-videos='["CONTENUTI_SITO/Dentag_1.mp4","CONTENUTI_SITO/Dentag_2.mp4","CONTENUTI_SITO/Dentag_3.mp4"]'>
+  <section class="slide" data-index="9" data-videos='["CONTENUTI_SITO/Dentag_1.mp4","CONTENUTI_SITO/Dentag_2.mp4","CONTENUTI_SITO/Dentag_3.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -703,7 +698,6 @@ function revealEmail(e) {
     </div></div>
   </section>
 
-  </div><!-- .swiper-wrapper -->
   <div class="nav-arrow" id="nav-prev"></div>
   <div class="nav-arrow" id="nav-next"></div>
 </main>
@@ -911,15 +905,33 @@ function goTo(idx) {
   const prevSlide = slides[prevIdx];
   const nextSlide = slides[nextIdx];
 
+  // Snap next slide into start position (no animation)
+  nextSlide.style.transition = 'none';
+  nextSlide.style.transform = `translateY(${inY})`;
+  nextSlide.style.pointerEvents = 'none';
+  nextSlide.offsetHeight; // force reflow
+
+  // Animate both
+  nextSlide.style.transition = ease;
+  nextSlide.style.transform = 'translateY(0)';
+  nextSlide.style.pointerEvents = 'all';
+
+  prevSlide.style.transition = ease;
+  prevSlide.style.transform = `translateY(${outY})`;
+  prevSlide.style.pointerEvents = 'none';
+
   current = nextIdx;
   counter.textContent = pad(current) + ' / ' + pad(total - 1);
 
-  // Update pointer events
-  slides.forEach((s, i) => {
-    s.style.pointerEvents = i === current ? 'all' : 'none';
-  });
-
-  setTimeout(() => { isTransitioning = false; }, 850);
+  setTimeout(() => {
+    // Park all off-screen, bring active back to 0
+    slides.forEach((s, i) => {
+      s.style.transition = 'none';
+      s.style.transform = i === current ? 'translateY(0)' : 'translateY(100%)';
+      s.style.pointerEvents = i === current ? 'all' : 'none';
+    });
+    isTransitioning = false;
+  }, 820);
 }
 
 
@@ -946,13 +958,46 @@ document.addEventListener('wheel', e => {
   }, 50);
 }, { passive: true });
 
-let touchStartX = 0;
-document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+// ── Touch — swipe robusto
+let touchStartX = 0, touchStartY = 0, touchStartTime = 0, touchFired = false;
+
+document.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+  touchStartTime = Date.now();
+  touchFired = false;
+}, { passive: true });
+
 document.addEventListener('touchend', e => {
-  if (drawerOpen || panelOpen) return;
+  if (drawerOpen || panelOpen || touchFired) return;
   const dx = e.changedTouches[0].clientX - touchStartX;
-  if (dx < -50) next(); if (dx > 50) prev();
-});
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  const dt = Date.now() - touchStartTime;
+  const threshold = dt < 300 ? 25 : 50;
+  touchFired = true;
+  if (Math.abs(dy) >= Math.abs(dx)) {
+    if (dy < -threshold) next();
+    else if (dy > threshold) prev();
+  } else {
+    if (dx < -threshold) next();
+    else if (dx > threshold) prev();
+  }
+}, { passive: true });
+
+// ── Trackpad & mouse wheel
+let lastWheelTime = 0, wheelAccum = 0;
+document.addEventListener('wheel', e => {
+  if (drawerOpen || panelOpen) return;
+  const now = Date.now();
+  if (now - lastWheelTime > 500) wheelAccum = 0;
+  lastWheelTime = now;
+  const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+  wheelAccum += delta;
+  if (Math.abs(wheelAccum) > 80) {
+    if (wheelAccum > 0) next(); else prev();
+    wheelAccum = 0;
+  }
+}, { passive: true });
 
 function openPanel() {
   panelOpen = true;
@@ -1071,14 +1116,15 @@ document.addEventListener('click', () => {
   if (!userInteracted) { userInteracted = true; setActiveAudio(); }
 }, { once: true });
 
-// ── Init positions — Swiper handles transforms
+// ── Init positions
 slides.forEach((s, i) => {
+  s.style.transition = 'none';
+  s.style.transform = i === 0 ? 'translateY(0)' : 'translateY(100%)';
   s.style.pointerEvents = i === 0 ? 'all' : 'none';
 });
 
 async function init() {
   await loadProjects();
-  // Return resolved promise for chaining
   // ── Init media
   slides.forEach(slide => {
     const videosRaw = slide.dataset.videos;
@@ -1090,7 +1136,7 @@ async function init() {
   updateSoundBtn();
   counter.textContent = pad(0) + ' / ' + pad(total - 1);
 }
-init().then(() => { initSwiper(); });
+init();
 </script>
 
 
@@ -1169,88 +1215,5 @@ init().then(() => { initSwiper(); });
     <a href="#" id="footer-gdpr-link">Privacy Policy</a>
   </div>
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.1.4/swiper-bundle.min.js"></script>
-
-<script>
-// ── Swiper initialization
-let swiper;
-
-function initSwiper() {
-  swiper = new Swiper('#rail', {
-    direction: 'vertical',
-    speed: 800,
-    threshold: 20,
-    mousewheel: {
-      enabled: true,
-      thresholdDelta: 50,
-      thresholdTime: 400,
-    },
-    touchReleaseOnEdges: true,
-    longSwipesRatio: 0.2,
-    shortSwipes: true,
-    followFinger: true,
-    resistanceRatio: 0,
-    on: {
-      slideChange: function() {
-        if (drawerOpen || panelOpen) return;
-        const newIdx = this.activeIndex;
-        if (newIdx === current) return;
-
-        // Stop all audio
-        slides.forEach(s => {
-          const v = s.querySelector('video');
-          if (v) { v.pause(); v.muted = true; }
-        });
-        const aa = document.getElementById('avalant-audio');
-        if (aa) { aa.pause(); aa.currentTime = 0; }
-
-        // Load media if lazy
-        const slide = slides[newIdx];
-        if (slide && slide.dataset.lazy === 'true') {
-          const vr = slide.dataset.videos;
-          if (vr) {
-            const list = JSON.parse(vr);
-            loadSlideMedia(slide, list[Math.floor(Math.random() * list.length)]);
-          }
-          delete slide.dataset.lazy;
-        }
-
-        current = newIdx;
-        counter.textContent = pad(current) + ' / ' + pad(total - 1);
-
-        // Play new video
-        const vid = slides[current].querySelector('video');
-        if (vid && vid.src) {
-          vid.muted = true;
-          vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
-        }
-
-        // Preload next
-        const nextSlide = slides[(current + 1) % total];
-        if (nextSlide && nextSlide.dataset.lazy === 'true') {
-          setTimeout(() => {
-            const vr = nextSlide.dataset.videos;
-            if (vr) {
-              const list = JSON.parse(vr);
-              loadSlideMedia(nextSlide, list[Math.floor(Math.random() * list.length)]);
-            }
-            delete nextSlide.dataset.lazy;
-          }, 600);
-        }
-
-        slides.forEach((s, i) => {
-          s.style.pointerEvents = i === current ? 'all' : 'none';
-        });
-      }
-    }
-  });
-}
-
-// Override next/prev to use Swiper
-function next() { if (swiper) swiper.slideNext(); }
-function prev() { if (swiper) swiper.slidePrev(); }
-
-init().then(() => { initSwiper(); });
-</script>
 </body>
 </html>
