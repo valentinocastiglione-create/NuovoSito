@@ -713,6 +713,7 @@
 const IMAGE_EXTS = ['jpg','jpeg','png','gif','webp','avif'];
 function isImage(src) { return IMAGE_EXTS.some(ext => src.toLowerCase().endsWith('.' + ext)); }
 
+// Riproduce un video (o immagine) nella slide indicata.
 function loadSlideMedia(slide, src) {
   const vid = slide.querySelector('video');
   const existingImg = slide.querySelector('img.slide-media');
@@ -727,18 +728,19 @@ function loadSlideMedia(slide, src) {
       vid.style.display = '';
       vid.src = src;
       vid.muted = true;
-      // FIX 4: ArmandoMilani (slide 8) — seek a t=4 solo se il faststart
-      // non è sufficiente, ma ora con preload="metadata" il seek avviene
-      // prima del play, evitando il ritardo visibile all'utente.
       if (src.includes('ArmandoMilani')) {
-        vid.preload = 'metadata';
-        const seekAndPlay = () => {
+        // seek a t=4 appena il metadata è disponibile
+        const doSeek = () => {
           vid.currentTime = 4;
           vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
-          vid.removeEventListener('loadedmetadata', seekAndPlay);
+          vid.removeEventListener('loadedmetadata', doSeek);
         };
-        vid.addEventListener('loadedmetadata', seekAndPlay);
-        vid.load();
+        if (vid.readyState >= 1) {
+          vid.currentTime = 4;
+          vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
+        } else {
+          vid.addEventListener('loadedmetadata', doSeek);
+        }
       } else {
         vid.play().then(() => {
           vid.muted = !soundOn;
@@ -759,30 +761,27 @@ function loadSlideMedia(slide, src) {
   }
 }
 
-// FIX 3: precarica silenziosamente la slide adiacente (N+1 e N-1)
-// con preload="metadata" così il browser scarica header + primi chunk
-// e il play è quasi istantaneo quando l'utente naviga.
+// Estrae un src casuale dalla lista data-videos della slide.
+function randomSrc(slide) {
+  const vr = slide.dataset.videos;
+  if (!vr) return null;
+  const list = JSON.parse(vr);
+  return list[Math.floor(Math.random() * list.length)] || null;
+}
+
+// Precarica la slide adiacente con <link rel=preload> — non tocca il <video>,
+// zero interferenze con loadSlideMedia. Il src casuale viene salvato in
+// data-preloadSrc e usato da goTo() al momento della navigazione.
 function preloadAdjacentSlide(idx) {
   const s = slides[idx];
-  if (!s) return;
-  // Se la slide è già stata caricata (lazy rimosso o video già con src), skip
-  if (s.dataset.lazy !== 'true') return;
-  const vr = s.dataset.videos;
-  if (!vr) return;
-  const list = JSON.parse(vr);
-  // Scegliamo un video casuale — stesso comportamento di goTo()
-  const src = list[Math.floor(Math.random() * list.length)];
+  if (!s || !s.dataset.lazy) return;
+  if (s.dataset.preloadSrc) return; // già precaricata
+  const src = randomSrc(s);
   if (!src || isImage(src)) return;
-  const vid = s.querySelector('video');
-  if (!vid || vid.src) return; // già impostato
-  vid.preload = 'metadata';
-  vid.src = src;
-  vid.muted = true;
-  // Non chiamiamo play() — solo preload silenzioso
-  // Rimuoviamo il flag lazy così goTo() sa che il src è già pronto
-  delete s.dataset.lazy;
-  // Memorizziamo il src scelto per riutilizzarlo in goTo()
-  s.dataset.preloaded = src;
+  s.dataset.preloadSrc = src;
+  const link = document.createElement('link');
+  link.rel = 'preload'; link.as = 'video'; link.href = src;
+  document.head.appendChild(link);
 }
 
 // Projects loaded from contenuti.json
@@ -896,76 +895,12 @@ function goTo(idx) {
   const prevSlide = slides[prevIdx];
   const nextSlide = slides[nextIdx];
 
-  // FIX 3: se la slide ha già un src precaricato, lo usiamo direttamente
-  // senza riscrivere il src (evita re-download), altrimenti carichiamo normalmente
-  const vid = nextSlide.querySelector('video');
-  if (nextSlide.dataset.preloaded) {
-    // Src già impostato dal preload, basta fare play
-    if (vid && vid.src) {
-      vid.currentTime = 0;
-      vid.muted = true;
-      if (nextSlide.dataset.preloaded.includes('ArmandoMilani')) {
-        // seek già gestito da loadedmetadata durante il preload;
-        // se il metadata è già pronto, seek + play direttamente
-        if (vid.readyState >= 1) {
-          vid.currentTime = 4;
-          vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
-        } else {
-          const onMeta = () => {
-            vid.currentTime = 4;
-            vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
-            vid.removeEventListener('loadedmetadata', onMeta);
-          };
-          vid.addEventListener('loadedmetadata', onMeta);
-        }
-      } else {
-        vid.play().then(() => {
-          vid.muted = !soundOn;
-          const avalantAudio = document.getElementById('avalant-audio');
-          if (avalantAudio) {
-            if (nextSlide.dataset.preloaded.includes('Avalant')) {
-              avalantAudio.currentTime = 0;
-              avalantAudio.muted = !soundOn;
-              avalantAudio.play().catch(() => {});
-            } else {
-              avalantAudio.pause();
-              avalantAudio.currentTime = 0;
-            }
-          }
-        }).catch(() => { vid.muted = true; });
-      }
-    }
-    delete nextSlide.dataset.preloaded;
-  } else if (nextSlide.dataset.lazy === 'true') {
-    // Nessun preload disponibile: carica ora
-    const vr = nextSlide.dataset.videos;
-    if (vr) {
-      const list = JSON.parse(vr);
-      loadSlideMedia(nextSlide, list[Math.floor(Math.random() * list.length)]);
-    }
-    delete nextSlide.dataset.lazy;
-  } else {
-    // Slide già caricata in precedenza (es. tornando indietro)
-    if (vid && vid.src) {
-      vid.currentTime = 0;
-      vid.muted = true;
-      if (vid.src.includes('ArmandoMilani')) {
-        if (vid.readyState >= 1) {
-          vid.currentTime = 4;
-          vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
-        } else {
-          const onMeta = () => {
-            vid.currentTime = 4;
-            vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
-            vid.removeEventListener('loadedmetadata', onMeta);
-          };
-          vid.addEventListener('loadedmetadata', onMeta);
-        }
-      } else {
-        vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
-      }
-    }
-  }
+  // Sceglie il src: usa il preloadSrc se disponibile (già bufferizzato),
+  // altrimenti estrae un nuovo casuale. In ogni caso passa da loadSlideMedia.
+  const src = nextSlide.dataset.preloadSrc || randomSrc(nextSlide);
+  delete nextSlide.dataset.preloadSrc;
+  delete nextSlide.dataset.lazy;
+  if (src) loadSlideMedia(nextSlide, src);
 
   // Snap next slide in posizione di partenza (niente animazione)
   nextSlide.style.transition = 'none';
@@ -1157,25 +1092,21 @@ slides.forEach((s, i) => {
 });
 
 async function init() {
-  // FIX 2: carica media slide 0 e avvia preload slide 1
-  // SENZA aspettare loadProjects() — il JSON viene caricato in parallelo
-  const v0 = slides[0].dataset.videos;
-  if (v0) {
-    const l = JSON.parse(v0);
-    loadSlideMedia(slides[0], l[Math.floor(Math.random() * l.length)]);
-  }
+  // Carica subito la slide 0 con video casuale — senza aspettare il JSON
+  const src0 = randomSrc(slides[0]);
+  if (src0) loadSlideMedia(slides[0], src0);
+
   // Marca tutte le altre come lazy
   slides.forEach((s, i) => { if (i > 0) s.dataset.lazy = 'true'; });
 
   updateSoundBtn();
   counter.textContent = pad(0) + ' / ' + pad(total - 1);
 
-  // FIX 3: precarica subito slide 1 e slide 9 (adiacenti alla prima)
-  // in modo che la prima navigazione sia già fluida
+  // Precarica le slide adiacenti alla prima (link preload, no interferenze)
   preloadAdjacentSlide(1);
   preloadAdjacentSlide(total - 1);
 
-  // FIX 2: loadProjects senza await — non blocca più il rendering
+  // Carica i dati JSON in parallelo — non blocca il rendering
   loadProjects();
 }
 init();
