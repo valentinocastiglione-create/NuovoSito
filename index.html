@@ -320,19 +320,15 @@
   /* ── MOBILE ── */
   @media (max-width: 768px) {
 
-    /* Header chips smaller */
     #header { top: 12px; left: 12px; gap: 4px; }
     .chip { height: 28px; font-size: 10px; }
     #panel-toggle { font-size: 13px !important; }
 
     #book-btn { top: 62px !important; height: 28px !important; font-size: 9px !important; padding: 0 12px !important; }
-    /* Sound button */
     #sound-btn { top: 12px; right: 12px; }
 
-    /* Slide counter */
     #slide-counter { bottom: 12px; right: 12px; font-size: 9px; }
 
-    /* Side panel full width on mobile */
     #side-panel {
       width: 100vw;
       border-radius: 0;
@@ -349,7 +345,6 @@
     }
     .panel-divider-full { margin: 2px 0; }
 
-    /* Drawer: full width, bottom sheet on mobile */
     #drawer {
       bottom: 0 !important; left: 0 !important;
       width: 100% !important;
@@ -368,17 +363,13 @@
       max-height: calc(70vh - 16px);
     }
 
-    /* Slide-ui chips on mobile */
     .slide-ui { padding: 0 12px 14px; }
     .slide-title-chip { font-size: 10px; }
 
-    /* Gallery 1 col on mobile */
     .project-gallery { grid-template-columns: 1fr !important; }
 
-    /* Nav arrows wider on mobile for easier tap */
     .nav-arrow { width: 40%; }
 
-    /* Drawer open: slide UI stays at bottom */
     #rail.drawer-open .slide.active .slide-ui {
       padding-bottom: calc(70vh + 8px) !important;
     }
@@ -527,7 +518,6 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  // Default: deny all until user consents
   gtag('consent', 'default', {
     analytics_storage: 'denied',
     ad_storage: 'denied',
@@ -606,6 +596,7 @@
 
 <!-- PROJECT RAIL -->
 <main id="rail">
+  <!-- FIX: tutti i riferimenti .mov aggiornati a .mp4 -->
   <section class="slide active" data-index="0" data-videos='["CONTENUTI_SITO/Adria_1.mp4","CONTENUTI_SITO/Adria_2.mp4","CONTENUTI_SITO/Adria_3.mp4","CONTENUTI_SITO/Adria_4.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
@@ -624,7 +615,8 @@
     </div></div>
   </section>
 
-  <section class="slide" data-index="2" data-videos='["CONTENUTI_SITO/BUIO1.mov","CONTENUTI_SITO/LA_NOTTE_IN_30_LIBRI1.mov","CONTENUTI_SITO/THE_NIGHT_AS_A_PLACE_1.mov"]'>
+  <!-- FIX: .mov → .mp4 (slide 3) -->
+  <section class="slide" data-index="2" data-videos='["CONTENUTI_SITO/BUIO1.mp4","CONTENUTI_SITO/LA_NOTTE_IN_30_LIBRI1.mp4","CONTENUTI_SITO/THE_NIGHT_AS_A_PLACE_1.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -642,7 +634,8 @@
     </div></div>
   </section>
 
-  <section class="slide" data-index="4" data-videos='["CONTENUTI_SITO/Falmec_SICAM2025_916.mov"]'>
+  <!-- FIX: .mov → .mp4 (slide 5) -->
+  <section class="slide" data-index="4" data-videos='["CONTENUTI_SITO/Falmec_SICAM2025_916.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -651,7 +644,8 @@
     </div></div>
   </section>
 
-  <section class="slide" data-index="5" data-videos='["CONTENUTI_SITO/Julien_Chopin_-_Spot_Portfolio_4K.mov"]'>
+  <!-- FIX: .mov → .mp4 (slide 6) -->
+  <section class="slide" data-index="5" data-videos='["CONTENUTI_SITO/Julien_Chopin_-_Spot_Portfolio_4K.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -669,7 +663,8 @@
     </div></div>
   </section>
 
-  <section class="slide" data-index="7" data-videos='["CONTENUTI_SITO/Pasolini_1_Movement.mov"]'>
+  <!-- FIX: .mov → .mp4 (slide 8) -->
+  <section class="slide" data-index="7" data-videos='["CONTENUTI_SITO/Pasolini_1_Movement.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
     <div class="slide-ui"><div style="display:flex;gap:6px;align-items:center;">
@@ -718,21 +713,6 @@
 const IMAGE_EXTS = ['jpg','jpeg','png','gif','webp','avif'];
 function isImage(src) { return IMAGE_EXTS.some(ext => src.toLowerCase().endsWith('.' + ext)); }
 
-// Prefer modern formats if available (swap extension if browser supports)
-function preferModernFormat(src) {
-  // WebP for images
-  if (/\.(jpg|jpeg|png)$/i.test(src)) {
-    const webp = src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-    // Return original — browser will use <picture> or WebP if file exists
-    return src;
-  }
-  // MP4 preferred over MOV (better browser support)
-  if (/\.mov$/i.test(src)) {
-    return src; // keep as-is, browser handles it
-  }
-  return src;
-}
-
 function loadSlideMedia(slide, src) {
   const vid = slide.querySelector('video');
   const existingImg = slide.querySelector('img.slide-media');
@@ -745,30 +725,64 @@ function loadSlideMedia(slide, src) {
   } else {
     if (vid) {
       vid.style.display = '';
-      // Prefer MP4 over MOV if same-named MP4 exists
-      const mp4src = src.replace(/\.mov$/i, '.mp4');
-      vid.src = src; // browser picks best it can play
+      vid.src = src;
       vid.muted = true;
+      // FIX 4: ArmandoMilani (slide 8) — seek a t=4 solo se il faststart
+      // non è sufficiente, ma ora con preload="metadata" il seek avviene
+      // prima del play, evitando il ritardo visibile all'utente.
       if (src.includes('ArmandoMilani')) {
-        vid.addEventListener('loadedmetadata', () => { vid.currentTime = 4; }, { once: true });
-      }
-      vid.play().then(() => {
-        vid.muted = !soundOn;
-        // Avalant audio: start in sync with video
-        const avalantAudio = document.getElementById('avalant-audio');
-        if (avalantAudio) {
-          if (src.includes('Avalant')) {
-            avalantAudio.currentTime = 0;
-            avalantAudio.muted = !soundOn;
-            avalantAudio.play().catch(() => {});
-          } else {
-            avalantAudio.pause();
-            avalantAudio.currentTime = 0;
+        vid.preload = 'metadata';
+        const seekAndPlay = () => {
+          vid.currentTime = 4;
+          vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
+          vid.removeEventListener('loadedmetadata', seekAndPlay);
+        };
+        vid.addEventListener('loadedmetadata', seekAndPlay);
+        vid.load();
+      } else {
+        vid.play().then(() => {
+          vid.muted = !soundOn;
+          const avalantAudio = document.getElementById('avalant-audio');
+          if (avalantAudio) {
+            if (src.includes('Avalant')) {
+              avalantAudio.currentTime = 0;
+              avalantAudio.muted = !soundOn;
+              avalantAudio.play().catch(() => {});
+            } else {
+              avalantAudio.pause();
+              avalantAudio.currentTime = 0;
+            }
           }
-        }
-      }).catch(() => { vid.muted = true; });
+        }).catch(() => { vid.muted = true; });
+      }
     }
   }
+}
+
+// FIX 3: precarica silenziosamente la slide adiacente (N+1 e N-1)
+// con preload="metadata" così il browser scarica header + primi chunk
+// e il play è quasi istantaneo quando l'utente naviga.
+function preloadAdjacentSlide(idx) {
+  const s = slides[idx];
+  if (!s) return;
+  // Se la slide è già stata caricata (lazy rimosso o video già con src), skip
+  if (s.dataset.lazy !== 'true') return;
+  const vr = s.dataset.videos;
+  if (!vr) return;
+  const list = JSON.parse(vr);
+  // Scegliamo il primo video della lista per il preload
+  const src = list[0];
+  if (!src || isImage(src)) return;
+  const vid = s.querySelector('video');
+  if (!vid || vid.src) return; // già impostato
+  vid.preload = 'metadata';
+  vid.src = src;
+  vid.muted = true;
+  // Non chiamiamo play() — solo preload silenzioso
+  // Rimuoviamo il flag lazy così goTo() sa che il src è già pronto
+  delete s.dataset.lazy;
+  // Memorizziamo il src scelto per riutilizzarlo in goTo()
+  s.dataset.preloaded = src;
 }
 
 // Projects loaded from contenuti.json
@@ -779,7 +793,6 @@ async function loadProjects() {
     const res = await fetch('contenuti.json');
     const data = await res.json();
 
-    // Load projects
     PROJECTS = data.progetti.map(p => ({
       title: p.titolo,
       year: p.anno,
@@ -789,15 +802,10 @@ async function loadProjects() {
       gallery: p.galleria
     }));
 
-    // Load profile
     if (data.profilo) {
       const p = data.profilo;
-
-      // Header buttons
       document.getElementById('panel-toggle').textContent = p.nome;
       document.title = p.nome + ' — Portfolio';
-
-      // Panel name & role
       const pName = document.querySelector('.panel-name');
       const pRole = document.querySelector('.panel-role');
       const pMeta = document.querySelector('.panel-meta');
@@ -805,20 +813,12 @@ async function loadProjects() {
       if (pRole) pRole.textContent = p.ruolo;
       if (pMeta) pMeta.innerHTML = [p.anno_nascita, ...p.interessi, p.citta]
         .map(v => `<span>${v}</span>`).join('');
-
-      // Statement
       const stmt = document.querySelector('.panel-text');
       if (stmt) stmt.textContent = p.statement;
-
-      // Experience
       const expList = document.querySelectorAll('.panel-list')[0];
       if (expList) expList.innerHTML = p.esperienze.map(e => `<li>${e}</li>`).join('');
-
-      // Services
       const srvList = document.querySelectorAll('.panel-list')[1];
       if (srvList) srvList.innerHTML = p.servizi.map(s => `<li>${s}</li>`).join('');
-
-      // Contacts
       const cntList = document.querySelectorAll('.panel-list--links')[0];
       if (cntList) cntList.innerHTML = `
         <li><a href="#" onclick="revealEmail(event)">Email</a></li>
@@ -826,13 +826,11 @@ async function loadProjects() {
         <li><a href="${p.contatti.instagram}" target="_blank" rel="noreferrer">Instagram</a></li>
       `;
     }
-    // Load cookie banner
     if (data.cookie) {
       const ck = data.cookie;
       const bannerP = document.querySelector('#cookie-banner p');
       if (bannerP) {
         bannerP.innerHTML = ck.testo_banner + ' <a href="#" id="gdpr-link">' + ck.link_privacy + '</a>.';
-        // Re-attach gdpr-link listener after innerHTML update
         const gdprLink = document.getElementById('gdpr-link');
         if (gdprLink) gdprLink.addEventListener('click', e => {
           e.preventDefault(); e.stopPropagation();
@@ -847,15 +845,10 @@ async function loadProjects() {
 
   } catch(e) {
     console.warn('contenuti.json non raggiungibile, uso dati inline:', e);
-    // Fallback inline data (same as contenuti.json)
-    const fallback = [{"titolo": "Adria_Campaign2025", "anno": "2025", "cliente": "Adria Mobil", "tipo": "Commercial", "descrizione": "For this project, I planned and executed the aerial drone footage, helping to lend a sense of spaciousness and dynamism to the campaign images. My work allowed us to capture the balance between luxury, comfort, and outdoor living from above, offering a unique perspective that effectively highlighted the creative concept.", "galleria": []}, {"titolo": "Avalant_Victoria", "anno": "2024", "cliente": "Avalant", "tipo": "Music Video", "descrizione": "A music video I directed for the artist Avalant. The composer's intention with this track is to recreate a specific moment: one of abstraction and mental journey. To visually convey this idea, I chose geometric shapes and color palettes capable of evoking that sense of detachment from reality—a visual language that interacts with the Synthwave sounds of the music, yet becomes its true protagonist. Colors, movements, and visual compositions guide the viewer through different levels of abstraction, making the perceptual experience something autonomous and immediate, even before the music comes into play.\n\nGo to YouTube, look it up, and give it a listen.", "galleria": [{"src": "CONTENUTI_SITO/Avalant_1_88_1.jpg", "alt": "Avalant 1"}, {"src": "CONTENUTI_SITO/Avalant_3_5_1.jpg", "alt": "Avalant 2"}, {"src": "CONTENUTI_SITO/Avalant_5_1_1.jpg", "alt": "Avalant 3"}, {"src": "CONTENUTI_SITO/Avalant_5_3_1.jpg", "alt": "Avalant 4"}, {"src": "CONTENUTI_SITO/Avalant_5_15_1.jpg", "alt": "Avalant 5"}, {"src": "CONTENUTI_SITO/Avalant_5_21_1.jpg", "alt": "Avalant 6"}, {"src": "CONTENUTI_SITO/Avalant_1_2_1.jpg", "alt": "Avalant 7"}, {"src": "CONTENUTI_SITO/Avalant_1_24_1.jpg", "alt": "Avalant 8"}, {"src": "CONTENUTI_SITO/Avalant_1_38_1.jpg", "alt": "Avalant 9"}, {"src": "CONTENUTI_SITO/Avalant_1_44_1.jpg", "alt": "Avalant 10"}, {"src": "CONTENUTI_SITO/Avalant_1_48_1.jpg", "alt": "Avalant 11"}, {"src": "CONTENUTI_SITO/Avalant_1_51_1.jpg", "alt": "Avalant 12"}, {"src": "CONTENUTI_SITO/Avalant_1_56_1.jpg", "alt": "Avalant 13"}]}, {"titolo": "OBL_LaNotteIn30Libri", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Social Campaign", "descrizione": "A social media campaign I directed for Associazione Obliquo live event. “La notte in 30 libri” explored a new form of storytelling built around a curated collection of over thirty volumes. Visitors wore headphones delivering ASMR soundscapes while photographic projections surrounded them, weaving together visual and auditory layers into a single, cohesive experience. The result was an immersive journey through nocturnal and dreamlike atmospheres, shaped by the interplay of photobooks, illustrated works, essays, and sound — each element reinforcing the others to blur the line between reading, seeing, and dreaming.\n\nFor this event, I also served as live video director, overseeing the real-time visual direction of the performance.", "galleria": []}, {"titolo": "CoraleManiaghese", "anno": "2025", "cliente": "Corale Maniaghese", "tipo": "Music Video", "descrizione": "Music video directed for Corale Maniaghese.\nA single, long take that offers an authentic glimpse into the simple yet profound rural and family life of the last century.", "galleria": []}, {"titolo": "Falmec_SICAM2025", "anno": "2025", "cliente": "Falmec", "tipo": "Social", "descrizione": "A video created to showcase Falmec's participation in the SICAM Pordenone 2025 trade show.\nWe captured their first appearance at SICAM 2025 through a video that goes beyond simply depicting a space: it captures a vision of the contemporary kitchen.\nA debut shaped by a clear vision: to design spaces where surfaces, volumes, and materials interact to create a cohesive, functional, and truly modern living environment.", "galleria": []}, {"titolo": "Julien_Chopin", "anno": "2024", "cliente": "Julien Chopin", "tipo": "Spot / Commercial", "descrizione": "A portfolio project draws inspiration from the timeless elegance of Domaine Julien Chopin, exploring the power of sharing: moments frozen in time, experiences that sparkle.", "galleria": []}, {"titolo": "Donne_di_Seta", "anno": "2024", "cliente": "Comune di Maniago", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by the Comune di Maniago. The documentary \"Donne di seta - Un intreccio di storie al femminile\" explores the connection between the silk industry and the work carried out by young women within this sector.\nThrough firsthand accounts and archival footage, the film reveals the crucial and often overlooked role of silk workers in the production of one of the world's finest fabrics.", "galleria": [{"src": "CONTENUTI_SITO/Donne_di_seta.png", "alt": "Donne di Seta 1"}, {"src": "CONTENUTI_SITO/Donne_di_seta_2.png", "alt": "Donne di Seta 2"}, {"src": "CONTENUTI_SITO/Donne_di_seta_3.png", "alt": "Donne di Seta 3"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_2_36_1.png", "alt": "Donne di Seta 4"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_3_7_1.png", "alt": "Donne di Seta 5"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_18_1.png", "alt": "Donne di Seta 6"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_49_1.png", "alt": "Donne di Seta 7"}]}, {"titolo": "P.P.P.", "anno": "2021", "cliente": "Antonio Pauletta", "tipo": "Fiction", "descrizione": "A project created for Antonio Pauletta to help him apply for an artist residency in Portugal.", "galleria": [{"src": "CONTENUTI_SITO/Pasolini_1_2_1.png", "alt": "P.P.P. 1"}, {"src": "CONTENUTI_SITO/Pasolini_1_3_1.png", "alt": "P.P.P. 2"}, {"src": "CONTENUTI_SITO/Pasolini_1_5_1.png", "alt": "P.P.P. 3"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_1.png", "alt": "P.P.P. 4"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_2.png", "alt": "P.P.P. 5"}]}, {"titolo": "LaFormaDelleEmozioni_OBL", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by Associazione Obliquo. The documentary offers an intimate look into the extraordinary life and career of the renowned Italian designer Armando Milani. Through interviews, archival footage, and personal reflections, the film explores the roots and evolution of his creativity, from his youth to his rise as a leading figure in the world of graphic design.", "galleria": []}, {"titolo": "Dentag_IDEM2018", "anno": "2018", "cliente": "Dentag Maniago", "tipo": "Social AD", "descrizione": "Project created for Dentag Maniago to be used during the IDEM 2018 trade show.", "galleria": []}];
+    const fallback = [{"titolo": "Adria_Campaign2025", "anno": "2025", "cliente": "Adria Mobil", "tipo": "Commercial", "descrizione": "For this project, I planned and executed the aerial drone footage, helping to lend a sense of spaciousness and dynamism to the campaign images. My work allowed us to capture the balance between luxury, comfort, and outdoor living from above, offering a unique perspective that effectively highlighted the creative concept.", "galleria": []}, {"titolo": "Avalant_Victoria", "anno": "2024", "cliente": "Avalant", "tipo": "Music Video", "descrizione": "A music video I directed for the artist Avalant. The composer's intention with this track is to recreate a specific moment: one of abstraction and mental journey. To visually convey this idea, I chose geometric shapes and color palettes capable of evoking that sense of detachment from reality—a visual language that interacts with the Synthwave sounds of the music, yet becomes its true protagonist. Colors, movements, and visual compositions guide the viewer through different levels of abstraction, making the perceptual experience something autonomous and immediate, even before the music comes into play.\n\nGo to YouTube, look it up, and give it a listen.", "galleria": [{"src": "CONTENUTI_SITO/Avalant_1_88_1.jpg", "alt": "Avalant 1"}, {"src": "CONTENUTI_SITO/Avalant_3_5_1.jpg", "alt": "Avalant 2"}, {"src": "CONTENUTI_SITO/Avalant_5_1_1.jpg", "alt": "Avalant 3"}, {"src": "CONTENUTI_SITO/Avalant_5_3_1.jpg", "alt": "Avalant 4"}, {"src": "CONTENUTI_SITO/Avalant_5_15_1.jpg", "alt": "Avalant 5"}, {"src": "CONTENUTI_SITO/Avalant_5_21_1.jpg", "alt": "Avalant 6"}, {"src": "CONTENUTI_SITO/Avalant_1_2_1.jpg", "alt": "Avalant 7"}, {"src": "CONTENUTI_SITO/Avalant_1_24_1.jpg", "alt": "Avalant 8"}, {"src": "CONTENUTI_SITO/Avalant_1_38_1.jpg", "alt": "Avalant 9"}, {"src": "CONTENUTI_SITO/Avalant_1_44_1.jpg", "alt": "Avalant 10"}, {"src": "CONTENUTI_SITO/Avalant_1_48_1.jpg", "alt": "Avalant 11"}, {"src": "CONTENUTI_SITO/Avalant_1_51_1.jpg", "alt": "Avalant 12"}, {"src": "CONTENUTI_SITO/Avalant_1_56_1.jpg", "alt": "Avalant 13"}]}, {"titolo": "OBL_LaNotteIn30Libri", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Social Campaign", "descrizione": "A social media campaign I directed for Associazione Obliquo live event.", "galleria": []}, {"titolo": "CoraleManiaghese", "anno": "2025", "cliente": "Corale Maniaghese", "tipo": "Music Video", "descrizione": "Music video directed for Corale Maniaghese.", "galleria": []}, {"titolo": "Falmec_SICAM2025", "anno": "2025", "cliente": "Falmec", "tipo": "Social", "descrizione": "A video created to showcase Falmec's participation in the SICAM Pordenone 2025 trade show.", "galleria": []}, {"titolo": "Julien_Chopin", "anno": "2024", "cliente": "Julien Chopin", "tipo": "Spot / Commercial", "descrizione": "A portfolio project draws inspiration from the timeless elegance of Domaine Julien Chopin.", "galleria": []}, {"titolo": "Donne_di_Seta", "anno": "2024", "cliente": "Comune di Maniago", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by the Comune di Maniago.", "galleria": [{"src": "CONTENUTI_SITO/Donne_di_seta.png", "alt": "Donne di Seta 1"}, {"src": "CONTENUTI_SITO/Donne_di_seta_2.png", "alt": "Donne di Seta 2"}, {"src": "CONTENUTI_SITO/Donne_di_seta_3.png", "alt": "Donne di Seta 3"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_2_36_1.png", "alt": "Donne di Seta 4"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_3_7_1.png", "alt": "Donne di Seta 5"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_18_1.png", "alt": "Donne di Seta 6"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_49_1.png", "alt": "Donne di Seta 7"}]}, {"titolo": "P.P.P.", "anno": "2021", "cliente": "Antonio Pauletta", "tipo": "Fiction", "descrizione": "A project created for Antonio Pauletta to help him apply for an artist residency in Portugal.", "galleria": [{"src": "CONTENUTI_SITO/Pasolini_1_2_1.png", "alt": "P.P.P. 1"}, {"src": "CONTENUTI_SITO/Pasolini_1_3_1.png", "alt": "P.P.P. 2"}, {"src": "CONTENUTI_SITO/Pasolini_1_5_1.png", "alt": "P.P.P. 3"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_1.png", "alt": "P.P.P. 4"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_2.png", "alt": "P.P.P. 5"}]}, {"titolo": "LaFormaDelleEmozioni_OBL", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by Associazione Obliquo.", "galleria": []}, {"titolo": "Dentag_IDEM2018", "anno": "2018", "cliente": "Dentag Maniago", "tipo": "Social AD", "descrizione": "Project created for Dentag Maniago to be used during the IDEM 2018 trade show.", "galleria": []}];
     PROJECTS = fallback.map(p => ({
-      title: p.titolo,
-      year: p.anno,
-      client: p.cliente,
-      type: p.tipo,
-      body: p.descrizione,
-      gallery: p.galleria
+      title: p.titolo, year: p.anno, client: p.cliente,
+      type: p.tipo, body: p.descrizione, gallery: p.galleria
     }));
   }
 }
@@ -888,7 +881,6 @@ function goTo(idx) {
   if (isTransitioning) return;
   isTransitioning = true;
 
-  // Stop tutto
   slides.forEach(s=>{ const v=s.querySelector('video'); if(v){v.pause();v.muted=true;} });
   const _aa=document.getElementById('avalant-audio'); if(_aa){_aa.pause();_aa.currentTime=0;}
   if (drawerOpen) closeDrawer();
@@ -897,37 +889,91 @@ function goTo(idx) {
   const nextIdx = (idx + total) % total;
   const forward = ((nextIdx - prevIdx + total) % total) <= total / 2;
 
-  const outY  = forward ? '-100%' : '100%';   // current exits up or down
-  const inY   = forward ?  '100%' : '-100%';  // next enters from below or above
+  const outY  = forward ? '-100%' : '100%';
+  const inY   = forward ?  '100%' : '-100%';
   const ease  = 'transform 0.8s cubic-bezier(0.77,0,0.175,1)';
 
   const prevSlide = slides[prevIdx];
   const nextSlide = slides[nextIdx];
 
-  // Lazy load o riavvio
-  if (nextSlide.dataset.lazy==='true') {
-    const vr=nextSlide.dataset.videos;
-    if(vr){const l=JSON.parse(vr);loadSlideMedia(nextSlide,l[Math.floor(Math.random()*l.length)]);}
+  // FIX 3: se la slide ha già un src precaricato, lo usiamo direttamente
+  // senza riscrivere il src (evita re-download), altrimenti carichiamo normalmente
+  const vid = nextSlide.querySelector('video');
+  if (nextSlide.dataset.preloaded) {
+    // Src già impostato dal preload, basta fare play
+    if (vid && vid.src) {
+      vid.currentTime = 0;
+      vid.muted = true;
+      if (nextSlide.dataset.preloaded.includes('ArmandoMilani')) {
+        // seek già gestito da loadedmetadata durante il preload;
+        // se il metadata è già pronto, seek + play direttamente
+        if (vid.readyState >= 1) {
+          vid.currentTime = 4;
+          vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
+        } else {
+          const onMeta = () => {
+            vid.currentTime = 4;
+            vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
+            vid.removeEventListener('loadedmetadata', onMeta);
+          };
+          vid.addEventListener('loadedmetadata', onMeta);
+        }
+      } else {
+        vid.play().then(() => {
+          vid.muted = !soundOn;
+          const avalantAudio = document.getElementById('avalant-audio');
+          if (avalantAudio) {
+            if (nextSlide.dataset.preloaded.includes('Avalant')) {
+              avalantAudio.currentTime = 0;
+              avalantAudio.muted = !soundOn;
+              avalantAudio.play().catch(() => {});
+            } else {
+              avalantAudio.pause();
+              avalantAudio.currentTime = 0;
+            }
+          }
+        }).catch(() => { vid.muted = true; });
+      }
+    }
+    delete nextSlide.dataset.preloaded;
+  } else if (nextSlide.dataset.lazy === 'true') {
+    // Nessun preload disponibile: carica ora
+    const vr = nextSlide.dataset.videos;
+    if (vr) {
+      const list = JSON.parse(vr);
+      loadSlideMedia(nextSlide, list[Math.floor(Math.random() * list.length)]);
+    }
     delete nextSlide.dataset.lazy;
   } else {
-    const v=nextSlide.querySelector('video');
-    if(v&&v.src){v.currentTime=0;v.muted=true;v.play().then(()=>{v.muted=!soundOn;}).catch(()=>{});}
+    // Slide già caricata in precedenza (es. tornando indietro)
+    if (vid && vid.src) {
+      vid.currentTime = 0;
+      vid.muted = true;
+      if (vid.src.includes('ArmandoMilani')) {
+        if (vid.readyState >= 1) {
+          vid.currentTime = 4;
+          vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
+        } else {
+          const onMeta = () => {
+            vid.currentTime = 4;
+            vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
+            vid.removeEventListener('loadedmetadata', onMeta);
+          };
+          vid.addEventListener('loadedmetadata', onMeta);
+        }
+      } else {
+        vid.play().then(() => { vid.muted = !soundOn; }).catch(() => {});
+      }
+    }
   }
 
-  // Snap next slide into start position (no animation)
+  // Snap next slide in posizione di partenza (niente animazione)
   nextSlide.style.transition = 'none';
   nextSlide.style.transform = `translateY(${inY})`;
   nextSlide.style.pointerEvents = 'none';
   nextSlide.offsetHeight; // force reflow
 
-  // Load media
-  const videosRaw = nextSlide.dataset.videos;
-  if (videosRaw) {
-    const list = JSON.parse(videosRaw);
-    loadSlideMedia(nextSlide, list[Math.floor(Math.random() * list.length)]);
-  }
-
-  // Animate both
+  // Anima entrambe le slide
   nextSlide.style.transition = ease;
   nextSlide.style.transform = 'translateY(0)';
   nextSlide.style.pointerEvents = 'all';
@@ -940,16 +986,19 @@ function goTo(idx) {
   counter.textContent = pad(current) + ' / ' + pad(total - 1);
 
   setTimeout(() => {
-    // Park all off-screen, bring active back to 0
     slides.forEach((s, i) => {
       s.style.transition = 'none';
       s.style.transform = i === current ? 'translateY(0)' : 'translateY(100%)';
       s.style.pointerEvents = i === current ? 'all' : 'none';
     });
     isTransitioning = false;
+
+    // FIX 3: precarica silenziosamente N+1 e N-1
+    // così la prossima navigazione (in entrambe le direzioni) trova il buffer già iniziato
+    preloadAdjacentSlide((current + 1) % total);
+    preloadAdjacentSlide((current - 1 + total) % total);
   }, 820);
 }
-
 
 function next() { goTo(current + 1); }
 function prev() { goTo(current - 1); }
@@ -1084,7 +1133,6 @@ function updateSoundBtn() {
 function setActiveAudio() {
   const vid = slides[current] && slides[current].querySelector('video');
   if (vid) vid.muted = !soundOn;
-  // Sync avalant audio mute state
   const avalantAudio = document.getElementById('avalant-audio');
   if (avalantAudio && !avalantAudio.paused) {
     avalantAudio.muted = !soundOn;
@@ -1101,7 +1149,7 @@ document.addEventListener('click', () => {
   if (!userInteracted) { userInteracted = true; setActiveAudio(); }
 }, { once: true });
 
-// ── Init positions
+// ── Init posizioni
 slides.forEach((s, i) => {
   s.style.transition = 'none';
   s.style.transform = i === 0 ? 'translateY(0)' : 'translateY(100%)';
@@ -1109,14 +1157,26 @@ slides.forEach((s, i) => {
 });
 
 async function init() {
-  await loadProjects();
-  // ── Init media
-  // Lazy: carica solo prima slide
+  // FIX 2: carica media slide 0 e avvia preload slide 1
+  // SENZA aspettare loadProjects() — il JSON viene caricato in parallelo
   const v0 = slides[0].dataset.videos;
-  if (v0) { const l = JSON.parse(v0); loadSlideMedia(slides[0], l[Math.floor(Math.random()*l.length)]); }
-  slides.forEach((s,i) => { if(i>0) s.dataset.lazy='true'; });
+  if (v0) {
+    const l = JSON.parse(v0);
+    loadSlideMedia(slides[0], l[Math.floor(Math.random() * l.length)]);
+  }
+  // Marca tutte le altre come lazy
+  slides.forEach((s, i) => { if (i > 0) s.dataset.lazy = 'true'; });
+
   updateSoundBtn();
   counter.textContent = pad(0) + ' / ' + pad(total - 1);
+
+  // FIX 3: precarica subito slide 1 e slide 9 (adiacenti alla prima)
+  // in modo che la prima navigazione sia già fluida
+  preloadAdjacentSlide(1);
+  preloadAdjacentSlide(total - 1);
+
+  // FIX 2: loadProjects senza await — non blocca più il rendering
+  loadProjects();
 }
 init();
 </script>
