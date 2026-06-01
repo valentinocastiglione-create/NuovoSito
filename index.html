@@ -770,8 +770,8 @@ function preloadAdjacentSlide(idx) {
   const vr = s.dataset.videos;
   if (!vr) return;
   const list = JSON.parse(vr);
-  // Scegliamo il primo video della lista per il preload
-  const src = list[0];
+  // Scegliamo un video casuale — stesso comportamento di goTo()
+  const src = list[Math.floor(Math.random() * list.length)];
   if (!src || isImage(src)) return;
   const vid = s.querySelector('video');
   if (!vid || vid.src) return; // già impostato
