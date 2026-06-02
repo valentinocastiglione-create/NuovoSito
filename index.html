@@ -5,12 +5,24 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNjYzAwMDAiLz48L3N2Zz4=">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: blob: https://www.google-analytics.com https://img.youtube.com; media-src 'self' blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://cloudflareinsights.com;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Valentino Castiglione — Portfolio</title>
+<title>Valentino Castiglione Filmmaker</title>
 <meta name="description" content="Valentino Castiglione — Director, Cinematographer and Drone Cinematographer based in Venice. Film directing, documentaries, music videos, commercial and drone cinematography.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Valentino Castiglione">
+<meta property="og:title" content="Valentino Castiglione Filmmaker">
+<meta property="og:description" content="Director, Cinematographer and Drone Cinematographer based in Venice. Film directing, documentaries, music videos, commercial and drone cinematography.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.valentinocastiglione.com">
+<meta property="og:image" content="https://www.valentinocastiglione.com/CONTENUTI_SITO/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Valentino Castiglione Filmmaker">
+<meta name="twitter:description" content="Director, Cinematographer and Drone Cinematographer based in Venice.">
+<meta name="twitter:image" content="https://www.valentinocastiglione.com/CONTENUTI_SITO/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -292,16 +304,11 @@
   .gallery-toggle:hover { opacity: 0.5; }
   .yt-btn {
     display: inline-flex; align-items: center; gap: 7px;
-    margin-top: 20px;
-    height: 38px; padding: 0 18px;
-    border-radius: 100px;
-    background: #111; color: #f2f2f2;
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px; font-weight: 500;
-    letter-spacing: 0.04em;
-    text-decoration: none;
-    transition: opacity 0.2s;
-    border: none; cursor: pointer;
+    margin-top: 20px; height: 38px; padding: 0 18px;
+    border-radius: 100px; background: #111; color: #f2f2f2;
+    font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.04em; text-decoration: none;
+    transition: opacity 0.2s; border: none; cursor: pointer;
   }
   .yt-btn:hover { opacity: 0.75; }
   .yt-btn svg { flex-shrink: 0; }
@@ -530,11 +537,20 @@
   }
   @media (hover: none) and (pointer: coarse) { #cursor { display: none !important; } }
 </style>
-<!-- GA4: solo consent default in <head>, non blocking -->
+<!-- Google Analytics 4 (attivato solo dopo consenso cookie) -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', wait_for_update: 500 });
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    wait_for_update: 500
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7F9WTKV3Z0"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'G-7F9WTKV3Z0', { anonymize_ip: true });
 </script>
 </head>
 <body>
@@ -553,7 +569,7 @@
 <a href="contact.html" class="chip" id="book-btn" style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200;background:rgba(255,255,255,0.92);color:#000;border-color:rgba(255,255,255,0.92);font-weight:500;letter-spacing:0.08em;text-decoration:none;transition:opacity 0.3s ease;height:48px;padding:0 24px;font-size:14px;">BOOK A PROJECT</a>
 
 <!-- SOUND BUTTON -->
-<button id="sound-btn" class="chip" style="position:fixed;top:20px;right:20px;z-index:200;opacity:0.7;font-size:11px;letter-spacing:0.05em;background:rgba(0,0,0,0.92);color:#fff;border-color:rgba(0,0,0,0.92);">SOUND</button>
+<button id="sound-btn" class="chip" style="position:fixed;top:20px;right:20px;z-index:200;opacity:0.45;font-size:11px;letter-spacing:0.05em;background:rgba(0,0,0,0.92);color:#fff;border-color:rgba(0,0,0,0.92);">SOUND</button>
 
 <!-- SIDE PANEL -->
 <aside id="side-panel">
@@ -603,7 +619,6 @@
 
 <!-- PROJECT RAIL -->
 <main id="rail">
-  <!-- FIX: tutti i riferimenti .mov aggiornati a .mp4 -->
   <section class="slide active" data-index="0" data-posters='["CONTENUTI_SITO/poster_adria_1.webp","CONTENUTI_SITO/poster_adria_2.webp","CONTENUTI_SITO/poster_adria_3.webp","CONTENUTI_SITO/poster_adria_4.webp"]' data-videos='["CONTENUTI_SITO/Adria_1.mp4","CONTENUTI_SITO/Adria_2.mp4","CONTENUTI_SITO/Adria_3.mp4","CONTENUTI_SITO/Adria_4.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
@@ -622,7 +637,6 @@
     </div></div>
   </section>
 
-  <!-- FIX: .mov → .mp4 (slide 3) -->
   <section class="slide" data-index="2" data-posters='["CONTENUTI_SITO/poster_obl_buio.webp","CONTENUTI_SITO/poster_obl_notte.webp","CONTENUTI_SITO/poster_obl_night.webp"]' data-videos='["CONTENUTI_SITO/BUIO1.mp4","CONTENUTI_SITO/LA_NOTTE_IN_30_LIBRI1.mp4","CONTENUTI_SITO/THE_NIGHT_AS_A_PLACE_1.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
@@ -641,7 +655,6 @@
     </div></div>
   </section>
 
-  <!-- FIX: .mov → .mp4 (slide 5) -->
   <section class="slide" data-index="4" data-posters='["CONTENUTI_SITO/poster_falmec.webp"]' data-videos='["CONTENUTI_SITO/Falmec_SICAM2025_916.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
@@ -651,7 +664,6 @@
     </div></div>
   </section>
 
-  <!-- FIX: .mov → .mp4 (slide 6) -->
   <section class="slide" data-index="5" data-posters='["CONTENUTI_SITO/poster_julien.webp"]' data-videos='["CONTENUTI_SITO/Julien_Chopin_-_Spot_Portfolio_4K.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
@@ -670,7 +682,6 @@
     </div></div>
   </section>
 
-  <!-- FIX: .mov → .mp4 (slide 8) -->
   <section class="slide" data-index="7" data-posters='["CONTENUTI_SITO/poster_ppp.webp"]' data-videos='["CONTENUTI_SITO/Pasolini_1_Movement.mp4"]'>
     <div class="slide-bg"></div><video class="slide-media" autoplay loop playsinline preload="auto"></video>
     <div class="vignette"></div>
@@ -720,7 +731,6 @@
 const IMAGE_EXTS = ['jpg','jpeg','png','gif','webp','avif'];
 function isImage(src) { return IMAGE_EXTS.some(ext => src.toLowerCase().endsWith('.' + ext)); }
 
-// Riproduce un video nella slide. srcObj = { src, poster } da randomSrc().
 function loadSlideMedia(slide, srcObj) {
   const src    = (typeof srcObj === 'object') ? srcObj.src    : srcObj;
   const poster = (typeof srcObj === 'object') ? srcObj.poster : null;
@@ -735,7 +745,7 @@ function loadSlideMedia(slide, srcObj) {
   } else {
     if (vid) {
       vid.style.display = '';
-      if (poster) vid.poster = poster; // mostra subito il frame — zero schermo nero
+      if (poster) vid.poster = poster;
       vid.src = src;
       vid.muted = true;
       if (src.includes('ArmandoMilani')) {
@@ -770,7 +780,6 @@ function loadSlideMedia(slide, srcObj) {
   }
 }
 
-// Estrae src e poster casuali con indice coerente.
 function randomSrc(slide) {
   const vr = slide.dataset.videos;
   if (!vr) return null;
@@ -780,7 +789,6 @@ function randomSrc(slide) {
   return { src: videos[idx], poster: posters[idx] || null };
 }
 
-// Precarica la slide adiacente via <link rel=preload> — non tocca il <video>.
 function preloadAdjacentSlide(idx) {
   const s = slides[idx];
   if (!s || !s.dataset.lazy) return;
@@ -815,7 +823,7 @@ async function loadProjects() {
     if (data.profilo) {
       const p = data.profilo;
       document.getElementById('panel-toggle').textContent = p.nome;
-      document.title = p.nome + ' — Portfolio';
+      document.title = p.nome + ' Filmmaker';
       const pName = document.querySelector('.panel-name');
       const pRole = document.querySelector('.panel-role');
       const pMeta = document.querySelector('.panel-meta');
@@ -855,11 +863,21 @@ async function loadProjects() {
 
   } catch(e) {
     console.warn('contenuti.json non raggiungibile, uso dati inline:', e);
-    const fallback = [{"titolo": "Adria_Campaign2025", "anno": "2025", "cliente": "Adria Mobil", "tipo": "Commercial", "descrizione": "For this project, I planned and executed the aerial drone footage, helping to lend a sense of spaciousness and dynamism to the campaign images. My work allowed us to capture the balance between luxury, comfort, and outdoor living from above, offering a unique perspective that effectively highlighted the creative concept.", "galleria": []}, {"titolo": "Avalant_Victoria", "anno": "2024", "cliente": "Avalant", "tipo": "Music Video", "descrizione": "A music video I directed for the artist Avalant. The composer's intention with this track is to recreate a specific moment: one of abstraction and mental journey. To visually convey this idea, I chose geometric shapes and color palettes capable of evoking that sense of detachment from reality—a visual language that interacts with the Synthwave sounds of the music, yet becomes its true protagonist. Colors, movements, and visual compositions guide the viewer through different levels of abstraction, making the perceptual experience something autonomous and immediate, even before the music comes into play.\n\nGo to YouTube, look it up, and give it a listen.", "galleria": [{"src": "CONTENUTI_SITO/Avalant_1_88_1.jpg", "alt": "Avalant 1"}, {"src": "CONTENUTI_SITO/Avalant_3_5_1.jpg", "alt": "Avalant 2"}, {"src": "CONTENUTI_SITO/Avalant_5_1_1.jpg", "alt": "Avalant 3"}, {"src": "CONTENUTI_SITO/Avalant_5_3_1.jpg", "alt": "Avalant 4"}, {"src": "CONTENUTI_SITO/Avalant_5_15_1.jpg", "alt": "Avalant 5"}, {"src": "CONTENUTI_SITO/Avalant_5_21_1.jpg", "alt": "Avalant 6"}, {"src": "CONTENUTI_SITO/Avalant_1_2_1.jpg", "alt": "Avalant 7"}, {"src": "CONTENUTI_SITO/Avalant_1_24_1.jpg", "alt": "Avalant 8"}, {"src": "CONTENUTI_SITO/Avalant_1_38_1.jpg", "alt": "Avalant 9"}, {"src": "CONTENUTI_SITO/Avalant_1_44_1.jpg", "alt": "Avalant 10"}, {"src": "CONTENUTI_SITO/Avalant_1_48_1.jpg", "alt": "Avalant 11"}, {"src": "CONTENUTI_SITO/Avalant_1_51_1.jpg", "alt": "Avalant 12"}, {"src": "CONTENUTI_SITO/Avalant_1_56_1.jpg", "alt": "Avalant 13"}]}, {"titolo": "OBL_LaNotteIn30Libri", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Social Campaign", "descrizione": "A social media campaign I directed for Associazione Obliquo live event.", "galleria": []}, {"titolo": "CoraleManiaghese", "anno": "2025", "cliente": "Corale Maniaghese", "tipo": "Music Video", "descrizione": "Music video directed for Corale Maniaghese.", "galleria": []}, {"titolo": "Falmec_SICAM2025", "anno": "2025", "cliente": "Falmec", "tipo": "Social", "descrizione": "A video created to showcase Falmec's participation in the SICAM Pordenone 2025 trade show.", "galleria": []}, {"titolo": "Julien_Chopin", "anno": "2024", "cliente": "Julien Chopin", "tipo": "Spot / Commercial", "descrizione": "A portfolio project draws inspiration from the timeless elegance of Domaine Julien Chopin.", "galleria": []}, {"titolo": "Donne_di_Seta", "anno": "2024", "cliente": "Comune di Maniago", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by the Comune di Maniago.", "galleria": [{"src": "CONTENUTI_SITO/Donne_di_seta.png", "alt": "Donne di Seta 1"}, {"src": "CONTENUTI_SITO/Donne_di_seta_2.png", "alt": "Donne di Seta 2"}, {"src": "CONTENUTI_SITO/Donne_di_seta_3.png", "alt": "Donne di Seta 3"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_2_36_1.png", "alt": "Donne di Seta 4"}, {"src": "CONTENUTI_SITO/DonneSeta_sc2_3_7_1.png", "alt": "Donne di Seta 5"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_18_1.png", "alt": "Donne di Seta 6"}, {"src": "CONTENUTI_SITO/DonneSetaInterviste_1_49_1.png", "alt": "Donne di Seta 7"}]}, {"titolo": "P.P.P.", "anno": "2021", "cliente": "Antonio Pauletta", "tipo": "Fiction", "descrizione": "A project created for Antonio Pauletta to help him apply for an artist residency in Portugal.", "galleria": [{"src": "CONTENUTI_SITO/Pasolini_1_2_1.png", "alt": "P.P.P. 1"}, {"src": "CONTENUTI_SITO/Pasolini_1_3_1.png", "alt": "P.P.P. 2"}, {"src": "CONTENUTI_SITO/Pasolini_1_5_1.png", "alt": "P.P.P. 3"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_1.png", "alt": "P.P.P. 4"}, {"src": "CONTENUTI_SITO/Pasolini_1_6_2.png", "alt": "P.P.P. 5"}]}, {"titolo": "LaFormaDelleEmozioni_OBL", "anno": "2023", "cliente": "Associazione Obliquo", "tipo": "Documentary", "descrizione": "A documentary directed by me and produced by Associazione Obliquo.", "galleria": []}, {"titolo": "Dentag_IDEM2018", "anno": "2018", "cliente": "Dentag Maniago", "tipo": "Social AD", "descrizione": "Project created for Dentag Maniago to be used during the IDEM 2018 trade show.", "galleria": []}];
+    const fallback = [
+      {"titolo":"Adria_Campaign2025","anno":"2025","cliente":"Adria Mobil","tipo":"Commercial","descrizione":"For this project, I planned and executed the aerial drone footage, helping to lend a sense of spaciousness and dynamism to the campaign images. My work allowed us to capture the balance between luxury, comfort, and outdoor living from above, offering a unique perspective that effectively highlighted the creative concept.","galleria":[],"youtube":"https://www.youtube.com/watch?v=Ei_UJrNIuQk"},
+      {"titolo":"Avalant_Victoria","anno":"2024","cliente":"Avalant","tipo":"Music Video","descrizione":"A music video I directed for the artist Avalant. The composer's intention with this track is to recreate a specific moment: one of abstraction and mental journey. To visually convey this idea, I chose geometric shapes and color palettes capable of evoking that sense of detachment from reality—a visual language that interacts with the Synthwave sounds of the music, yet becomes its true protagonist. Colors, movements, and visual compositions guide the viewer through different levels of abstraction, making the perceptual experience something autonomous and immediate, even before the music comes into play.\n\nGo to YouTube, look it up, and give it a listen.","galleria":[{"src":"CONTENUTI_SITO/Avalant_1_88_1.jpg","alt":"Avalant 1"},{"src":"CONTENUTI_SITO/Avalant_3_5_1.jpg","alt":"Avalant 2"},{"src":"CONTENUTI_SITO/Avalant_5_1_1.jpg","alt":"Avalant 3"},{"src":"CONTENUTI_SITO/Avalant_5_3_1.jpg","alt":"Avalant 4"},{"src":"CONTENUTI_SITO/Avalant_5_15_1.jpg","alt":"Avalant 5"},{"src":"CONTENUTI_SITO/Avalant_5_21_1.jpg","alt":"Avalant 6"},{"src":"CONTENUTI_SITO/Avalant_1_2_1.jpg","alt":"Avalant 7"},{"src":"CONTENUTI_SITO/Avalant_1_24_1.jpg","alt":"Avalant 8"},{"src":"CONTENUTI_SITO/Avalant_1_38_1.jpg","alt":"Avalant 9"},{"src":"CONTENUTI_SITO/Avalant_1_44_1.jpg","alt":"Avalant 10"},{"src":"CONTENUTI_SITO/Avalant_1_48_1.jpg","alt":"Avalant 11"},{"src":"CONTENUTI_SITO/Avalant_1_51_1.jpg","alt":"Avalant 12"},{"src":"CONTENUTI_SITO/Avalant_1_56_1.jpg","alt":"Avalant 13"}],"youtube":"https://www.youtube.com/watch?v=bjdXG_o_uzw"},
+      {"titolo":"OBL_LaNotteIn30Libri","anno":"2023","cliente":"Associazione Obliquo","tipo":"Social Campaign","descrizione":"A social media campaign I directed for Associazione Obliquo live event.","galleria":[],"youtube":null},
+      {"titolo":"CoraleManiaghese","anno":"2025","cliente":"Corale Maniaghese","tipo":"Music Video","descrizione":"Music video directed for Corale Maniaghese.","galleria":[],"youtube":"https://www.youtube.com/watch?v=IxJbFSY1M0Q"},
+      {"titolo":"Falmec_SICAM2025","anno":"2025","cliente":"Falmec","tipo":"Social","descrizione":"A video created to showcase Falmec's participation in the SICAM Pordenone 2025 trade show.","galleria":[],"youtube":null},
+      {"titolo":"Julien_Chopin","anno":"2024","cliente":"Julien Chopin","tipo":"Spot / Commercial","descrizione":"A portfolio project draws inspiration from the timeless elegance of Domaine Julien Chopin.","galleria":[],"youtube":"https://www.youtube.com/watch?v=P4OJ4Yx6IkQ"},
+      {"titolo":"Donne_di_Seta","anno":"2024","cliente":"Comune di Maniago","tipo":"Documentary","descrizione":"A documentary directed by me and produced by the Comune di Maniago.","galleria":[{"src":"CONTENUTI_SITO/Donne_di_seta.png","alt":"Donne di Seta 1"},{"src":"CONTENUTI_SITO/Donne_di_seta_2.png","alt":"Donne di Seta 2"},{"src":"CONTENUTI_SITO/Donne_di_seta_3.png","alt":"Donne di Seta 3"},{"src":"CONTENUTI_SITO/DonneSeta_sc2_2_36_1.png","alt":"Donne di Seta 4"},{"src":"CONTENUTI_SITO/DonneSeta_sc2_3_7_1.png","alt":"Donne di Seta 5"},{"src":"CONTENUTI_SITO/DonneSetaInterviste_1_18_1.png","alt":"Donne di Seta 6"},{"src":"CONTENUTI_SITO/DonneSetaInterviste_1_49_1.png","alt":"Donne di Seta 7"}],"youtube":"https://www.youtube.com/watch?v=UxYCdC0NLc8"},
+      {"titolo":"P.P.P.","anno":"2021","cliente":"Antonio Pauletta","tipo":"Fiction","descrizione":"A project created for Antonio Pauletta to help him apply for an artist residency in Portugal.","galleria":[{"src":"CONTENUTI_SITO/Pasolini_1_2_1.png","alt":"P.P.P. 1"},{"src":"CONTENUTI_SITO/Pasolini_1_3_1.png","alt":"P.P.P. 2"},{"src":"CONTENUTI_SITO/Pasolini_1_5_1.png","alt":"P.P.P. 3"},{"src":"CONTENUTI_SITO/Pasolini_1_6_1.png","alt":"P.P.P. 4"},{"src":"CONTENUTI_SITO/Pasolini_1_6_2.png","alt":"P.P.P. 5"}],"youtube":null},
+      {"titolo":"LaFormaDelleEmozioni_OBL","anno":"2023","cliente":"Associazione Obliquo","tipo":"Documentary","descrizione":"A documentary directed by me and produced by Associazione Obliquo.","galleria":[],"youtube":"https://www.youtube.com/watch?v=ftisFfY8br0"},
+      {"titolo":"Dentag_IDEM2018","anno":"2018","cliente":"Dentag Maniago","tipo":"Social AD","descrizione":"Project created for Dentag Maniago to be used during the IDEM 2018 trade show.","galleria":[],"youtube":null}
+    ]
     PROJECTS = fallback.map(p => ({
       title: p.titolo, year: p.anno, client: p.cliente,
-      type: p.tipo, body: p.descrizione, gallery: p.galleria,
-      youtube: p.youtube || null
+      type: p.tipo, body: p.descrizione, gallery: p.galleria
     }));
   }
 }
@@ -907,7 +925,6 @@ function goTo(idx) {
   const prevSlide = slides[prevIdx];
   const nextSlide = slides[nextIdx];
 
-  // Sceglie src+poster: usa il preload se disponibile, altrimenti casuale fresco.
   const srcObj = nextSlide.dataset.preloadSrc
     ? JSON.parse(nextSlide.dataset.preloadSrc)
     : randomSrc(nextSlide);
@@ -915,13 +932,11 @@ function goTo(idx) {
   delete nextSlide.dataset.lazy;
   if (srcObj) loadSlideMedia(nextSlide, srcObj);
 
-  // Snap next slide in posizione di partenza (niente animazione)
   nextSlide.style.transition = 'none';
   nextSlide.style.transform = `translateY(${inY})`;
   nextSlide.style.pointerEvents = 'none';
-  nextSlide.offsetHeight; // force reflow
+  nextSlide.offsetHeight;
 
-  // Anima entrambe le slide
   nextSlide.style.transition = ease;
   nextSlide.style.transform = 'translateY(0)';
   nextSlide.style.pointerEvents = 'all';
@@ -940,9 +955,6 @@ function goTo(idx) {
       s.style.pointerEvents = i === current ? 'all' : 'none';
     });
     isTransitioning = false;
-
-    // FIX 3: precarica silenziosamente N+1 e N-1
-    // così la prossima navigazione (in entrambe le direzioni) trova il buffer già iniziato
     preloadAdjacentSlide((current + 1) % total);
     preloadAdjacentSlide((current - 1 + total) % total);
   }, 820);
@@ -1023,16 +1035,12 @@ function openDrawer(idx) {
   galleryToggle.classList.remove('open');
   drawer.classList.remove('has-gallery-open');
 
-  // Bottone YouTube — appare solo se il progetto ha il campo youtube nel JSON
   const existingYt = document.getElementById('yt-btn');
   if (existingYt) existingYt.remove();
   if (p.youtube) {
     const ytBtn = document.createElement('a');
-    ytBtn.id = 'yt-btn';
-    ytBtn.className = 'yt-btn';
-    ytBtn.href = p.youtube;
-    ytBtn.target = '_blank';
-    ytBtn.rel = 'noreferrer';
+    ytBtn.id = 'yt-btn'; ytBtn.className = 'yt-btn';
+    ytBtn.href = p.youtube; ytBtn.target = '_blank'; ytBtn.rel = 'noreferrer';
     ytBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch on YouTube`;
     document.getElementById('drawer-scroll').appendChild(ytBtn);
   }
@@ -1119,16 +1127,13 @@ slides.forEach((s, i) => {
 });
 
 async function init() {
-  // Carica slide 0 subito con video+poster casuali — senza aspettare il JSON
   const src0 = randomSrc(slides[0]);
   if (src0) loadSlideMedia(slides[0], src0);
   slides.forEach((s, i) => { if (i > 0) s.dataset.lazy = 'true'; });
   updateSoundBtn();
   counter.textContent = pad(0) + ' / ' + pad(total - 1);
-  // Precarica subito le slide adiacenti alla prima
   preloadAdjacentSlide(1);
   preloadAdjacentSlide(total - 1);
-  // Carica JSON in parallelo — non blocca il rendering
   loadProjects();
 }
 init();
@@ -1210,19 +1215,6 @@ init();
     <a href="#" id="footer-gdpr-link">Privacy Policy</a>
   </div>
 </footer>
-<!-- GA4 loader lazy — non blocca il rendering -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  (function() {
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7F9WTKV3Z0';
-    document.head.appendChild(s);
-  })();
-  gtag('js', new Date());
-  gtag('config', 'G-7F9WTKV3Z0', { anonymize_ip: true });
-});
-</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const banner = document.getElementById('cookie-banner');
