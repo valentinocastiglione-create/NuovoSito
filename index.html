@@ -696,6 +696,7 @@
     <div class="panel-cell">
       <h2 class="panel-label">Contacts</h2>
       <ul class="panel-list panel-list--links">
+        <li><a href="about.html">About</a></li>
         <li><a href="#" id="email-link" onclick="revealEmail(event)">Email</a></li>
         <li><a href="https://www.linkedin.com/in/valentino-castiglione-84ab321b3" target="_blank" rel="noreferrer">LinkedIn</a></li>
         <li><a href="https://www.instagram.com/valentinocastiglione/" target="_blank" rel="noreferrer">Instagram</a></li>
@@ -929,6 +930,7 @@ async function loadProjects() {
       if (srvList) srvList.innerHTML = p.servizi.map(s => `<li>${s}</li>`).join('');
       const cntList = document.querySelectorAll('.panel-list--links')[0];
       if (cntList) cntList.innerHTML = `
+        <li><a href="about.html">About</a></li>
         <li><a href="#" onclick="revealEmail(event)">Email</a></li>
         <li><a href="${p.contatti.linkedin}" target="_blank" rel="noreferrer">LinkedIn</a></li>
         <li><a href="${p.contatti.instagram}" target="_blank" rel="noreferrer">Instagram</a></li>
