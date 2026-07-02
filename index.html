@@ -872,16 +872,15 @@ function loadSlideMedia(slide, srcObj) {
     vid.src = src;
     vid.addEventListener('loadedmetadata', afterReady, { once: true });
   } else if (window.Hls && Hls.isSupported()) {
-    const hls = new Hls({ capLevelToPlayerSize: false });
+    const hls = new Hls({
+      capLevelToPlayerSize: false,
+      startLevel: 0,        // parte dalla qualità più bassa per un avvio istantaneo
+      abrEwmaFastLive: 2.0, // sale di qualità più rapidamente una volta partito
+    });
     vid._hls = hls;
     hls.loadSource(src);
     hls.attachMedia(vid);
     hls.on(Hls.Events.MANIFEST_PARSED, () => {
-      // Forza sempre la qualità più alta disponibile: i video sono clip
-      // corte in loop, l'ABR non farebbe in tempo a salire di risoluzione
-      if (hls.levels && hls.levels.length > 0) {
-        hls.currentLevel = hls.levels.length - 1;
-      }
       afterReady();
     });
   } else {
