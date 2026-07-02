@@ -857,7 +857,10 @@ function loadSlideMedia(slide, srcObj) {
           avalantAudio.muted = !soundOn;
           const playAvalant = () => {
             avalantAudio.currentTime = 0;
-            avalantAudio.play().catch((err) => console.warn('Avalant audio play failed:', err));
+            avalantAudio.play().catch((err) => {
+              // AbortError è normale con navigazione rapida tra slide — non è un problema reale
+              if (err.name !== 'AbortError') console.warn('Avalant audio play failed:', err);
+            });
           };
           if (avalantAudioReady) {
             avalantAudioReady.then(playAvalant);
@@ -865,7 +868,7 @@ function loadSlideMedia(slide, srcObj) {
             playAvalant();
           }
         } else {
-          avalantAudio.pause();
+          if (!avalantAudio.paused) avalantAudio.pause();
           avalantAudio.currentTime = 0;
         }
       }
