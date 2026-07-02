@@ -8,7 +8,7 @@
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: blob: https://www.google-analytics.com https://img.youtube.com; media-src 'self' blob: https://vz-90ccff20-99b.b-cdn.net; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://cloudflareinsights.com https://vz-90ccff20-99b.b-cdn.net;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: blob: https://www.google-analytics.com https://img.youtube.com; media-src 'self' blob: https://vz-90ccff20-99b.b-cdn.net; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://cloudflareinsights.com https://vz-90ccff20-99b.b-cdn.net https://cdn.jsdelivr.net;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Valentino Castiglione Filmmaker</title>
 <meta name="description" content="Valentino Castiglione — Videomaker e Filmmaker a Pordenone, Friuli Venezia Giulia. Produzione video professionale: spot pubblicitari, corporate movie, documentari, music video e riprese drone. Operativo a Pordenone, Udine, Venezia e in tutta Italia.">
@@ -870,11 +870,18 @@ function loadSlideMedia(slide, srcObj) {
     vid.src = src;
     vid.addEventListener('loadedmetadata', afterReady, { once: true });
   } else if (window.Hls && Hls.isSupported()) {
-    const hls = new Hls({ startLevel: -1 }); // -1 = ABR automatico
+    const hls = new Hls({ capLevelToPlayerSize: false });
     vid._hls = hls;
     hls.loadSource(src);
     hls.attachMedia(vid);
-    hls.on(Hls.Events.MANIFEST_PARSED, afterReady);
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      // Forza sempre la qualità più alta disponibile: i video sono clip
+      // corte in loop, l'ABR non farebbe in tempo a salire di risoluzione
+      if (hls.levels && hls.levels.length > 0) {
+        hls.currentLevel = hls.levels.length - 1;
+      }
+      afterReady();
+    });
   } else {
     // Fallback estremo per browser molto datati
     vid.src = src;
