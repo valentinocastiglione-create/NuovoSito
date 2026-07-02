@@ -854,9 +854,16 @@ function loadSlideMedia(slide, srcObj) {
       const avalantAudio = document.getElementById('avalant-audio');
       if (avalantAudio) {
         if (syncAudio) {
-          avalantAudio.currentTime = 0;
           avalantAudio.muted = !soundOn;
-          avalantAudio.play().catch(() => {});
+          const playAvalant = () => {
+            avalantAudio.currentTime = 0;
+            avalantAudio.play().catch((err) => console.warn('Avalant audio play failed:', err));
+          };
+          if (avalantAudioReady) {
+            avalantAudioReady.then(playAvalant);
+          } else {
+            playAvalant();
+          }
         } else {
           avalantAudio.pause();
           avalantAudio.currentTime = 0;
@@ -1247,20 +1254,31 @@ slides.forEach((s, i) => {
   s.style.pointerEvents = i === 0 ? 'all' : 'none';
 });
 
+let avalantAudioReady = null;
+
 function setupAvalantAudio() {
   const audio = document.getElementById('avalant-audio');
   if (!audio) return;
   const audioSrc = "https://vz-90ccff20-99b.b-cdn.net/fbd22099-1680-4608-abc1-1dbdd6406b10/playlist.m3u8";
-  if (audio.canPlayType('application/vnd.apple.mpegurl')) {
-    audio.src = audioSrc;
-  } else if (window.Hls && Hls.isSupported()) {
-    const hls = new Hls();
-    audio._hls = hls;
-    hls.loadSource(audioSrc);
-    hls.attachMedia(audio);
-  } else {
-    audio.src = audioSrc;
-  }
+  avalantAudioReady = new Promise((resolve) => {
+    if (audio.canPlayType('application/vnd.apple.mpegurl')) {
+      audio.src = audioSrc;
+      audio.addEventListener('loadedmetadata', () => resolve(), { once: true });
+    } else if (window.Hls && Hls.isSupported()) {
+      const hls = new Hls();
+      audio._hls = hls;
+      hls.loadSource(audioSrc);
+      hls.attachMedia(audio);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => resolve());
+      hls.on(Hls.Events.ERROR, (event, data) => {
+        console.warn('Avalant audio HLS error:', data);
+        if (data.fatal) resolve(); // sblocca comunque per non restare in attesa infinita
+      });
+    } else {
+      audio.src = audioSrc;
+      resolve();
+    }
+  });
 }
 
 async function init() {
