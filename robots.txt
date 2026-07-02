@@ -9,4 +9,4 @@ Allow: /
 Disallow: /CONTENUTI SITO/
 
 # Sitemap location
-Sitemap: https://www.valentinocastiglione.com/sitemap.xml
+Sitemap: https://valentinocastiglione.com/sitemap.xml

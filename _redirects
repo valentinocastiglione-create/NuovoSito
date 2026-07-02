@@ -1,0 +1,9 @@
+# Redirect 301 delle vecchie pagine portfolio (sito precedente) verso la home
+# — recuperano il valore SEO accumulato invece di finire in 404
+/portfolio            /   301
+/portfolio/*          /   301
+
+# URL puliti coerenti
+/contact.html         /contact   301
+/about.html           /about     301
+/index.html           /          301
