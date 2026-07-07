@@ -903,12 +903,10 @@ function preloadAdjacentSlide(idx) {
   if (s.dataset.preloadSrc) return;
   const obj = randomSrc(s);
   if (!obj || isImage(obj.src)) return;
+  // Pre-seleziona solo il video casuale per la slide adiacente.
+  // Nessun <link preload>: hls.js non riusa quel fetch (modalità diversa),
+  // quindi il preload causava solo un download doppio della playlist.
   s.dataset.preloadSrc = JSON.stringify(obj);
-  // Precarica la playlist HLS (piccolo file testuale) — i segmenti video
-  // partiranno automaticamente in streaming adattivo al play
-  const link = document.createElement('link');
-  link.rel = 'preload'; link.as = 'fetch'; link.crossOrigin = 'anonymous'; link.href = obj.src;
-  document.head.appendChild(link);
 }
 
 
