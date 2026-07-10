@@ -2,9 +2,10 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/png" sizes="512x512" href="https://valentinocastiglione.com/favicon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="https://valentinocastiglione.com/favicon-192.png">
-<link rel="apple-touch-icon" href="https://valentinocastiglione.com/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,9 +16,9 @@
 <meta property="og:title" content="Valentino Castiglione — Videomaker Pordenone">
 <meta property="og:description" content="Videomaker e filmmaker professionista a Pordenone. Spot pubblicitari, corporate movie, documentari, music video, riprese drone in Friuli Venezia Giulia e tutta Italia.">
 <meta property="og:type" content="profile">
-<meta property="og:url" content="https://valentinocastiglione.com/about">
-<meta property="og:image" content="https://valentinocastiglione.com/CONTENUTI_SITO/og-image.png">
-<link rel="canonical" href="https://valentinocastiglione.com/about">
+<meta property="og:url" content="https://www.valentinocastiglione.com/about">
+<meta property="og:image" content="https://www.valentinocastiglione.com/CONTENUTI_SITO/og-image.png">
+<link rel="canonical" href="https://www.valentinocastiglione.com/about">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -29,8 +30,8 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Valentino Castiglione",
-  "url": "https://valentinocastiglione.com",
-  "image": "https://valentinocastiglione.com/CONTENUTI_SITO/og-image.png",
+  "url": "https://www.valentinocastiglione.com",
+  "image": "https://www.valentinocastiglione.com/CONTENUTI_SITO/og-image.png",
   "jobTitle": "Videomaker, Filmmaker, Drone Cinematographer",
   "description": "Videomaker e filmmaker professionista con sede a Pordenone, specializzato in produzione video commerciale, corporate movie, documentari, music video e riprese aeree con drone in Friuli Venezia Giulia.",
   "address": {
@@ -321,19 +322,41 @@
     .cta-block { padding: 28px 24px; }
     #header { padding: 14px 16px; }
   }
+
+  /* ── LANG SWITCHER ── */
+  #lang-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    height: 38px; padding: 0 14px;
+    border: 1px solid var(--chip-border);
+    border-radius: 100px;
+    background: var(--chip-bg);
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    color: #fff; cursor: pointer; user-select: none;
+    transition: opacity 0.2s;
+  }
+  #lang-btn:hover { opacity: 0.75; }
+  #lang-btn .lang-on  { opacity: 1; }
+  #lang-btn .lang-off { opacity: 0.35; }
+  #lang-btn .lang-sep { opacity: 0.3; }
 </style>
 </head>
 <body>
 
-<header id="header">
-  <a class="chip chip-back" href="index.html">← Valentino Castiglione</a>
+<header id="header" style="display:flex;align-items:center;justify-content:space-between;">
+  <a class="chip chip-back" href="index.html"><span data-it="← Valentino Castiglione" data-en="← Valentino Castiglione">← Valentino Castiglione</span></a>
+  <button id="lang-btn" aria-label="Cambia lingua / Switch language">
+    <span id="lang-it" class="lang-on">IT</span>
+    <span class="lang-sep">|</span>
+    <span id="lang-en" class="lang-off">EN</span>
+  </button>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <span class="hero-label">Videomaker · Filmmaker · Pordenone</span>
-  <h1>Chi sono</h1>
-  <p class="hero-intro">
+  <span class="hero-label" data-it="Videomaker · Filmmaker · Pordenone" data-en="Videomaker · Filmmaker · Pordenone">Videomaker · Filmmaker · Pordenone</span>
+  <h1 data-it="Chi sono" data-en="About me">Chi sono</h1>
+  <p class="hero-intro" data-html-it="Sono <strong>Valentino Castiglione</strong>, videomaker e filmmaker professionista con base a <strong>Pordenone, Friuli Venezia Giulia</strong>. Racconto storie attraverso le immagini — spot pubblicitari, corporate movie, documentari, music video e riprese aeree con drone." data-html-en="I'm <strong>Valentino Castiglione</strong>, a professional videomaker and filmmaker based in <strong>Pordenone, Friuli Venezia Giulia</strong>. I tell stories through images — commercials, corporate movies, documentaries, music videos and aerial drone cinematography.">
     Sono <strong>Valentino Castiglione</strong>, videomaker e filmmaker professionista con base a <strong>Pordenone, Friuli Venezia Giulia</strong>. 
     Racconto storie attraverso le immagini — spot pubblicitari, corporate movie, documentari, music video e riprese aeree con drone.
   </p>
@@ -345,62 +368,62 @@
 
     <!-- BIO -->
     <div class="section">
-      <p class="section-label">Biografia</p>
-      <h2>La visione prima di tutto</h2>
-      <p>
+      <p class="section-label" data-it="Biografia" data-en="Biography">Biografia</p>
+      <h2 data-it="La visione prima di tutto" data-en="Vision above all">La visione prima di tutto</h2>
+      <p data-html-it="Nato nel 1994, ho sviluppato fin da subito una passione per la narrazione visiva. Dopo la laurea in <strong>Scienze e Tecnologie Multimediali</strong>, ho intrapreso un percorso professionale che mi ha portato a lavorare come <strong>filmmaker freelance, drone cinematographer e gaffer</strong> in produzioni commerciali, televisive e documentaristiche." data-html-en="Born in 1994, I developed a passion for visual storytelling early on. After graduating in <strong>Multimedia Science &amp; Technology</strong>, I pursued a professional path that led me to work as a <strong>freelance filmmaker, drone cinematographer and gaffer</strong> across commercial, television and documentary productions.">
         Nato nel 1994, ho sviluppato fin da subito una passione per la narrazione visiva. Dopo la laurea in <strong>Scienze e Tecnologie Multimediali</strong>, ho intrapreso un percorso professionale che mi ha portato a lavorare come <strong>filmmaker freelance, drone cinematographer e gaffer</strong> in produzioni commerciali, televisive e documentaristiche.
       </p>
-      <p>
+      <p data-html-it="La mia filosofia di lavoro parte sempre dalla storia: ogni progetto video — che sia uno <strong>spot pubblicitario a Pordenone</strong>, un <strong>corporate movie in Friuli</strong> o un documentario — deve avere un'anima narrativa precisa. Le immagini tecnicamente perfette senza emozione non comunicano nulla." data-html-en="My working philosophy always starts from the story: every video project — whether a <strong>commercial in Pordenone</strong>, a <strong>corporate movie in Friuli</strong> or a documentary — must have a precise narrative soul. Technically perfect images without emotion communicate nothing.">
         La mia filosofia di lavoro parte sempre dalla storia: ogni progetto video — che sia uno <strong>spot pubblicitario a Pordenone</strong>, un <strong>corporate movie in Friuli</strong> o un documentario — deve avere un'anima narrativa precisa. Le immagini tecnicamente perfette senza emozione non comunicano nulla.
       </p>
-      <p>
+      <p data-html-it="Ho lavorato con aziende, istituzioni culturali, artisti e comuni in tutto il Friuli Venezia Giulia e in Italia, collaborando anche a produzioni televisive nazionali come <strong>Third AD per la serie TV &quot;Prima di noi&quot;</strong> prodotta da Wildside." data-html-en="I've worked with companies, cultural institutions, artists and municipalities across Friuli Venezia Giulia and Italy, also collaborating on national television productions such as <strong>Third AD for the TV series &quot;Prima di noi&quot;</strong> produced by Wildside.">
         Ho lavorato con aziende, istituzioni culturali, artisti e comuni in tutto il Friuli Venezia Giulia e in Italia, collaborando anche a produzioni televisive nazionali come <strong>Third AD per la serie TV "Prima di noi"</strong> prodotta da Wildside.
       </p>
     </div>
 
     <!-- SERVIZI -->
     <div class="section">
-      <p class="section-label">Servizi</p>
-      <h2>Produzione video professionale</h2>
-      <p>Offro un servizio completo di produzione video — dalla fase creativa e di sviluppo del concept fino alle riprese, montaggio e post-produzione. Sono operativo a Pordenone, Udine, Venezia, Trieste e in tutta Italia.</p>
+      <p class="section-label" data-it="Servizi" data-en="Services">Servizi</p>
+      <h2 data-it="Produzione video professionale" data-en="Professional video production">Produzione video professionale</h2>
+      <p data-it="Offro un servizio completo di produzione video — dalla fase creativa e di sviluppo del concept fino alle riprese, montaggio e post-produzione. Sono operativo a Pordenone, Udine, Venezia, Trieste e in tutta Italia." data-en="I offer a complete video production service — from the creative and concept development phase through filming, editing and post-production. I operate in Pordenone, Udine, Venice, Trieste and throughout Italy.">Offro un servizio completo di produzione video — dalla fase creativa e di sviluppo del concept fino alle riprese, montaggio e post-produzione. Sono operativo a Pordenone, Udine, Venezia, Trieste e in tutta Italia.</p>
       <div class="services-grid">
         <div class="service-card">
-          <h3>Spot Pubblicitari</h3>
-          <p>Produzione spot TV e digital per aziende e brand. Creatività e tecnica per comunicazioni che restano impresse.</p>
+          <h3 data-it="Spot Pubblicitari" data-en="Commercials">Spot Pubblicitari</h3>
+          <p data-it="Produzione spot TV e digital per aziende e brand. Creatività e tecnica per comunicazioni che restano impresse." data-en="TV and digital commercial production for companies and brands. Creativity and technique for communications that leave a mark.">Produzione spot TV e digital per aziende e brand. Creatività e tecnica per comunicazioni che restano impresse.</p>
         </div>
         <div class="service-card">
-          <h3>Corporate Movie</h3>
-          <p>Video aziendali, presentazioni istituzionali, video di prodotto. Racconto professionale e autentico del tuo brand.</p>
+          <h3 data-it="Corporate Movie" data-en="Corporate Movies">Corporate Movie</h3>
+          <p data-it="Video aziendali, presentazioni istituzionali, video di prodotto. Racconto professionale e autentico del tuo brand." data-en="Corporate videos, institutional presentations, product videos. A professional and authentic story of your brand.">Video aziendali, presentazioni istituzionali, video di prodotto. Racconto professionale e autentico del tuo brand.</p>
         </div>
         <div class="service-card">
-          <h3>Documentari</h3>
-          <p>Documentari culturali, sociali e industriali. Storie vere raccontate con rigore e sensibilità cinematografica.</p>
+          <h3 data-it="Documentari" data-en="Documentaries">Documentari</h3>
+          <p data-it="Documentari culturali, sociali e industriali. Storie vere raccontate con rigore e sensibilità cinematografica." data-en="Cultural, social and industrial documentaries. True stories told with rigour and cinematic sensitivity.">Documentari culturali, sociali e industriali. Storie vere raccontate con rigore e sensibilità cinematografica.</p>
         </div>
         <div class="service-card">
-          <h3>Music Video</h3>
-          <p>Direzione e produzione di video musicali. Visione artistica al servizio della musica.</p>
+          <h3 data-it="Music Video" data-en="Music Videos">Music Video</h3>
+          <p data-it="Direzione e produzione di video musicali. Visione artistica al servizio della musica." data-en="Direction and production of music videos. Artistic vision at the service of music.">Direzione e produzione di video musicali. Visione artistica al servizio della musica.</p>
         </div>
         <div class="service-card">
-          <h3>Drone Cinematography</h3>
-          <p>Riprese aeree professionali con drone per spot, eventi, immobiliare e architettura. Operatore certificato.</p>
+          <h3 data-it="Drone Cinematography" data-en="Drone Cinematography">Drone Cinematography</h3>
+          <p data-it="Riprese aeree professionali con drone per spot, eventi, immobiliare e architettura. Operatore certificato." data-en="Professional aerial drone footage for commercials, events, real estate and architecture. Certified operator.">Riprese aeree professionali con drone per spot, eventi, immobiliare e architettura. Operatore certificato.</p>
         </div>
         <div class="service-card">
-          <h3>Regia Cinematografica</h3>
-          <p>Direzione creativa completa: sviluppo concept, sceneggiatura, direzione del set, montaggio e color grading.</p>
+          <h3 data-it="Regia Cinematografica" data-en="Film Directing">Regia Cinematografica</h3>
+          <p data-it="Direzione creativa completa: sviluppo concept, sceneggiatura, direzione del set, montaggio e color grading." data-en="Complete creative direction: concept development, scriptwriting, set direction, editing and color grading.">Direzione creativa completa: sviluppo concept, sceneggiatura, direzione del set, montaggio e color grading.</p>
         </div>
       </div>
     </div>
 
     <!-- AREA GEOGRAFICA -->
     <div class="section">
-      <p class="section-label">Area di operatività</p>
-      <h2>Videomaker in Friuli Venezia Giulia e oltre</h2>
-      <p>
+      <p class="section-label" data-it="Area di operatività" data-en="Coverage area">Area di operatività</p>
+      <h2 data-it="Videomaker in Friuli Venezia Giulia e oltre" data-en="Videomaker in Friuli Venezia Giulia and beyond">Videomaker in Friuli Venezia Giulia e oltre</h2>
+      <p data-html-it="Ho base a <strong>Maniago (Pordenone)</strong> e opero regolarmente in tutto il <strong>Triveneto</strong> e nel Nord Italia. La posizione geografica mi permette di raggiungere facilmente le principali città del Nord-Est e del Nord Italia senza costi di trasferta eccessivi. Disponibile per progetti anche in tutta Italia e all&apos;estero." data-html-en="I&apos;m based in <strong>Maniago (Pordenone)</strong> and work regularly across the <strong>Triveneto</strong> region and Northern Italy. My location lets me easily reach the main cities of North-East and Northern Italy without excessive travel costs. Available for projects throughout Italy and abroad.">
         Ho base a <strong>Maniago (Pordenone)</strong> e opero regolarmente in tutto il <strong>Triveneto</strong> e nel Nord Italia. 
         La posizione geografica mi permette di raggiungere facilmente le principali città del Nord-Est e del Nord Italia 
         senza costi di trasferta eccessivi. Disponibile per progetti anche in tutta Italia e all'estero.
       </p>
-      <p>
+      <p data-html-it="Lavoro abitualmente a <strong>Pordenone, Udine, Trieste, Venezia, Treviso, Padova, Vicenza, Verona, Trento e Bolzano</strong>. Nel Nord Italia raggiungo regolarmente <strong>Milano, Torino, Brescia, Bologna, Firenze</strong> e le principali città dell&apos;<strong>Emilia-Romagna</strong> e della <strong>Toscana</strong>." data-html-en="I regularly work in <strong>Pordenone, Udine, Trieste, Venice, Treviso, Padua, Vicenza, Verona, Trento and Bolzano</strong>. Across Northern Italy I regularly reach <strong>Milan, Turin, Brescia, Bologna, Florence</strong> and the main cities of <strong>Emilia-Romagna</strong> and <strong>Tuscany</strong>.">
         Lavoro abitualmente a <strong>Pordenone, Udine, Trieste, Venezia, Treviso, Padova, Vicenza, Verona, Trento e Bolzano</strong>. 
         Nel Nord Italia raggiungo regolarmente <strong>Milano, Torino, Brescia, Bologna, Firenze</strong> e le principali città dell'<strong>Emilia-Romagna</strong> e della <strong>Toscana</strong>.
       </p>
@@ -426,44 +449,44 @@
         <span class="area-tag">Emilia-Romagna</span>
         <span class="area-tag">Toscana</span>
         <span class="area-tag">Lombardia</span>
-        <span class="area-tag">Tutta Italia</span>
+        <span class="area-tag" data-it="Tutta Italia" data-en="All of Italy">Tutta Italia</span>
       </div>
     </div>
 
     <!-- ESPERIENZA -->
     <div class="section">
-      <p class="section-label">Esperienza</p>
-      <h2>Percorso professionale</h2>
+      <p class="section-label" data-it="Esperienza" data-en="Experience">Esperienza</p>
+      <h2 data-it="Percorso professionale" data-en="Professional path">Percorso professionale</h2>
       <ul class="exp-list">
         <li>
-          <span class="exp-year">2021–oggi</span>
-          <span><strong>Drone Cinematographer &amp; Gaffer</strong> — CROMO. Riprese aeree e illuminazione per produzioni commerciali e pubblicitarie.</span>
+          <span class="exp-year" data-it="2021–oggi" data-en="2021–today">2021–oggi</span>
+          <span data-html-it="<strong>Drone Cinematographer &amp; Gaffer</strong> — CROMO. Riprese aeree e illuminazione per produzioni commerciali e pubblicitarie." data-html-en="<strong>Drone Cinematographer &amp; Gaffer</strong> — CROMO. Aerial footage and lighting for commercial and advertising productions."><strong>Drone Cinematographer &amp; Gaffer</strong> — CROMO. Riprese aeree e illuminazione per produzioni commerciali e pubblicitarie.</span>
         </li>
         <li>
           <span class="exp-year">2023</span>
-          <span><strong>Third AD</strong> — Serie TV "Prima di noi", produzione Wildside. Assistente alla regia per produzione televisiva nazionale.</span>
+          <span data-html-it="<strong>Third AD</strong> — Serie TV &quot;Prima di noi&quot;, produzione Wildside. Assistente alla regia per produzione televisiva nazionale." data-html-en="<strong>Third AD</strong> — &quot;Prima di noi&quot; TV series, Wildside production. Assistant director for national television production."><strong>Third AD</strong> — Serie TV "Prima di noi", produzione Wildside. Assistente alla regia per produzione televisiva nazionale.</span>
         </li>
         <li>
           <span class="exp-year">2019–oggi</span>
-          <span><strong>Filmmaker Freelance</strong> — Produzione video indipendente: spot, documentari, corporate, music video per clienti privati e istituzionali in Friuli Venezia Giulia e Italia.</span>
+          <span data-html-it="<strong>Filmmaker Freelance</strong> — Produzione video indipendente: spot, documentari, corporate, music video per clienti privati e istituzionali in Friuli Venezia Giulia e Italia." data-html-en="<strong>Freelance Filmmaker</strong> — Independent video production: commercials, documentaries, corporate, music videos for private and institutional clients in Friuli Venezia Giulia and Italy."><strong>Filmmaker Freelance</strong> — Produzione video indipendente: spot, documentari, corporate, music video per clienti privati e istituzionali in Friuli Venezia Giulia e Italia.</span>
         </li>
         <li>
-          <span class="exp-year">Laurea</span>
-          <span><strong>Scienze e Tecnologie Multimediali</strong> — Formazione accademica in comunicazione visiva, produzione audiovisiva e tecnologie digitali.</span>
+          <span class="exp-year" data-it="Laurea" data-en="Degree">Laurea</span>
+          <span data-html-it="<strong>Scienze e Tecnologie Multimediali</strong> — Formazione accademica in comunicazione visiva, produzione audiovisiva e tecnologie digitali." data-html-en="<strong>Multimedia Science &amp; Technology</strong> — Academic training in visual communication, audiovisual production and digital technologies."><strong>Scienze e Tecnologie Multimediali</strong> — Formazione accademica in comunicazione visiva, produzione audiovisiva e tecnologie digitali.</span>
         </li>
       </ul>
     </div>
 
     <!-- CLIENTI -->
     <div class="section">
-      <p class="section-label">Clienti e collaborazioni</p>
-      <h2>Con chi ho lavorato</h2>
+      <p class="section-label" data-it="Clienti e collaborazioni" data-en="Clients and collaborations">Clienti e collaborazioni</p>
+      <h2 data-it="Con chi ho lavorato" data-en="Who I have worked with">Con chi ho lavorato</h2>
       <p class="clients-list">
         <strong>Adria Mobil</strong> · <strong>Falmec</strong> · <strong>Dentag Maniago</strong> · <strong>Comune di Maniago</strong> · 
         <strong>Associazione Obliquo</strong> · <strong>Corale Maniaghese</strong> · <strong>Wildside</strong> · <strong>CROMO</strong> · 
         Avalant · Julien Chopin · Antonio Pauletta
       </p>
-      <p>
+      <p data-html-it="Ho realizzato produzioni video per il <strong>settore industriale a Pordenone</strong>, campagne social per istituzioni culturali, spot per fiere di settore come <strong>SICAM Pordenone</strong> e <strong>IDEM</strong>, documentari distribuiti in contesti istituzionali e music video con distribuzione internazionale su YouTube." data-html-en="I've produced videos for the <strong>industrial sector in Pordenone</strong>, social campaigns for cultural institutions, commercials for trade fairs such as <strong>SICAM Pordenone</strong> and <strong>IDEM</strong>, documentaries distributed in institutional contexts and music videos with international distribution on YouTube.">
         Ho realizzato produzioni video per il <strong>settore industriale a Pordenone</strong>, campagne social per istituzioni culturali, 
         spot per fiere di settore come <strong>SICAM Pordenone</strong> e <strong>IDEM</strong>, documentari distribuiti in contesti 
         istituzionali e music video con distribuzione internazionale su YouTube.
@@ -473,10 +496,10 @@
     <!-- CTA -->
     <div class="cta-block">
       <div>
-        <h3>Hai un progetto video?</h3>
-        <p>Raccontami la tua idea — rispondo entro 48 ore.</p>
+        <h3 data-it="Hai un progetto video?" data-en="Have a video project?">Hai un progetto video?</h3>
+        <p data-it="Raccontami la tua idea — rispondo entro 48 ore." data-en="Tell me your idea — I reply within 48 hours.">Raccontami la tua idea — rispondo entro 48 ore.</p>
       </div>
-      <a class="cta-btn" href="contact.html">Parliamo del progetto</a>
+      <a class="cta-btn" href="contact.html" data-it="Parliamo del progetto" data-en="Let us talk about it">Parliamo del progetto</a>
     </div>
 
   </div>
@@ -486,6 +509,51 @@
   <span>© 2026 Valentino Castiglione — P.IVA 01904320932</span>
   <span>Via Mantellin, 3 — 33085 Maniago (PN) — Tel. 346 7119244</span>
 </footer>
+
+<script>
+(function() {
+  // Lingua condivisa con la home tramite localStorage
+  let lang = localStorage.getItem('vc-lang') || 'it';
+
+  function applyLang(l) {
+    lang = l;
+    localStorage.setItem('vc-lang', l);
+    document.documentElement.lang = l;
+
+    // Bottone
+    const it = document.getElementById('lang-it');
+    const en = document.getElementById('lang-en');
+    if (it) it.className = l === 'it' ? 'lang-on' : 'lang-off';
+    if (en) en.className = l === 'en' ? 'lang-on' : 'lang-off';
+
+    // Testo semplice (data-it / data-en)
+    document.querySelectorAll('[data-it]').forEach(el => {
+      const val = el.getAttribute('data-' + l);
+      if (val != null) el.textContent = val;
+    });
+
+    // Testo con markup interno (data-html-it / data-html-en)
+    document.querySelectorAll('[data-html-it]').forEach(el => {
+      const val = el.getAttribute('data-html-' + l);
+      if (val != null) el.innerHTML = val;
+    });
+
+    // Meta title/description in base alla lingua
+    if (l === 'en') {
+      document.title = 'About — Valentino Castiglione Videomaker Pordenone';
+    } else {
+      document.title = 'Chi sono — Valentino Castiglione Videomaker Pordenone';
+    }
+  }
+
+  document.getElementById('lang-btn').addEventListener('click', () => {
+    applyLang(lang === 'it' ? 'en' : 'it');
+  });
+
+  // Applica all'avvio
+  applyLang(lang);
+})();
+</script>
 
 </body>
 </html>

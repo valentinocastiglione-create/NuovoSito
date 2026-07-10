@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNjYzAwMDAiLz48L3N2Zz4=">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
@@ -535,6 +538,26 @@
     #site-footer { display: none; }
   }
   @media (hover: none) and (pointer: coarse) { #cursor { display: none !important; } }
+  /* ── LANG SWITCHER ── */
+  #lang-btn {
+    position: fixed; top: 20px; right: 90px; z-index: 200;
+    display: inline-flex; align-items: center; gap: 6px;
+    height: 38px; padding: 0 14px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    background: rgba(0,0,0,0.92);
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    color: #fff; cursor: pointer; user-select: none;
+    transition: opacity 0.2s;
+  }
+  #lang-btn:hover { opacity: 0.75; }
+  #lang-btn .lang-on  { opacity: 1; }
+  #lang-btn .lang-off { opacity: 0.35; }
+  #lang-btn .lang-sep { opacity: 0.3; }
+  @media (max-width: 768px) {
+    #lang-btn { top: 12px; right: 76px; height: 28px; font-size: 9px; padding: 0 10px; }
+  }
 </style>
 <!-- Google Analytics 4 (attivato solo dopo consenso cookie) -->
 <script>
@@ -658,6 +681,13 @@
 <div id="slide-counter">01 / 10</div>
 <a href="contact.html" class="chip" id="book-btn" style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200;background:rgba(255,255,255,0.92);color:#000;border-color:rgba(255,255,255,0.92);font-weight:500;letter-spacing:0.08em;text-decoration:none;transition:opacity 0.3s ease;height:48px;padding:0 24px;font-size:14px;">BOOK A PROJECT</a>
 
+<!-- LANG SWITCHER -->
+<button id="lang-btn" aria-label="Cambia lingua / Switch language">
+  <span id="lang-it" class="lang-on">IT</span>
+  <span class="lang-sep">|</span>
+  <span id="lang-en" class="lang-off">EN</span>
+</button>
+
 <!-- SOUND BUTTON -->
 <button id="sound-btn" class="chip" style="position:fixed;top:20px;right:20px;z-index:200;opacity:0.45;font-size:11px;letter-spacing:0.05em;background:rgba(0,0,0,0.92);color:#fff;border-color:rgba(0,0,0,0.92);">SOUND</button>
 
@@ -670,12 +700,12 @@
       <div class="panel-meta"><span>1994</span><span>Story Lover</span><span>Venice</span></div>
     </div>
     <div class="panel-cell">
-      <h2 class="panel-label">Statement</h2>
+      <h2 class="panel-label" data-key="statement_label">Statement</h2>
       <p class="panel-text">Directing is about a vision.. and i can see you deep in your soul.</p>
     </div>
     <div class="panel-divider-full"></div>
     <div class="panel-cell">
-      <h2 class="panel-label">Experience</h2>
+      <h2 class="panel-label" data-key="experience_label">Experience</h2>
       <ul class="panel-list">
         <li>Drone Cinematographer &amp; Gaffer @ CROMO [2021—2026]</li>
         <li>Filmmaker Freelance [2019—Today]</li>
@@ -684,7 +714,7 @@
       </ul>
     </div>
     <div class="panel-cell">
-      <h2 class="panel-label">Services</h2>
+      <h2 class="panel-label" data-key="services_label">Services</h2>
       <ul class="panel-list">
         <li>Film Directing</li>
         <li>Cinematography / Drone Cinematography</li>
@@ -694,7 +724,7 @@
     </div>
     <div class="panel-divider-full"></div>
     <div class="panel-cell">
-      <h2 class="panel-label">Contacts</h2>
+      <h2 class="panel-label" data-key="contacts_label">Contacts</h2>
       <ul class="panel-list panel-list--links">
         <li><a href="about.html">About</a></li>
         <li><a href="#" id="email-link" onclick="revealEmail(event)">Email</a></li>
@@ -912,6 +942,99 @@ function preloadAdjacentSlide(idx) {
 
 // Projects loaded from contenuti.json
 let PROJECTS = [];
+let PROFILE = null;
+let UI = null;
+
+// ── SISTEMA MULTILINGUA (IT/EN) ─────────────────────────────────────────────
+let LANG = localStorage.getItem('vc-lang') || 'it';
+
+// Estrae il valore nella lingua corrente da un campo che può essere
+// {it,en} oppure una semplice stringa (retrocompatibilità)
+function t(field) {
+  if (field == null) return '';
+  if (typeof field === 'object' && !Array.isArray(field)) {
+    return field[LANG] != null ? field[LANG] : (field.it != null ? field.it : field.en);
+  }
+  return field; // stringa semplice
+}
+// Come t() ma per array (es. esperienze, servizi)
+function tArr(field) {
+  if (Array.isArray(field)) return field;
+  if (field && typeof field === 'object') {
+    return field[LANG] || field.it || field.en || [];
+  }
+  return [];
+}
+// Etichetta UI dal JSON (con fallback se manca)
+function tui(key, fallback) {
+  if (UI && UI[key]) return t(UI[key]);
+  return fallback;
+}
+
+// Ricostruisce il pannello profilo nella lingua corrente
+function renderProfile() {
+  if (!PROFILE) return;
+  const p = PROFILE;
+  document.getElementById('panel-toggle').textContent = p.nome;
+  document.title = p.nome + ' Filmmaker';
+  const pName = document.querySelector('.panel-name');
+  const pRole = document.querySelector('.panel-role');
+  const pMeta = document.querySelector('.panel-meta');
+  if (pName) pName.textContent = p.nome;
+  if (pRole) pRole.textContent = t(p.ruolo);
+  if (pMeta) pMeta.innerHTML = [p.anno_nascita, ...tArr(p.interessi), t(p.citta)]
+    .map(v => `<span>${v}</span>`).join('');
+  const stmt = document.querySelector('.panel-text');
+  if (stmt) stmt.textContent = t(p.statement);
+  const expList = document.querySelectorAll('.panel-list')[0];
+  if (expList) expList.innerHTML = tArr(p.esperienze).map(e => `<li>${e}</li>`).join('');
+  const srvList = document.querySelectorAll('.panel-list')[1];
+  if (srvList) srvList.innerHTML = tArr(p.servizi).map(s => `<li>${s}</li>`).join('');
+  const cntList = document.querySelectorAll('.panel-list--links')[0];
+  if (cntList) cntList.innerHTML = `
+    <li><a href="about.html">${tui('about','About')}</a></li>
+    <li><a href="#" onclick="revealEmail(event)">${tui('email','Email')}</a></li>
+    <li><a href="${p.contatti.linkedin}" target="_blank" rel="noreferrer">LinkedIn</a></li>
+    <li><a href="${p.contatti.instagram}" target="_blank" rel="noreferrer">Instagram</a></li>
+  `;
+}
+
+// Applica la lingua a tutta l'interfaccia
+function applyLang(lang) {
+  LANG = lang;
+  localStorage.setItem('vc-lang', lang);
+  document.documentElement.lang = lang;
+
+  // Bottone switcher
+  const it = document.getElementById('lang-it');
+  const en = document.getElementById('lang-en');
+  if (it) it.className = lang === 'it' ? 'lang-on' : 'lang-off';
+  if (en) en.className = lang === 'en' ? 'lang-on' : 'lang-off';
+
+  // Etichette pannello statiche (data-key)
+  document.querySelectorAll('.panel-label[data-key]').forEach(el => {
+    el.textContent = tui(el.dataset.key, el.textContent);
+  });
+
+  // Book button
+  const bb = document.getElementById('book-btn');
+  if (bb) bb.textContent = tui('book_btn', bb.textContent);
+
+  // Sound button (rispetta stato on/off)
+  updateSoundBtn();
+
+  // Profilo + contatti
+  renderProfile();
+
+  // Gallery toggle (se presente)
+  const gt = document.getElementById('gallery-toggle');
+  if (gt) { const s = gt.querySelector('span:first-child'); if (s) s.textContent = tui('gallery','Gallery'); }
+
+  // Se un drawer è aperto, ricaricalo nella nuova lingua
+  if (drawerOpen && currentDrawerIdx != null) openDrawer(currentDrawerIdx);
+}
+
+
 
 async function loadProjects() {
   try {
@@ -922,37 +1045,15 @@ async function loadProjects() {
       title: p.titolo,
       year: p.anno,
       client: p.cliente,
-      type: p.tipo,
-      body: p.descrizione,
+      type: p.tipo,          // {it,en} o stringa
+      body: p.descrizione,   // {it,en} o stringa
       gallery: p.galleria,
       youtube: p.youtube || null
     }));
+    PROFILE = data.profilo || null;
+    UI = data.ui || null;
 
-    if (data.profilo) {
-      const p = data.profilo;
-      document.getElementById('panel-toggle').textContent = p.nome;
-      document.title = p.nome + ' Filmmaker';
-      const pName = document.querySelector('.panel-name');
-      const pRole = document.querySelector('.panel-role');
-      const pMeta = document.querySelector('.panel-meta');
-      if (pName) pName.textContent = p.nome;
-      if (pRole) pRole.textContent = p.ruolo;
-      if (pMeta) pMeta.innerHTML = [p.anno_nascita, ...p.interessi, p.citta]
-        .map(v => `<span>${v}</span>`).join('');
-      const stmt = document.querySelector('.panel-text');
-      if (stmt) stmt.textContent = p.statement;
-      const expList = document.querySelectorAll('.panel-list')[0];
-      if (expList) expList.innerHTML = p.esperienze.map(e => `<li>${e}</li>`).join('');
-      const srvList = document.querySelectorAll('.panel-list')[1];
-      if (srvList) srvList.innerHTML = p.servizi.map(s => `<li>${s}</li>`).join('');
-      const cntList = document.querySelectorAll('.panel-list--links')[0];
-      if (cntList) cntList.innerHTML = `
-        <li><a href="about.html">About</a></li>
-        <li><a href="#" onclick="revealEmail(event)">Email</a></li>
-        <li><a href="${p.contatti.linkedin}" target="_blank" rel="noreferrer">LinkedIn</a></li>
-        <li><a href="${p.contatti.instagram}" target="_blank" rel="noreferrer">Instagram</a></li>
-      `;
-    }
+    renderProfile();
     if (data.cookie) {
       const ck = data.cookie;
       const bannerP = document.querySelector('#cookie-banner p');
@@ -970,6 +1071,9 @@ async function loadProjects() {
       if (btnRifiuta) btnRifiuta.textContent = ck.bottone_rifiuta;
     }
 
+  
+    // Applica la lingua salvata a tutta l'interfaccia una volta caricati i dati
+    applyLang(LANG);
   } catch(e) {
     console.warn('contenuti.json non raggiungibile, uso dati inline:', e);
     const fallback = [
@@ -986,12 +1090,15 @@ async function loadProjects() {
     ]
     PROJECTS = fallback.map(p => ({
       title: p.titolo, year: p.anno, client: p.cliente,
-      type: p.tipo, body: p.descrizione, gallery: p.galleria
+      type: p.tipo, body: p.descrizione, gallery: p.galleria,
+      youtube: p.youtube || null
     }));
+    applyLang(LANG);
   }
 }
 
 let current = 0, total = 10, drawerOpen = false, panelOpen = false, isTransitioning = false;
+let currentDrawerIdx = null;
 let soundOn = false, userInteracted = false;
 
 const slides = document.querySelectorAll('.slide');
@@ -1124,10 +1231,11 @@ function openDrawer(idx) {
   document.querySelectorAll('[data-open-drawer]').forEach(b => b.textContent = '+');
   const p = PROJECTS[idx];
   drawerOpen = true;
+  currentDrawerIdx = idx;
   drawerTitle.textContent = p.title;
-  drawerMeta.innerHTML = [p.year, p.client, p.type].filter(Boolean)
-    .map(t => `<span class="project-meta-plain">${t}</span>`).join('');
-  drawerBody.textContent = p.body;
+  drawerMeta.innerHTML = [p.year, p.client, t(p.type)].filter(Boolean)
+    .map(v => `<span class="project-meta-plain">${v}</span>`).join('');
+  drawerBody.textContent = t(p.body);
 
   const hasGallery = p.gallery && p.gallery.length > 0;
   galleryToggle.style.display = hasGallery ? 'inline-block' : 'none';
@@ -1150,7 +1258,7 @@ function openDrawer(idx) {
     const ytBtn = document.createElement('a');
     ytBtn.id = 'yt-btn'; ytBtn.className = 'yt-btn';
     ytBtn.href = p.youtube; ytBtn.target = '_blank'; ytBtn.rel = 'noreferrer';
-    ytBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch on YouTube`;
+    ytBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>${tui('watch_youtube','Watch on YouTube')}`;
     document.getElementById('drawer-scroll').appendChild(ytBtn);
   }
 
@@ -1160,6 +1268,7 @@ function openDrawer(idx) {
 }
 function closeDrawer() {
   drawerOpen = false;
+  currentDrawerIdx = null;
   drawer.classList.remove('open');
   drawer.classList.remove('has-gallery-open');
   galleryToggle.style.display = 'inline-block';
@@ -1206,8 +1315,8 @@ document.querySelectorAll('.chip, button, a').forEach(el => {
 
 // ── Sound
 function updateSoundBtn() {
-  soundBtn.textContent = soundOn ? 'SOUND ON' : 'SOUND';
-  soundBtn.style.opacity = soundOn ? '1' : '0.45';
+  soundBtn.textContent = soundOn ? tui('sound_on','SOUND ON') : tui('sound_off','SOUND');
+  soundBtn.style.opacity = soundOn ? '1' : '0.7';
 }
 function setActiveAudio() {
   const vid = slides[current] && slides[current].querySelector('video');
@@ -1243,6 +1352,11 @@ slides.forEach((s, i) => {
   s.style.transition = 'none';
   s.style.transform = i === 0 ? 'translateY(0)' : 'translateY(100%)';
   s.style.pointerEvents = i === 0 ? 'all' : 'none';
+});
+
+// Toggle lingua
+document.getElementById('lang-btn').addEventListener('click', () => {
+  applyLang(LANG === 'it' ? 'en' : 'it');
 });
 
 async function init() {
