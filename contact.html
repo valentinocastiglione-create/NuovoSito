@@ -272,17 +272,37 @@
     .hero { padding: 100px 20px 36px; }
     #header { padding: 14px 16px; }
   }
+
+  #lang-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    height: 38px; padding: 0 14px;
+    border: 1px solid var(--chip-border, rgba(255,255,255,0.15));
+    border-radius: 100px;
+    background: var(--chip-bg, rgba(0,0,0,0.92));
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    color: #fff; cursor: pointer; user-select: none; transition: opacity 0.2s;
+  }
+  #lang-btn:hover { opacity: 0.75; }
+  #lang-btn .lang-on { opacity: 1; }
+  #lang-btn .lang-off { opacity: 0.35; }
+  #lang-btn .lang-sep { opacity: 0.3; }
 </style>
 </head>
 <body>
 
-<header id="header">
+<header id="header" style="display:flex;align-items:center;justify-content:space-between;">
   <a class="chip chip-back" href="index.html">← Valentino Castiglione</a>
+  <button id="lang-btn" aria-label="Cambia lingua / Switch language">
+    <span id="lang-it" class="lang-on">IT</span>
+    <span class="lang-sep">|</span>
+    <span id="lang-en" class="lang-off">EN</span>
+  </button>
 </header>
 
 <div class="hero">
-  <h1>Book<br>a Project</h1>
-  <p>Tell me about your project. I'll get back to you within 48 hours to discuss the details.</p>
+  <h1 data-html-it="Prenota<br>un Progetto" data-html-en="Book<br>a Project">Book<br>a Project</h1>
+  <p data-it="Raccontami il tuo progetto. Ti risponderò entro 48 ore per discutere i dettagli." data-en="Tell me about your project. I'll get back to you within 48 hours to discuss the details.">Tell me about your project. I'll get back to you within 48 hours to discuss the details.</p>
 </div>
 
 <div class="form-wrap">
@@ -290,92 +310,92 @@
 
     <!-- SUCCESS -->
     <div id="success-msg">
-      <h2>Message sent.</h2>
-      <p>Thank you for reaching out.<br>I'll get back to you within 48 hours.</p>
+      <h2 data-it="Messaggio inviato." data-en="Message sent.">Message sent.</h2>
+      <p data-html-it="Grazie per avermi contattato.<br>Ti risponderò entro 48 ore." data-html-en="Thank you for reaching out.<br>I'll get back to you within 48 hours.">Thank you for reaching out.<br>I'll get back to you within 48 hours.</p>
     </div>
 
     <form id="booking-form" action="https://formspree.io/f/mvzyvpdq" method="POST">
 
       <!-- GENERAL INFO -->
-      <p class="section-label">General information <span style="color:rgba(17,17,17,0.4);font-size:10px;float:right;">* Required</span></p>
+      <p class="section-label" data-html-it="Informazioni generali <span style=&quot;color:rgba(17,17,17,0.4);font-size:10px;float:right;&quot;>* Obbligatorio</span>" data-html-en="General information <span style=&quot;color:rgba(17,17,17,0.4);font-size:10px;float:right;&quot;>* Required</span>">General information <span style="color:rgba(17,17,17,0.4);font-size:10px;float:right;">* Required</span></p>
 
       <div class="field-group">
         <div class="field-row">
           <div>
-            <label for="fname">Name <span>*</span></label>
-            <input type="text" id="fname" name="name" placeholder="Enter your name" required>
+            <label for="fname" data-html-it="Nome <span>*</span>" data-html-en="Name <span>*</span>">Name <span>*</span></label>
+            <input type="text" id="fname" name="name" placeholder="Enter your name" data-ph-it="Inserisci il tuo nome" data-ph-en="Enter your name" required>
           </div>
           <div>
-            <label for="lname">Last Name <span>*</span></label>
-            <input type="text" id="lname" name="lastname" placeholder="Enter your last name" required>
+            <label for="lname" data-html-it="Cognome <span>*</span>" data-html-en="Last Name <span>*</span>">Last Name <span>*</span></label>
+            <input type="text" id="lname" name="lastname" placeholder="Enter your last name" data-ph-it="Inserisci il tuo cognome" data-ph-en="Enter your last name" required>
           </div>
         </div>
         <div class="field-row">
           <div>
-            <label for="email">E-mail <span>*</span></label>
-            <input type="email" id="email" name="email" placeholder="Enter your e-mail" required>
+            <label for="email" data-html-it="E-mail <span>*</span>" data-html-en="E-mail <span>*</span>">E-mail <span>*</span></label>
+            <input type="email" id="email" name="email" placeholder="Enter your e-mail" data-ph-it="Inserisci la tua e-mail" data-ph-en="Enter your e-mail" required>
           </div>
           <div>
-            <label for="phone">Phone number</label>
-            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            <label for="phone" data-it="Numero di telefono" data-en="Phone number">Phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" data-ph-it="Inserisci il tuo numero" data-ph-en="Enter your phone number">
           </div>
         </div>
         <div>
-          <label for="location">Where are you located? <span>*</span></label>
-          <input type="text" id="location" name="location" placeholder="City and country" required>
+          <label for="location" data-html-it="Dove ti trovi? <span>*</span>" data-html-en="Where are you located? <span>*</span>">Where are you located? <span>*</span></label>
+          <input type="text" id="location" name="location" placeholder="City and country" data-ph-it="Città e paese" data-ph-en="City and country" required>
         </div>
       </div>
 
       <div class="divider"></div>
 
       <!-- PROJECT INFO -->
-      <p class="section-label">Project information</p>
+      <p class="section-label" data-it="Informazioni sul progetto" data-en="Project information">Project information</p>
 
       <div class="field-group">
-        <label>Type of project <span>*</span></label>
+        <label data-html-it="Tipo di progetto <span>*</span>" data-html-en="Type of project <span>*</span>">Type of project <span>*</span></label>
         <div class="toggle-group" id="project-type-group">
-          <button type="button" class="toggle-btn" data-value="Film Directing">Film Directing</button>
-          <button type="button" class="toggle-btn" data-value="Music Video">Music Video</button>
-          <button type="button" class="toggle-btn" data-value="Documentary">Documentary</button>
-          <button type="button" class="toggle-btn" data-value="Commercial">Commercial</button>
-          <button type="button" class="toggle-btn" data-value="Social Campaign">Social Campaign</button>
-          <button type="button" class="toggle-btn" data-value="Drone Cinematography">Drone Cinematography</button>
-          <button type="button" class="toggle-btn" data-value="Other">Other</button>
+          <button type="button" class="toggle-btn" data-value="Film Directing" data-it="Regia" data-en="Film Directing">Film Directing</button>
+          <button type="button" class="toggle-btn" data-value="Music Video" data-it="Music Video" data-en="Music Video">Music Video</button>
+          <button type="button" class="toggle-btn" data-value="Documentary" data-it="Documentario" data-en="Documentary">Documentary</button>
+          <button type="button" class="toggle-btn" data-value="Commercial" data-it="Spot" data-en="Commercial">Commercial</button>
+          <button type="button" class="toggle-btn" data-value="Social Campaign" data-it="Campagna Social" data-en="Social Campaign">Social Campaign</button>
+          <button type="button" class="toggle-btn" data-value="Drone Cinematography" data-it="Riprese Drone" data-en="Drone Cinematography">Drone Cinematography</button>
+          <button type="button" class="toggle-btn" data-value="Other" data-it="Altro" data-en="Other">Other</button>
         </div>
         <input type="hidden" id="project-type-input" name="project_type">
       </div>
 
       <div class="field-group">
-        <label for="budget">Estimated budget <em>(optional)</em></label>
+        <label for="budget" data-html-it="Budget stimato <em>(opzionale)</em>" data-html-en="Estimated budget <em>(optional)</em>">Estimated budget <em>(optional)</em></label>
         <div class="toggle-group" id="budget-group">
           <button type="button" class="toggle-btn" data-value="< €1.000">&lt; €1.000</button>
           <button type="button" class="toggle-btn" data-value="€1.000 – €3.000">€1.000 – €3.000</button>
           <button type="button" class="toggle-btn" data-value="€3.000 – €8.000">€3.000 – €8.000</button>
           <button type="button" class="toggle-btn" data-value="> €8.000">&gt; €8.000</button>
-          <button type="button" class="toggle-btn" data-value="To discuss">To discuss</button>
+          <button type="button" class="toggle-btn" data-value="To discuss" data-it="Da definire" data-en="To discuss">To discuss</button>
         </div>
         <input type="hidden" id="budget-input" name="budget">
       </div>
 
       <div class="field-group">
-        <label for="timeline">Desired timeline <em>(optional)</em></label>
-        <input type="text" id="timeline" name="timeline" placeholder="e.g. June 2026, ASAP, flexible…">
+        <label for="timeline" data-html-it="Tempistiche desiderate <em>(opzionale)</em>" data-html-en="Desired timeline <em>(optional)</em>">Desired timeline <em>(optional)</em></label>
+        <input type="text" id="timeline" name="timeline" placeholder="e.g. June 2026, ASAP, flexible…" data-ph-it="es. Giugno 2026, il prima possibile, flessibile…" data-ph-en="e.g. June 2026, ASAP, flexible…">
       </div>
 
       <div class="field-group">
-        <label for="description">Describe your project <span>*</span> <em>max 1500 characters</em></label>
+        <label for="description" data-html-it="Descrivi il tuo progetto <span>*</span> <em>max 1500 caratteri</em>" data-html-en="Describe your project <span>*</span> <em>max 1500 characters</em>">Describe your project <span>*</span> <em>max 1500 characters</em></label>
         <textarea id="description" name="description" maxlength="1500" rows="6"
-          placeholder="Tell me about your vision, the concept, references, location, mood…" required></textarea>
+          placeholder="Tell me about your vision, the concept, references, location, mood…" data-ph-it="Raccontami la tua visione, il concept, i riferimenti, la location, il mood…" data-ph-en="Tell me about your vision, the concept, references, location, mood…" required></textarea>
         <div style="text-align:right;font-size:10px;color:rgba(17,17,17,0.35);margin-top:4px;">
           <span id="char-count">0</span> / 1500
         </div>
       </div>
 
       <div class="field-group">
-        <label for="references">Have we worked together before? <span>*</span></label>
+        <label for="references" data-html-it="Abbiamo già lavorato insieme? <span>*</span>" data-html-en="Have we worked together before? <span>*</span>">Have we worked together before? <span>*</span></label>
         <div class="toggle-group" id="returning-group">
-          <button type="button" class="toggle-btn" data-value="New client">New client</button>
-          <button type="button" class="toggle-btn" data-value="Returning client">Returning client</button>
+          <button type="button" class="toggle-btn" data-value="New client" data-it="Nuovo cliente" data-en="New client">New client</button>
+          <button type="button" class="toggle-btn" data-value="Returning client" data-it="Cliente abituale" data-en="Returning client">Returning client</button>
         </div>
         <input type="hidden" id="returning-input" name="returning">
       </div>
@@ -385,14 +405,14 @@
       <!-- CONSENT -->
       <div class="check-row">
         <input type="checkbox" id="privacy" name="privacy" required>
-        <label for="privacy">By submitting this form, I agree to the processing of my personal data under the terms of the <a href="index.html#privacy">Privacy Policy</a>.<span style="color:var(--accent)"> *</span></label>
+        <label for="privacy" data-html-it="Inviando questo modulo, acconsento al trattamento dei miei dati personali secondo i termini della <a href=&quot;index.html#privacy&quot;>Privacy Policy</a>.<span style=&quot;color:var(--accent)&quot;> *</span>" data-html-en="By submitting this form, I agree to the processing of my personal data under the terms of the <a href=&quot;index.html#privacy&quot;>Privacy Policy</a>.<span style=&quot;color:var(--accent)&quot;> *</span>">By submitting this form, I agree to the processing of my personal data under the terms of the <a href="index.html#privacy">Privacy Policy</a>.<span style="color:var(--accent)"> *</span></label>
       </div>
       <div class="check-row">
         <input type="checkbox" id="complete" name="complete" required>
-        <label for="complete">I confirm that the information provided is accurate and the form is complete.<span style="color:var(--accent)"> *</span></label>
+        <label for="complete" data-html-it="Confermo che le informazioni fornite sono accurate e il modulo è completo.<span style=&quot;color:var(--accent)&quot;> *</span>" data-html-en="I confirm that the information provided is accurate and the form is complete.<span style=&quot;color:var(--accent)&quot;> *</span>">I confirm that the information provided is accurate and the form is complete.<span style="color:var(--accent)"> *</span></label>
       </div>
 
-      <button type="submit" class="submit-btn" id="submit-btn">SEND REQUEST</button>
+      <button type="submit" class="submit-btn" id="submit-btn" data-it="INVIA RICHIESTA" data-en="SEND REQUEST">SEND REQUEST</button>
 
     </form>
   </div>
@@ -460,5 +480,45 @@ form.addEventListener('submit', async e => {
   }
 });
 </script>
+<script>
+(function() {
+  let lang = localStorage.getItem('vc-lang') || 'it';
+
+  function applyLang(l) {
+    lang = l;
+    localStorage.setItem('vc-lang', l);
+    document.documentElement.lang = l;
+
+    const it = document.getElementById('lang-it');
+    const en = document.getElementById('lang-en');
+    if (it) it.className = l === 'it' ? 'lang-on' : 'lang-off';
+    if (en) en.className = l === 'en' ? 'lang-on' : 'lang-off';
+
+    document.querySelectorAll('[data-it]').forEach(el => {
+      const v = el.getAttribute('data-' + l);
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-html-it]').forEach(el => {
+      const v = el.getAttribute('data-html-' + l);
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-ph-it]').forEach(el => {
+      const v = el.getAttribute('data-ph-' + l);
+      if (v != null) el.placeholder = v;
+    });
+
+    document.title = l === 'it'
+      ? 'Prenota un Progetto — Valentino Castiglione'
+      : 'Book a Project — Valentino Castiglione';
+  }
+
+  document.getElementById('lang-btn').addEventListener('click', () => {
+    applyLang(lang === 'it' ? 'en' : 'it');
+  });
+
+  applyLang(lang);
+})();
+</script>
+
 </body>
 </html>

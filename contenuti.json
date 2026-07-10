@@ -1,226 +1,362 @@
 {
-  "progetti": [
-    {
-      "titolo": "Adria_Campaign2025",
-      "anno": "2025",
-      "cliente": "Adria Mobil",
-      "tipo": "Commercial",
-      "descrizione": "For this project, I planned and executed the aerial drone footage, helping to lend a sense of spaciousness and dynamism to the campaign images. My work allowed us to capture the balance between luxury, comfort, and outdoor living from above, offering a unique perspective that effectively highlighted the creative concept.",
-      "galleria": [],
-      "youtube": "https://www.youtube.com/watch?v=Ei_UJrNIuQk"
-    },
-    {
-      "titolo": "Avalant_Victoria",
-      "anno": "2024",
-      "cliente": "Avalant",
-      "tipo": "Music Video",
-      "descrizione": "A music video I directed for the artist Avalant. The composer's intention with this track is to recreate a specific moment: one of abstraction and mental journey. To visually convey this idea, I chose geometric shapes and color palettes capable of evoking that sense of detachment from reality—a visual language that interacts with the Synthwave sounds of the music, yet becomes its true protagonist. Colors, movements, and visual compositions guide the viewer through different levels of abstraction, making the perceptual experience something autonomous and immediate, even before the music comes into play.\n\nGo to YouTube, look it up, and give it a listen.",
-      "galleria": [
+    "progetti": [
         {
-          "src": "CONTENUTI_SITO/Avalant_1_88_1.webp",
-          "alt": "Frame dal music video Avalant Victoria diretto da Valentino Castiglione — pittura su acqua astratta"
+            "titolo": "Adria_Campaign2025",
+            "anno": "2025",
+            "cliente": "Adria Mobil",
+            "tipo": {
+                "it": "Commercial",
+                "en": "Commercial"
+            },
+            "descrizione": {
+                "it": "Per questo progetto ho pianificato ed eseguito le riprese aeree con drone, contribuendo a dare un senso di spaziosità e dinamismo alle immagini della campagna. Il mio lavoro ci ha permesso di catturare dall'alto l'equilibrio tra lusso, comfort e vita all'aria aperta, offrendo una prospettiva unica che ha valorizzato efficacemente il concept creativo.",
+                "en": "For this project, I planned and executed the aerial drone footage, helping to lend a sense of spaciousness and dynamism to the campaign images. My work allowed us to capture the balance between luxury, comfort, and outdoor living from above, offering a unique perspective that effectively highlighted the creative concept."
+            },
+            "galleria": [],
+            "youtube": "https://www.youtube.com/watch?v=Ei_UJrNIuQk"
         },
         {
-          "src": "CONTENUTI_SITO/Avalant_3_5_1.webp",
-          "alt": "Still dal music video Avalant Victoria — palette cromatica astratta"
+            "titolo": "Avalant_Victoria",
+            "anno": "2024",
+            "cliente": "Avalant",
+            "tipo": {
+                "it": "Music Video",
+                "en": "Music Video"
+            },
+            "descrizione": {
+                "it": "Un music video che ho diretto per l'artista Avalant. L'intenzione del compositore con questo brano è ricreare un momento specifico: uno di astrazione e viaggio mentale. Per trasmettere visivamente questa idea, ho scelto forme geometriche e palette cromatiche capaci di evocare quel senso di distacco dalla realtà — un linguaggio visivo che interagisce con le sonorità Synthwave della musica, diventandone però il vero protagonista. Colori, movimenti e composizioni visive guidano lo spettatore attraverso diversi livelli di astrazione, rendendo l'esperienza percettiva qualcosa di autonomo e immediato, ancora prima che la musica entri in gioco.\n\nVai su YouTube, cercalo e ascoltalo.",
+                "en": "A music video I directed for the artist Avalant. The composer's intention with this track is to recreate a specific moment: one of abstraction and mental journey. To visually convey this idea, I chose geometric shapes and color palettes capable of evoking that sense of detachment from reality—a visual language that interacts with the Synthwave sounds of the music, yet becomes its true protagonist. Colors, movements, and visual compositions guide the viewer through different levels of abstraction, making the perceptual experience something autonomous and immediate, even before the music comes into play.\n\nGo to YouTube, look it up, and give it a listen."
+            },
+            "galleria": [
+                {
+                    "src": "CONTENUTI_SITO/Avalant_1_88_1.webp",
+                    "alt": "Frame dal music video Avalant Victoria diretto da Valentino Castiglione — pittura su acqua astratta"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_3_5_1.webp",
+                    "alt": "Still dal music video Avalant Victoria — palette cromatica astratta"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_5_1_1.webp",
+                    "alt": "Immagine dal video musicale Avalant Victoria — forme geometriche rosse"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_5_3_1.webp",
+                    "alt": "Frame Avalant Victoria music video — colori sintetici astratti"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_5_15_1.webp",
+                    "alt": "Still Avalant Victoria — blu e viola liquidi in movimento"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_5_21_1.webp",
+                    "alt": "Frame dal music video Avalant — rosso e arancione in flusso"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_1_2_1.webp",
+                    "alt": "Immagine Avalant Victoria — protagonista sul tappeto persiano"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_1_24_1.webp",
+                    "alt": "Still Avalant Victoria — pittura su acqua blu e giallo"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_1.38.1.webp",
+                    "alt": "Frame Avalant — blu e giallo in movimento su acqua"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_1_44_1.webp",
+                    "alt": "Immagine Avalant Victoria — rosso e blu su acqua"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_1_48_1.webp",
+                    "alt": "Still Avalant — rosso e bianco su acqua in movimento"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_1_51_1.webp",
+                    "alt": "Frame dal music video Avalant Victoria — rosso su acqua"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Avalant_1_56_1.webp",
+                    "alt": "Immagine Avalant Victoria — rosso scuro e nero astratto"
+                }
+            ],
+            "youtube": "https://www.youtube.com/watch?v=bjdXG_o_uzw"
         },
         {
-          "src": "CONTENUTI_SITO/Avalant_5_1_1.webp",
-          "alt": "Immagine dal video musicale Avalant Victoria — forme geometriche rosse"
+            "titolo": "OBL_LaNotteIn30Libri",
+            "anno": "2023",
+            "cliente": "Associazione Obliquo",
+            "tipo": {
+                "it": "Campagna Social",
+                "en": "Social Campaign"
+            },
+            "descrizione": {
+                "it": "Una campagna social che ho diretto per l'evento dal vivo dell'Associazione Obliquo. Il progetto racconta la notte come luogo — uno spazio di riflessione, immaginazione e scoperta attraverso i libri. Ho curato la direzione creativa e la produzione video dei contenuti pensati per accompagnare e promuovere l'iniziativa culturale, costruendo un'identità visiva coerente e riconoscibile per la comunicazione dell'evento.",
+                "en": "A social media campaign I directed for Associazione Obliquo live event. “La notte in 30 libri” explored a new form of storytelling built around a curated collection of over thirty volumes. Visitors wore headphones delivering ASMR soundscapes while photographic projections surrounded them, weaving together visual and auditory layers into a single, cohesive experience. The result was an immersive journey through nocturnal and dreamlike atmospheres, shaped by the interplay of photobooks, illustrated works, essays, and sound — each element reinforcing the others to blur the line between reading, seeing, and dreaming.\n\nFor this event, I also served as live video director, overseeing the real-time visual direction of the performance."
+            },
+            "galleria": []
         },
         {
-          "src": "CONTENUTI_SITO/Avalant_5_3_1.webp",
-          "alt": "Frame Avalant Victoria music video — colori sintetici astratti"
+            "titolo": "CoraleManiaghese",
+            "anno": "2025",
+            "cliente": "Corale Maniaghese",
+            "tipo": {
+                "it": "Music Video",
+                "en": "Music Video"
+            },
+            "descrizione": {
+                "it": "Music video diretto per la Corale Maniaghese, in cui tradizione corale e linguaggio cinematografico si incontrano.",
+                "en": "Music video directed for Corale Maniaghese.\nA single, long take that offers an authentic glimpse into the simple yet profound rural and family life of the last century."
+            },
+            "galleria": [],
+            "youtube": "https://www.youtube.com/watch?v=IxJbFSY1M0Q"
         },
         {
-          "src": "CONTENUTI_SITO/Avalant_5_15_1.webp",
-          "alt": "Still Avalant Victoria — blu e viola liquidi in movimento"
+            "titolo": "Falmec_SICAM2025",
+            "anno": "2025",
+            "cliente": "Falmec",
+            "tipo": {
+                "it": "Social",
+                "en": "Social"
+            },
+            "descrizione": {
+                "it": "Un video realizzato per raccontare la partecipazione di Falmec alla fiera SICAM Pordenone 2025. Il progetto mette in luce prodotti, atmosfera e presenza dell'azienda all'evento con un taglio dinamico e professionale.",
+                "en": "A video created to showcase Falmec's participation in the SICAM Pordenone 2025 trade show.\nWe captured their first appearance at SICAM 2025 through a video that goes beyond simply depicting a space: it captures a vision of the contemporary kitchen.\nA debut shaped by a clear vision: to design spaces where surfaces, volumes, and materials interact to create a cohesive, functional, and truly modern living environment."
+            },
+            "galleria": []
         },
         {
-          "src": "CONTENUTI_SITO/Avalant_5_21_1.webp",
-          "alt": "Frame dal music video Avalant — rosso e arancione in flusso"
+            "titolo": "Julien_Chopin",
+            "anno": "2024",
+            "cliente": "Julien Chopin",
+            "tipo": {
+                "it": "Spot / Commercial",
+                "en": "Spot / Commercial"
+            },
+            "descrizione": {
+                "it": "Un progetto di portfolio ispirato all'eleganza senza tempo di Domaine Julien Chopin.",
+                "en": "A portfolio project draws inspiration from the timeless elegance of Domaine Julien Chopin, exploring the power of sharing: moments frozen in time, experiences that sparkle."
+            },
+            "galleria": [],
+            "youtube": "https://www.youtube.com/watch?v=P4OJ4Yx6IkQ"
         },
         {
-          "src": "CONTENUTI_SITO/Avalant_1_2_1.webp",
-          "alt": "Immagine Avalant Victoria — protagonista sul tappeto persiano"
+            "titolo": "Donne_di_Seta",
+            "anno": "2024",
+            "cliente": "Comune di Maniago",
+            "tipo": {
+                "it": "Documentario",
+                "en": "Documentary"
+            },
+            "descrizione": {
+                "it": "Un documentario diretto da me e prodotto dal Comune di Maniago. L'opera racconta storie legate al territorio e alla sua eredità, con uno sguardo sensibile e rigoroso.",
+                "en": "A documentary directed by me and produced by the Comune di Maniago. The documentary \"Donne di seta - Un intreccio di storie al femminile\" explores the connection between the silk industry and the work carried out by young women within this sector.\nThrough firsthand accounts and archival footage, the film reveals the crucial and often overlooked role of silk workers in the production of one of the world's finest fabrics."
+            },
+            "galleria": [
+                {
+                    "src": "CONTENUTI_SITO/Donne_di_seta.webp",
+                    "alt": "Frame dal documentario Donne di Seta — ritratto in bianco e nero"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Donne_di_seta_2.webp",
+                    "alt": "Still documentario Donne di Seta — donne davanti alla filanda di Maniago"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Donne_di_seta_3.webp",
+                    "alt": "Immagine documentario Donne di Seta — ritratto attrice in bianco e nero"
+                },
+                {
+                    "src": "CONTENUTI_SITO/DonneSeta_sc2_2_36_1.webp",
+                    "alt": "Frame Donne di Seta — filanda storica di Maniago in bianco e nero"
+                },
+                {
+                    "src": "CONTENUTI_SITO/DonneSeta_sc2_3_7_1.webp",
+                    "alt": "Still documentario Donne di Seta — attrice in campo aperto"
+                },
+                {
+                    "src": "CONTENUTI_SITO/DonneSetaInterviste_1_18_1.webp",
+                    "alt": "Intervista documentario Donne di Seta — testimone anziana seduta"
+                },
+                {
+                    "src": "CONTENUTI_SITO/DonneSetaInterviste_1_49_1.webp",
+                    "alt": "Intervista documentario Donne di Seta — testimone anziana nel laboratorio di tessitura"
+                }
+            ],
+            "youtube": "https://www.youtube.com/watch?v=UxYCdC0NLc8"
         },
         {
-          "src": "CONTENUTI_SITO/Avalant_1_24_1.webp",
-          "alt": "Still Avalant Victoria — pittura su acqua blu e giallo"
+            "titolo": "P.P.P.",
+            "anno": "2021",
+            "cliente": "Antonio Pauletta",
+            "tipo": {
+                "it": "Fiction",
+                "en": "Fiction"
+            },
+            "descrizione": {
+                "it": "Un progetto realizzato per Antonio Pauletta, pensato per candidarsi a una residenza artistica in Portogallo.",
+                "en": "A project created for Antonio Pauletta to help him apply for an artist residency in Portugal."
+            },
+            "galleria": [
+                {
+                    "src": "CONTENUTI_SITO/Pasolini_1_2_1.webp",
+                    "alt": "Frame dalla fiction P.P.P. di Valentino Castiglione — riflesso in specchio rotondo"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Pasolini_1_3_1.webp",
+                    "alt": "Still fiction P.P.P. — protagonista in uniforme in una stanza abbandonata"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Pasolini_1_5_1.webp",
+                    "alt": "Immagine fiction P.P.P. — riflesso capovolto in specchio sul pavimento"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Pasolini_1_6_1.webp",
+                    "alt": "Frame fiction P.P.P. — protagonista di spalle davanti a dipinti"
+                },
+                {
+                    "src": "CONTENUTI_SITO/Pasolini_1_6_2.webp",
+                    "alt": "Still fiction P.P.P. — specchio in stanza abbandonata"
+                }
+            ]
         },
         {
-          "src": "CONTENUTI_SITO/Avalant_1.38.1.webp",
-          "alt": "Frame Avalant — blu e giallo in movimento su acqua"
+            "titolo": "LaFormaDelleEmozioni_OBL",
+            "anno": "2023",
+            "cliente": "Associazione Obliquo",
+            "tipo": {
+                "it": "Documentario",
+                "en": "Documentary"
+            },
+            "descrizione": {
+                "it": "Un documentario diretto da me e prodotto dall'Associazione Obliquo, che esplora il rapporto tra forma visiva ed emozione.",
+                "en": "A documentary directed by me and produced by Associazione Obliquo. The documentary offers an intimate look into the extraordinary life and career of the renowned Italian designer Armando Milani. Through interviews, archival footage, and personal reflections, the film explores the roots and evolution of his creativity, from his youth to his rise as a leading figure in the world of graphic design."
+            },
+            "galleria": [],
+            "youtube": "https://www.youtube.com/watch?v=ftisFfY8br0"
         },
         {
-          "src": "CONTENUTI_SITO/Avalant_1_44_1.webp",
-          "alt": "Immagine Avalant Victoria — rosso e blu su acqua"
-        },
-        {
-          "src": "CONTENUTI_SITO/Avalant_1_48_1.webp",
-          "alt": "Still Avalant — rosso e bianco su acqua in movimento"
-        },
-        {
-          "src": "CONTENUTI_SITO/Avalant_1_51_1.webp",
-          "alt": "Frame dal music video Avalant Victoria — rosso su acqua"
-        },
-        {
-          "src": "CONTENUTI_SITO/Avalant_1_56_1.webp",
-          "alt": "Immagine Avalant Victoria — rosso scuro e nero astratto"
+            "titolo": "Dentag_IDEM2018",
+            "anno": "2018",
+            "cliente": "Dentag Maniago",
+            "tipo": {
+                "it": "Social AD",
+                "en": "Social AD"
+            },
+            "descrizione": {
+                "it": "Progetto realizzato per Dentag Maniago, da utilizzare durante la fiera IDEM 2018.",
+                "en": "Project created for Dentag Maniago to be used during the IDEM 2018 trade show."
+            },
+            "galleria": []
         }
-      ],
-      "youtube": "https://www.youtube.com/watch?v=bjdXG_o_uzw"
-    },
-    {
-      "titolo": "OBL_LaNotteIn30Libri",
-      "anno": "2023",
-      "cliente": "Associazione Obliquo",
-      "tipo": "Social Campaign",
-      "descrizione": "A social media campaign I directed for Associazione Obliquo live event. “La notte in 30 libri” explored a new form of storytelling built around a curated collection of over thirty volumes. Visitors wore headphones delivering ASMR soundscapes while photographic projections surrounded them, weaving together visual and auditory layers into a single, cohesive experience. The result was an immersive journey through nocturnal and dreamlike atmospheres, shaped by the interplay of photobooks, illustrated works, essays, and sound — each element reinforcing the others to blur the line between reading, seeing, and dreaming.\n\nFor this event, I also served as live video director, overseeing the real-time visual direction of the performance.",
-      "galleria": []
-    },
-    {
-      "titolo": "CoraleManiaghese",
-      "anno": "2025",
-      "cliente": "Corale Maniaghese",
-      "tipo": "Music Video",
-      "descrizione": "Music video directed for Corale Maniaghese.\nA single, long take that offers an authentic glimpse into the simple yet profound rural and family life of the last century.",
-      "galleria": [],
-      "youtube": "https://www.youtube.com/watch?v=IxJbFSY1M0Q"
-    },
-    {
-      "titolo": "Falmec_SICAM2025",
-      "anno": "2025",
-      "cliente": "Falmec",
-      "tipo": "Social",
-      "descrizione": "A video created to showcase Falmec's participation in the SICAM Pordenone 2025 trade show.\nWe captured their first appearance at SICAM 2025 through a video that goes beyond simply depicting a space: it captures a vision of the contemporary kitchen.\nA debut shaped by a clear vision: to design spaces where surfaces, volumes, and materials interact to create a cohesive, functional, and truly modern living environment.",
-      "galleria": []
-    },
-    {
-      "titolo": "Julien_Chopin",
-      "anno": "2024",
-      "cliente": "Julien Chopin",
-      "tipo": "Spot / Commercial",
-      "descrizione": "A portfolio project draws inspiration from the timeless elegance of Domaine Julien Chopin, exploring the power of sharing: moments frozen in time, experiences that sparkle.",
-      "galleria": [],
-      "youtube": "https://www.youtube.com/watch?v=P4OJ4Yx6IkQ"
-    },
-    {
-      "titolo": "Donne_di_Seta",
-      "anno": "2024",
-      "cliente": "Comune di Maniago",
-      "tipo": "Documentary",
-      "descrizione": "A documentary directed by me and produced by the Comune di Maniago. The documentary \"Donne di seta - Un intreccio di storie al femminile\" explores the connection between the silk industry and the work carried out by young women within this sector.\nThrough firsthand accounts and archival footage, the film reveals the crucial and often overlooked role of silk workers in the production of one of the world's finest fabrics.",
-      "galleria": [
-        {
-          "src": "CONTENUTI_SITO/Donne_di_seta.webp",
-          "alt": "Frame dal documentario Donne di Seta — ritratto in bianco e nero"
+    ],
+    "profilo": {
+        "nome": "Valentino Castiglione",
+        "ruolo": {
+            "it": "Regista & DOP (Direttore della Fotografia) / Drone Cinematographer",
+            "en": "Director & Cinematographer / Drone Cinematographer"
         },
-        {
-          "src": "CONTENUTI_SITO/Donne_di_seta_2.webp",
-          "alt": "Still documentario Donne di Seta — donne davanti alla filanda di Maniago"
+        "anno_nascita": "1994",
+        "interessi": {
+            "it": [
+                "Story Lover"
+            ],
+            "en": [
+                "Story Lover"
+            ]
         },
-        {
-          "src": "CONTENUTI_SITO/Donne_di_seta_3.webp",
-          "alt": "Immagine documentario Donne di Seta — ritratto attrice in bianco e nero"
+        "citta": {
+            "it": "Venezia",
+            "en": "Venice"
         },
-        {
-          "src": "CONTENUTI_SITO/DonneSeta_sc2_2_36_1.webp",
-          "alt": "Frame Donne di Seta — filanda storica di Maniago in bianco e nero"
+        "statement": {
+            "it": "Dirigere significa avere una visione.. e io riesco a vederti nel profondo della tua anima.",
+            "en": "Directing is about a vision.. and i can see you deep in your soul."
         },
-        {
-          "src": "CONTENUTI_SITO/DonneSeta_sc2_3_7_1.webp",
-          "alt": "Still documentario Donne di Seta — attrice in campo aperto"
+        "esperienze": {
+            "it": [
+                "Drone Cinematographer & Gaffer @ CROMO [2021—oggi]",
+                "Filmmaker Freelance [2019—oggi]",
+                "Third AD per la serie TV \"Prima di noi\" @ WILDSIDE [2023]",
+                "Laurea Triennale @ [Scienze e Tecnologie Multimediali]"
+            ],
+            "en": [
+                "Drone Cinematographer & Gaffer @ CROMO [2021—today]",
+                "Filmmaker Freelance [2019—today]",
+                "Third AD for \"Prima di noi\" TV Series @ WILDSIDE [2023]",
+                "Bachelor Degree @ [Multimedia Science & Technology]"
+            ]
         },
-        {
-          "src": "CONTENUTI_SITO/DonneSetaInterviste_1_18_1.webp",
-          "alt": "Intervista documentario Donne di Seta — testimone anziana seduta"
+        "servizi": {
+            "it": [
+                "Regia Cinematografica",
+                "Cinematografia / Drone Cinematography",
+                "Storytelling",
+                "Consulenza Creativa"
+            ],
+            "en": [
+                "Film Directing",
+                "Cinematography / Drone Cinematography",
+                "Storytelling",
+                "Creative Consulting"
+            ]
         },
-        {
-          "src": "CONTENUTI_SITO/DonneSetaInterviste_1_49_1.webp",
-          "alt": "Intervista documentario Donne di Seta — testimone anziana nel laboratorio di tessitura"
+        "contatti": {
+            "email": "info@valentinocastiglione.com",
+            "linkedin": "https://www.linkedin.com/in/valentino-castiglione-84ab321b3",
+            "instagram": "https://www.instagram.com/valentinocastiglione/"
         }
-      ],
-      "youtube": "https://www.youtube.com/watch?v=UxYCdC0NLc8"
     },
-    {
-      "titolo": "P.P.P.",
-      "anno": "2021",
-      "cliente": "Antonio Pauletta",
-      "tipo": "Fiction",
-      "descrizione": "A project created for Antonio Pauletta to help him apply for an artist residency in Portugal.",
-      "galleria": [
-        {
-          "src": "CONTENUTI_SITO/Pasolini_1_2_1.webp",
-          "alt": "Frame dalla fiction P.P.P. di Valentino Castiglione — riflesso in specchio rotondo"
+    "cookie": {
+        "testo_banner": "Questo sito utilizza cookie tecnici necessari al funzionamento. Non raccogliamo dati personali né utilizziamo cookie di profilazione.",
+        "link_privacy": "Leggi l'informativa sulla privacy",
+        "bottone_accetta": "Accetta",
+        "bottone_rifiuta": "Rifiuta"
+    },
+    "ui": {
+        "statement_label": {
+            "it": "Statement",
+            "en": "Statement"
         },
-        {
-          "src": "CONTENUTI_SITO/Pasolini_1_3_1.webp",
-          "alt": "Still fiction P.P.P. — protagonista in uniforme in una stanza abbandonata"
+        "experience_label": {
+            "it": "Esperienza",
+            "en": "Experience"
         },
-        {
-          "src": "CONTENUTI_SITO/Pasolini_1_5_1.webp",
-          "alt": "Immagine fiction P.P.P. — riflesso capovolto in specchio sul pavimento"
+        "services_label": {
+            "it": "Servizi",
+            "en": "Services"
         },
-        {
-          "src": "CONTENUTI_SITO/Pasolini_1_6_1.webp",
-          "alt": "Frame fiction P.P.P. — protagonista di spalle davanti a dipinti"
+        "contacts_label": {
+            "it": "Contatti",
+            "en": "Contacts"
         },
-        {
-          "src": "CONTENUTI_SITO/Pasolini_1_6_2.webp",
-          "alt": "Still fiction P.P.P. — specchio in stanza abbandonata"
+        "book_btn": {
+            "it": "PRENOTA UN PROGETTO",
+            "en": "BOOK A PROJECT"
+        },
+        "sound_on": {
+            "it": "AUDIO ON",
+            "en": "SOUND ON"
+        },
+        "sound_off": {
+            "it": "AUDIO",
+            "en": "SOUND"
+        },
+        "gallery": {
+            "it": "Galleria",
+            "en": "Gallery"
+        },
+        "watch_youtube": {
+            "it": "Guarda su YouTube",
+            "en": "Watch on YouTube"
+        },
+        "about": {
+            "it": "Chi sono",
+            "en": "About"
+        },
+        "email": {
+            "it": "Email",
+            "en": "Email"
         }
-      ]
-    },
-    {
-      "titolo": "LaFormaDelleEmozioni_OBL",
-      "anno": "2023",
-      "cliente": "Associazione Obliquo",
-      "tipo": "Documentary",
-      "descrizione": "A documentary directed by me and produced by Associazione Obliquo. The documentary offers an intimate look into the extraordinary life and career of the renowned Italian designer Armando Milani. Through interviews, archival footage, and personal reflections, the film explores the roots and evolution of his creativity, from his youth to his rise as a leading figure in the world of graphic design.",
-      "galleria": [],
-      "youtube": "https://www.youtube.com/watch?v=ftisFfY8br0"
-    },
-    {
-      "titolo": "Dentag_IDEM2018",
-      "anno": "2018",
-      "cliente": "Dentag Maniago",
-      "tipo": "Social AD",
-      "descrizione": "Project created for Dentag Maniago to be used during the IDEM 2018 trade show.",
-      "galleria": []
     }
-  ],
-  "profilo": {
-    "nome": "Valentino Castiglione",
-    "ruolo": "Director & Cinematographer / Drone Cinematographer",
-    "anno_nascita": "1994",
-    "interessi": [
-      "Story Lover"
-    ],
-    "citta": "Venice",
-    "statement": "Directing is about a vision.. and i can see you deep in your soul.",
-    "esperienze": [
-      "Drone Cinematographer & Gaffer @ CROMO [2021—2026]",
-      "Filmmaker Freelance [2019—Today]",
-      "Third AD for \"Prima di noi\" TV Series @ WILDSIDE [2023]",
-      "Bachelor Degree @ [Multimedia Science & Technology]"
-    ],
-    "servizi": [
-      "Film Directing",
-      "Cinematography / Drone Cinematography",
-      "Storytelling",
-      "Creative Consulting"
-    ],
-    "contatti": {
-      "email": "info@valentinocastiglione.com",
-      "linkedin": "https://www.linkedin.com/in/valentino-castiglione-84ab321b3",
-      "instagram": "https://www.instagram.com/valentinocastiglione/"
-    }
-  },
-  "cookie": {
-    "testo_banner": "Questo sito utilizza cookie tecnici necessari al funzionamento. Non raccogliamo dati personali né utilizziamo cookie di profilazione.",
-    "link_privacy": "Leggi l'informativa sulla privacy",
-    "bottone_accetta": "Accetta",
-    "bottone_rifiuta": "Rifiuta"
-  }
 }
