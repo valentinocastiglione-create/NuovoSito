@@ -538,9 +538,28 @@
     #site-footer { display: none; }
   }
   @media (hover: none) and (pointer: coarse) { #cursor { display: none !important; } }
+  /* ── TOP-RIGHT CONTROLS ── */
+  #top-controls {
+    position: fixed; top: 20px; right: 20px; z-index: 200;
+    display: flex; align-items: center; gap: 8px;
+  }
+  #top-controls #sound-btn {
+    height: 38px; padding: 0 16px;
+    font-size: 11px; letter-spacing: 0.05em;
+    background: rgba(0,0,0,0.92); color: #fff;
+    border: 1px solid rgba(0,0,0,0.92);
+    border-radius: 100px;
+    opacity: 0.7; cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  #top-controls #sound-btn:hover { opacity: 1; }
+  @media (max-width: 768px) {
+    #top-controls { top: 12px; right: 12px; gap: 6px; }
+    #top-controls #sound-btn { height: 28px; padding: 0 12px; font-size: 9px; }
+  }
   /* ── LANG SWITCHER ── */
   #lang-btn {
-    position: fixed; top: 20px; right: 90px; z-index: 200;
     display: inline-flex; align-items: center; gap: 6px;
     height: 38px; padding: 0 14px;
     border: 1px solid rgba(255,255,255,0.15);
@@ -556,7 +575,7 @@
   #lang-btn .lang-off { opacity: 0.35; }
   #lang-btn .lang-sep { opacity: 0.3; }
   @media (max-width: 768px) {
-    #lang-btn { top: 12px; right: 76px; height: 28px; font-size: 9px; padding: 0 10px; }
+    #lang-btn { height: 28px; font-size: 9px; padding: 0 10px; }
   }
 </style>
 <!-- Google Analytics 4 (attivato solo dopo consenso cookie) -->
@@ -681,15 +700,15 @@
 <div id="slide-counter">01 / 10</div>
 <a href="contact.html" class="chip" id="book-btn" style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:200;background:rgba(255,255,255,0.92);color:#000;border-color:rgba(255,255,255,0.92);font-weight:500;letter-spacing:0.08em;text-decoration:none;transition:opacity 0.3s ease;height:48px;padding:0 24px;font-size:14px;">BOOK A PROJECT</a>
 
-<!-- LANG SWITCHER -->
-<button id="lang-btn" aria-label="Cambia lingua / Switch language">
-  <span id="lang-it" class="lang-on">IT</span>
-  <span class="lang-sep">|</span>
-  <span id="lang-en" class="lang-off">EN</span>
-</button>
-
-<!-- SOUND BUTTON -->
-<button id="sound-btn" class="chip" style="position:fixed;top:20px;right:20px;z-index:200;opacity:0.45;font-size:11px;letter-spacing:0.05em;background:rgba(0,0,0,0.92);color:#fff;border-color:rgba(0,0,0,0.92);">SOUND</button>
+<!-- TOP-RIGHT CONTROLS (lang + sound) -->
+<div id="top-controls">
+  <button id="lang-btn" aria-label="Cambia lingua / Switch language">
+    <span id="lang-it" class="lang-on">IT</span>
+    <span class="lang-sep">|</span>
+    <span id="lang-en" class="lang-off">EN</span>
+  </button>
+  <button id="sound-btn" class="chip">SOUND</button>
+</div>
 
 <!-- SIDE PANEL -->
 <aside id="side-panel">
